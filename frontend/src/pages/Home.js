@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemDetails from '../Components/ItemDetails';
 import ItemForm from '../Components/ItemForm';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 const Home = () => {
   const { items, dispatch } = useItemsContext();
+  const [item, setItem] = useState(null);
 
   const { user } = useAuthContext();
 
@@ -19,14 +22,16 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
+        setItem(json);
         dispatch({ type: 'SET_ITEMS', payload: json });
       }
-    };
+    }; 
 
     if (user) {
       fetchItem();
     }
-  }, [dispatch]);
+    fetchItem();
+  }, []);
 
   return (
     <div className="home">
@@ -34,7 +39,7 @@ const Home = () => {
         {items &&
           items.map((item) => <ItemDetails key={item._id} item={item} />)}
       </div>
-      <ItemForm />
+      {user && <ItemForm />}
     </div>
   );
 };

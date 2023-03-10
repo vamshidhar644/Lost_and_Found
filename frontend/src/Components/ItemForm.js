@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+import TimePicker from 'react-time-picker';
+
 const ItemForm = () => {
   const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
 
-  const [title, setTitle] = useState('');
-  const [load, setLoad] = useState('');
-  const [reps, setReps] = useState('');
+  const [name, setName] = useState('');
+  const [desc, setDesc] = useState('');
+  const [place, setPlace] = useState('');
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
@@ -19,7 +24,7 @@ const ItemForm = () => {
       setError('You must be logged in');
       return;
     }
-    const item = { title, load, reps };
+    const item = { name, desc, place, date };
     const response = await fetch('/api/items', {
       method: 'POST',
       body: JSON.stringify(item),
@@ -35,9 +40,9 @@ const ItemForm = () => {
       setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
-      setTitle('');
-      setLoad('');
-      setReps('');
+      setName('');
+      setDesc('');
+      setPlace('');
       setError(null);
       setEmptyFields([]);
       console.log('new item added', json);
@@ -45,36 +50,64 @@ const ItemForm = () => {
     }
   };
 
+  
+  // console.log(date);
   return (
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a new Item</h3>
+      {error && <div className="error">{error}</div>}
 
-      <label>Exersize Title:</label>
-      <input
+      <div className="Form-Contents">
+        <label>Item:</label>
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          // className={emptyFields.includes('name') ? 'error' : ''}
+        />
+
+        <label>Description:</label>
+        <textarea
+          onChange={(e) => setDesc(e.target.value)}
+          value={desc}
+          // className={emptyFields.includes('desc') ? 'error' : ''}
+        ></textarea>
+        {/* <input
         type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        className={emptyFields.includes('title') ? 'error' : ''}
-      />
-
-      <label>Load (in kg):</label>
-      <input
-        type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
         className={emptyFields.includes('load') ? 'error' : ''}
-      />
+      /> */}
 
-      <label>Reps:</label>
-      <input
-        type="text"
-        onChange={(e) => setReps(e.target.value)}
-        value={reps}
-        className={emptyFields.includes('reps') ? 'error' : ''}
-      />
+        <label>Place:</label>
+        <input
+          type="text"
+          onChange={(e) => setPlace(e.target.value)}
+          value={place}
+          // className={emptyFields.includes('place') ? 'error' : ''}
+        />
+
+        <label>Date:</label>
+        <input
+          type="date"
+          onChange={(e) => setDate(e.target.value)}
+          value={date}
+          // className={emptyFields.includes('date') ? 'error' : ''}
+        />
+
+        <label>Time:</label>
+      </div>
+
+      <br />
+      <div className="actions">
+        <label htmlFor="file" className="button upload-btn">
+          Choose File
+          <input className="file" hidden="" type="file" id="file" />
+        </label>
+      </div>
+      <br />
 
       <button>Add Item</button>
-      {error && <div className="error">{error}</div>}
     </form>
   );
 };

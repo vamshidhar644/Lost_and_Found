@@ -3,19 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const itemSchema = new Schema({
-    title: {
+    name: {
         type: String,
         required: true
     },
-    reps: {
-        type: Number,
+    place: {
+        type: String,
         required: true
     },
-    load: {
-        type: Number,
-        required: true
-    },
-    user_id: {
+    desc: {
         type: String,
         required: true
     }

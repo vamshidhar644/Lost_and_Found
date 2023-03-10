@@ -3,9 +3,9 @@ const Item = require('../models/ItemModel');
 
 // GET all items
 const getItems = async (req, res) => {
-  const user_id = req.user._id
-  const items = await Item.find({ user_id }).sort({ createdAt: -1 });
-  res.status(200).json(items);
+  const items = await Item.find({}).sort({createdAt: -1})
+
+  res.status(200).json(items)
 };
 
 // get a single item
@@ -24,18 +24,18 @@ const getItem = async (req, res) => {
 
 // create new item
 const createItem = async (req, res) => {
-  const { title, load, reps } = req.body;
+  const { name, desc, place } = req.body;
 
   let emptyFields = []
 
-  if(!title){
-    emptyFields.push('title')
+  if(!name){
+    emptyFields.push('name')
   }
-  if(!load){
-    emptyFields.push('load')
+  if(!desc){
+    emptyFields.push('desc')
   }
-  if(!reps){
-    emptyFields.push('reps')
+  if(!place){
+    emptyFields.push('place')
   }
   if(emptyFields.length > 0){
     return res.status(400).json({ error: 'Please fill in all the Fields', emptyFields})
@@ -43,8 +43,7 @@ const createItem = async (req, res) => {
 
   // add doc to db
   try {
-    const user_id = req.user._id
-    const item = await Item.create({ title, load, reps, user_id });
+    const item = await Item.create({ name, desc, place});
     res.status(200).json(item);
   } catch (error) {
     res.status(400).json({ error: error.message });

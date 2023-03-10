@@ -1,6 +1,9 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+
 /* layout */
 :root {
   --primary: #1aac83;
@@ -75,15 +78,17 @@ header a {
 label, input {
   display: block;
 }
-input {
+input, textarea{
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
+  max-width: 400px;
+  min-width: 350px;
+  width: 350px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
+  resize: none;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -102,8 +107,43 @@ div.error {
   margin: 20px 0;
 }
 
+.create{
+  width: 500px;
+}
+
+.Form-Contents{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  align-items: top;
+  gap: 20px;
+}
+
 input.error {
   border: 1px solid var(--error);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.upload-btn {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  flex: 1;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.file{
+  display: none;
+}
+
+.upload-btn:hover {
+  background-color: hsla(223,10%,60%,0.2);
 }
 
 
