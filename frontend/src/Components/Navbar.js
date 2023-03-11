@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const handleClick = () => {
     logout()
+    window.location.reload(false);
   }
   return (
     <header>

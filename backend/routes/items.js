@@ -6,12 +6,13 @@ const {
   deleteItem,
   updateItem,
 } = require('../controllers/ItemControllers');
-const requireAuth = require('../middleware/requireAuth');
+
+// const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();
 
 // require auth for all item routes
-router.use(requireAuth);
+// router.use(requireAuth);
 
 // GET all items
 router.get('/', getItems);

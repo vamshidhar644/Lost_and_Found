@@ -45,7 +45,7 @@ const ItemForm = () => {
       setPlace('');
       setError(null);
       setEmptyFields([]);
-      console.log('new item added', json);
+      // console.log('new item added', json);
       dispatch({ type: 'CREATE_ITEM', payload: json });
     }
   };

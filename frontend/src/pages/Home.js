@@ -8,12 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const Home = () => {
   const { items, dispatch } = useItemsContext();
-  const [item, setItem] = useState(null);
 
   const { user } = useAuthContext();
 
   useEffect(() => {
-    const fetchItem = async () => {
+    const adminfetchItem = async () => {
       const response = await fetch('/api/items', {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -22,17 +21,27 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setItem(json);
         dispatch({ type: 'SET_ITEMS', payload: json });
       }
-    }; 
+    }
+    
+    const fetchItems = async () => {
+      const response = await fetch('/api/items')
+      const json = await response.json()
+
+      if(response.ok){
+        dispatch({ type: 'SET_ITEMS', payload: json });
+      }
+    }
+
 
     if (user) {
-      fetchItem();
+      adminfetchItem();
     }
-    fetchItem();
+    else{
+      fetchItems();
+    }
   }, []);
-
   return (
     <div className="home">
       <div className="items">

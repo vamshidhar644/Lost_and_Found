@@ -40,9 +40,12 @@ const ItemDetails = ({ item }) => {
       <p>
         {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
       </p>
-      <span onClick={handleClick}>
-        <BsTrash />
+      {
+        user && 
+        <span onClick={handleClick}>
+        Returned to owner
       </span>
+      }
     </div>
   );
 };
