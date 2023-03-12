@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-
+import '../Styles/ItemForm.css'
 import TimePicker from 'react-time-picker';
+import ItemSuggestions from './ItemSuggestions';
 
 const ItemForm = () => {
   const { dispatch } = useItemsContext();
@@ -49,56 +50,69 @@ const ItemForm = () => {
       dispatch({ type: 'CREATE_ITEM', payload: json });
     }
   };
-
-  
   // console.log(date);
   return (
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a new Item</h3>
       {error && <div className="error">{error}</div>}
 
-      <div className="Form-Contents">
-        <label>Item:</label>
-        <input
-          type="text"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          // className={emptyFields.includes('name') ? 'error' : ''}
-        />
+        <table className="Form-Contents">
+          <tbody>
+          <tr>
+            <td><label>Item:</label></td>
+            <td>
+              <ItemSuggestions/>             
+                {/* <input
+                  type="text"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  // className={emptyFields.includes('name') ? 'error' : ''}
+                /> */}
+            </td>
+          </tr>
 
-        <label>Description:</label>
-        <textarea
-          onChange={(e) => setDesc(e.target.value)}
-          value={desc}
-          // className={emptyFields.includes('desc') ? 'error' : ''}
-        ></textarea>
-        {/* <input
-        type="text"
-        onChange={(e) => setLoad(e.target.value)}
-        value={load}
-        className={emptyFields.includes('load') ? 'error' : ''}
-      /> */}
+          <tr>
+            <td><label>Description:</label></td>
+            <td>
+              <textarea
+                onChange={(e) => setDesc(e.target.value)}
+                value={desc}
+                // className={emptyFields.includes('desc') ? 'error' : ''}
+              ></textarea>
+            </td>
+          </tr>
 
-        <label>Place:</label>
-        <input
-          type="text"
-          onChange={(e) => setPlace(e.target.value)}
-          value={place}
-          // className={emptyFields.includes('place') ? 'error' : ''}
-        />
+          <tr>
+            <td><label>Place:</label></td>
+            <td>
+            <input
+              type="text"
+              onChange={(e) => setPlace(e.target.value)}
+              value={place}
+              // className={emptyFields.includes('place') ? 'error' : ''}
+            />
+            </td>
+          </tr>
+          <tr>
+            <td><label>Date:</label></td>
+            <td>
+            <input
+              type="date"
+            
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              // className={emptyFields.includes('date') ? 'error' : ''}
+            />
+            </td>
+          </tr>
 
-        <label>Date:</label>
-        <input
-          type="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
-          // className={emptyFields.includes('date') ? 'error' : ''}
-        />
-
-        <label>Time:</label>
-      </div>
-
-      <br />
+          <tr>
+            <td><label>Time:</label></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+        
       <div className="actions">
         <label htmlFor="file" className="button upload-btn">
           Choose File

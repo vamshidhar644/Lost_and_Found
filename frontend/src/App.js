@@ -3,6 +3,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Navbar from './Components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import ReturnItem from './Components/ReturnItem';
 // import Signup from './pages/Signup';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/login' element={!user ? <Login/> : <Navigate to='/'/>}/>
-            {/* <Route path="/signup" element={!user ? <Signup/> : <Navigate to='/'/>}/> */}
+            
+            <Route path="/return-item" element={<ReturnItem/>}/>
           </Routes> 
         </div>
       </BrowserRouter>

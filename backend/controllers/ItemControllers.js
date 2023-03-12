@@ -3,9 +3,9 @@ const Item = require('../models/ItemModel');
 
 // GET all items
 const getItems = async (req, res) => {
-  const items = await Item.find({}).sort({createdAt: -1})
+  const items = await Item.find({}).sort({ createdAt: -1 });
 
-  res.status(200).json(items)
+  res.status(200).json(items);
 };
 
 // get a single item
@@ -26,24 +26,26 @@ const getItem = async (req, res) => {
 const createItem = async (req, res) => {
   const { name, desc, place } = req.body;
 
-  let emptyFields = []
+  let emptyFields = [];
 
-  if(!name){
-    emptyFields.push('name')
+  if (!name) {
+    emptyFields.push('name');
   }
-  if(!desc){
-    emptyFields.push('desc')
+  if (!desc) {
+    emptyFields.push('desc');
   }
-  if(!place){
-    emptyFields.push('place')
+  if (!place) {
+    emptyFields.push('place');
   }
-  if(emptyFields.length > 0){
-    return res.status(400).json({ error: 'Please fill in all the Fields', emptyFields})
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: 'Please fill in all the Fields', emptyFields });
   }
 
   // add doc to db
   try {
-    const item = await Item.create({ name, desc, place});
+    const item = await Item.create({ name, desc, place });
     res.status(200).json(item);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -86,5 +88,5 @@ module.exports = {
   getItem,
   getItems,
   deleteItem,
-  updateItem
+  updateItem,
 };
