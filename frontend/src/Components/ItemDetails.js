@@ -11,7 +11,6 @@ const ItemDetails = ({ item }) => {
   // const navigate = Navigate();
 
   const handleClick = async () => {
-    // navigate('/return-item');
     // if (!user) {
     //   return;
     // }
@@ -44,13 +43,19 @@ const ItemDetails = ({ item }) => {
         </p>
       </div>
       {user && (
-        <Link to="/return-item" className="Return-btn"
-        state={{
-          Item_id: item._id,
-          Item_Title: item.name,
-          Item_Desc: item.desc,
-          Item_Place: item.place,
-        }}
+        <Link
+          className="Return-btn"
+          to="return-item"
+          state={{
+            Item_id: item._id,
+            Item_Title: item.name,
+            Item_Desc: item.desc,
+            Item_Place: item.place,
+            Item_Date: item.date,
+            Item_SubmitedBy: item.submitedBy,
+            Item_RegId: item.regId,
+            Item_Phone: item.phone,
+          }}
         >
           Return to owner
         </Link>

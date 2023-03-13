@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ItemSuggestions = () => {
+const ItemSuggestions = ({itemName}) => {
   let suggestions = ['Mobile', 'Laptop', 'Water Bottle', 'Watch', 'Backpack'];
 
-  let suggBox = document.getElementById('autocom-box');
-  let searchWrapper = document.querySelector('.search-input');
+  const searchWrapper = document.getElementById('search-input');
+  const suggBox = document.getElementById('autocom-box');
   let inputBox = document.getElementById('item-inputbox');
+
+
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleChange = (e) => {
     let itemData = e.target.value;
+    itemName(itemData);
 
     let emptyArrray = [];
     if (itemData) {
@@ -22,12 +26,17 @@ const ItemSuggestions = () => {
       //   console.log(emptyArrray);
 
       searchWrapper.classList.add('item-active');
-
       showSuggestion(emptyArrray);
+
     } else {
       searchWrapper.classList.remove('item-active');
     }
   };
+
+  function select(element) {
+    let selectItem = element;
+    console.log(selectItem);
+  }
 
   function showSuggestion(list) {
     let listData;
@@ -40,21 +49,10 @@ const ItemSuggestions = () => {
     suggBox.innerHTML = listData;
   }
 
-
-  function selectItem(element) {
-    // let selectItemData = element.textContent;
-    console.log("selectItemData");
-  }
-
   return (
     <div className="wrapper">
       <div className="search-input" id="search-input">
-        <input
-          type="text"
-          placeholder="Item"
-          onChange={handleChange}
-          id="item-inputbox"
-        />
+        <input type="text" className={emptyFields.includes('name') ? 'error' : ''} onChange={handleChange} id="item-inputbox" />
         <div className="autocom-box" id="autocom-box"></div>
       </div>
     </div>

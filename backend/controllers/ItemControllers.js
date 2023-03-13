@@ -24,7 +24,7 @@ const getItem = async (req, res) => {
 
 // create new item
 const createItem = async (req, res) => {
-  const { name, desc, place } = req.body;
+  const { name, desc, place, date, submitedBy, regId, phone } = req.body;
 
   let emptyFields = [];
 
@@ -37,6 +37,19 @@ const createItem = async (req, res) => {
   if (!place) {
     emptyFields.push('place');
   }
+  if (!date) {
+    emptyFields.push('date');
+  }
+  if (!submitedBy) {
+    emptyFields.push('submitedBy');
+  }
+  if (!regId) {
+    emptyFields.push('regId');
+  }
+  if (!phone) {
+    emptyFields.push('phone');
+  }
+
   if (emptyFields.length > 0) {
     return res
       .status(400)
@@ -45,7 +58,15 @@ const createItem = async (req, res) => {
 
   // add doc to db
   try {
-    const item = await Item.create({ name, desc, place });
+    const item = await Item.create({
+      name,
+      desc,
+      place,
+      date,
+      submitedBy,
+      regId,
+      phone,
+    });
     res.status(200).json(item);
   } catch (error) {
     res.status(400).json({ error: error.message });

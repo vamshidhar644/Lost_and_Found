@@ -17,10 +17,10 @@ label, input {
   form button {
     background: var(--primary);
     border: 0;
+    border-radius: 10px;
     color: #fff;
     padding: 10px;
     font-family: "Poppins";
-    border-radius: 4px;
     cursor: pointer;
   }
   
@@ -30,20 +30,35 @@ label, input {
     border: 1px solid var(--error);
     color: var(--error);
     border-radius: 4px;
-    margin: 20px 0;
+    margin: 10px 0;
   }
   
   .create{
     width: 500px;
   }
-  
-  .Form-Contents{
-    align-items: top;
-    gap: 20px;
-    width: 100%;
-    
+
+  .create h3{
+    margin: 0px;
+    padding: 0 10px 10px 0;
   }
   
+  .Form-Content{
+    align-items: top;
+    gap: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .Item-form-Row{
+    display: flex;
+    justify-content: center;
+  }
+
+  .Form-Content label{
+    width: 65%;
+  }
 
   input.error {
     border: 1px solid var(--error);
@@ -56,7 +71,6 @@ label, input {
   }
   
   .upload-btn {
-    background-color: transparent;
     border: 2px solid var(--primary);
     flex: 1;
     cursor: pointer;
@@ -73,10 +87,16 @@ label, input {
     background-color: hsla(223,10%,60%,0.2);
   }
   
+  #item-inputbox{
+    width: 100%;
+    border: 1px solid #ddd;
+  }
 
 
 /* Auto complete */
-
+.wrapper{
+  width: 100%;
+}
 .wrapper .search-input{
     background: #fff;
     width: 100%;
@@ -86,16 +106,13 @@ label, input {
 
 .search-input .autocom-box{
     /* padding: 0px; */
+    width: 100%;
     overflow-y: auto;
     opacity: 0;
     pointer-events: none;
     position: absolute;
     width: inherit;
     background-color: #fff;
-}
-
-.autocom-box{
-    width: 100%;
 }
 
 .search-input.item-active .autocom-box{
@@ -111,8 +128,9 @@ label, input {
     list-style: none;
     padding: 8px 8px;
     cursor: default;
-    border-radius: 3px;
+    /* border-radius: 3px; */
     display: none;
+    background-color: #ddd;
 }
 
 .autocom-box li:hover{

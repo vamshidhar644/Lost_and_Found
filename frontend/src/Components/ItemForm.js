@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import '../Styles/ItemForm.css'
-import TimePicker from 'react-time-picker';
+import '../Styles/ItemForm.css';
+
 import ItemSuggestions from './ItemSuggestions';
 
 const ItemForm = () => {
@@ -13,7 +13,9 @@ const ItemForm = () => {
   const [desc, setDesc] = useState('');
   const [place, setPlace] = useState('');
   const [date, setDate] = useState();
-  const [time, setTime] = useState();
+  const [submitedBy, setSubmitedBy] = useState('');
+  const [regId, setRegId] = useState('');
+  const [phone, setPhone] = useState('');
 
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
@@ -25,10 +27,11 @@ const ItemForm = () => {
       setError('You must be logged in');
       return;
     }
-    const item = { name, desc, place, date };
+    const itemDetais = { name, desc, place, date, submitedBy, regId, phone };
+
     const response = await fetch('/api/items', {
       method: 'POST',
-      body: JSON.stringify(item),
+      body: JSON.stringify(itemDetais),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`,
@@ -51,77 +54,88 @@ const ItemForm = () => {
     }
   };
   // console.log(date);
+
+  const itemName = (name) => {
+    setName(name);
+  };
   return (
     <form className="create" onSubmit={handleSubmit}>
-      <h3>Add a new Item</h3>
+      <h3>Item entry</h3>
       {error && <div className="error">{error}</div>}
 
-        <table className="Form-Contents">
-          <tbody>
-          <tr>
-            <td><label>Item:</label></td>
-            <td>
-              <ItemSuggestions/>             
-                {/* <input
-                  type="text"
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
-                  // className={emptyFields.includes('name') ? 'error' : ''}
-                /> */}
-            </td>
-          </tr>
+      <div className="Form-Content">
+        <div className="Item-form-Row">
+          <label>Item:</label>
+          <ItemSuggestions itemName={itemName} />
+        </div>
 
-          <tr>
-            <td><label>Description:</label></td>
-            <td>
-              <textarea
-                onChange={(e) => setDesc(e.target.value)}
-                value={desc}
-                // className={emptyFields.includes('desc') ? 'error' : ''}
-              ></textarea>
-            </td>
-          </tr>
+        <div className="Item-form-Row">
+          <label>Description:</label>
+          <textarea
+            onChange={(e) => setDesc(e.target.value)}
+            value={desc}
+            // className={emptyFields.includes('desc') ? 'error' : ''}
+          ></textarea>
+        </div>
 
-          <tr>
-            <td><label>Place:</label></td>
-            <td>
-            <input
-              type="text"
-              onChange={(e) => setPlace(e.target.value)}
-              value={place}
-              // className={emptyFields.includes('place') ? 'error' : ''}
-            />
-            </td>
-          </tr>
-          <tr>
-            <td><label>Date:</label></td>
-            <td>
-            <input
-              type="date"
-            
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-              // className={emptyFields.includes('date') ? 'error' : ''}
-            />
-            </td>
-          </tr>
+        <div className="Item-form-Row">
+          <label>Place found:</label>
+          <input
+            type="text"
+            onChange={(e) => setPlace(e.target.value)}
+            value={place}
+            // className={emptyFields.includes('place') ? 'error' : ''}
+          />
+        </div>
 
-          <tr>
-            <td><label>Time:</label></td>
-            <td></td>
-          </tr>
-          </tbody>
-        </table>
-        
-      <div className="actions">
-        <label htmlFor="file" className="button upload-btn">
-          Choose File
-          <input className="file" hidden="" type="file" id="file" />
-        </label>
+        <div className="Item-form-Row">
+          <label>Date:</label>
+          <input
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            // className={emptyFields.includes('date') ? 'error' : ''}
+          />
+        </div>
+
+        <div className="Item-form-Row">
+          <label>Submitted by</label>
+          <input
+            type="text"
+            onChange={(e) => setSubmitedBy(e.target.value)}
+            value={submitedBy}
+            // className={emptyFields.includes('submitedBy') ? 'error' : ''}
+          />
+        </div>
+
+        <div className="Item-form-Row">
+          <label>Registration number / Employee id:</label>
+          <input
+            type="text"
+            onChange={(e) => setRegId(e.target.value)}
+            value={regId}
+            // className={emptyFields.includes('regId') ? 'error' : ''}
+          />
+        </div>
+
+        <div className="Item-form-Row">
+          <label>Phone number</label>
+          <input
+            type="text"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+            // className={emptyFields.includes('phone') ? 'error' : ''}
+          />
+        </div>
+        <div className="actions">
+          <label htmlFor="file" className="button upload-btn">
+            Choose File
+            <input className="file" hidden="" type="file" id="file" />
+          </label>
+        </div>
+
+        <button>Add Item</button>
       </div>
-      <br />
-
-      <button>Add Item</button>
     </form>
   );
 };

@@ -3,7 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const itemSchema = new Schema({
+    // entryNumber: {
+    //     type: Number,
+    //     required: true
+    // },
     name: {
+        type: String,
+        required: true
+    },
+    desc: {
         type: String,
         required: true
     },
@@ -11,7 +19,19 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
-    desc: {
+    date: {
+        type: String,
+        required: true
+    },
+    submitedBy: {
+        type: String,
+        required: true
+    },
+    regId: {
+        type: String,
+        required: true
+    },
+    phone: {
         type: String,
         required: true
     }
