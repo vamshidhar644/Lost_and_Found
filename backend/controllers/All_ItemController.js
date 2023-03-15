@@ -25,6 +25,7 @@ const get_AllItem = async (req, res) => {
 // create new item
 const create_AllItem = async (req, res) => {
   const {
+    _id,
     name,
     desc,
     place_found,
@@ -87,6 +88,7 @@ const create_AllItem = async (req, res) => {
   // add doc to db
   try {
     const item = await Item.create({
+      _id,
       name,
       desc,
       place_found,

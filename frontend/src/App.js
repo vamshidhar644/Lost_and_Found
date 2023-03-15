@@ -22,17 +22,11 @@ function App() {
               element={user ? <AdminHome /> : <Navigate to="/items" />}
             />
 
-            <Route
-              path="/item-entry"
-              element={user ? <ItemForm /> : <Navigate to="/items" />}
-            />
+            <Route path="/item-entry" element={<ItemForm />} />
 
             <Route path="/items" element={<ItemReturn />} />
-            
-            <Route
-              path="/all-entries"
-              element={user ? <AllEntries /> : <Navigate to="/items" />}
-            />
+
+            <Route path="/all-entries" element={<AllEntries />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}

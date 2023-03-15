@@ -24,10 +24,13 @@ const getItem = async (req, res) => {
 
 // create new item
 const createItem = async (req, res) => {
-  const { name, desc, place, date, submitedBy, regId, phone } = req.body;
+  const { _id, name, desc, place, date, submitedBy, regId, phone } = req.body;
 
   let emptyFields = [];
 
+  // if (!_id) {
+  //   emptyFields.push('_id');
+  // }
   if (!name) {
     emptyFields.push('name');
   }
@@ -59,6 +62,7 @@ const createItem = async (req, res) => {
   // add doc to db
   try {
     const item = await Item.create({
+      _id,
       name,
       desc,
       place,
@@ -76,9 +80,10 @@ const createItem = async (req, res) => {
 // delete a item
 const deleteItem = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.id.status(404).json({ error: 'No such item' });
-  }
+
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.id.status(404).json({ error: 'No such item' });
+  // }
 
   const item = await Item.findOneAndDelete({ _id: id });
   if (!item) {

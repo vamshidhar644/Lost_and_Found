@@ -7,11 +7,12 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 const ItemDetails = ({ item }) => {
   const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
-
+  // console.log(item._id);
   return (
     <div className="item-details">
       <div>
-        <h4>{item.name}</h4>
+        <h4>{item.name} </h4>
+        <p>{item._id}</p>
         <p>
           <strong>Description </strong>
           {item.desc}

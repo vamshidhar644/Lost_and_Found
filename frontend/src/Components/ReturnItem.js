@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import '../Styles/ItemReturn.css';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
+import NonAdmin from './NonAdmin';
 
 const ReturnItem = () => {
   // const { dispatch } = useItemsContext();
@@ -17,7 +18,7 @@ const ReturnItem = () => {
   const [recieved_date, setRecievedDate] = useState('');
   const [recievedBy_Name, setRecievedBy] = useState('');
   const [recievedBy_regId, setRecievedRegid] = useState('');
-  const [recievedBy_phone, setRecievedPhone] = useState();
+  const [recievedBy_phone, setRecievedPhone] = useState('');
   const [father_phone, setFatherPhone] = useState('');
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
@@ -44,6 +45,7 @@ const ReturnItem = () => {
       }
 
       const itemDetais = {
+        _id,
         name,
         desc,
         place_found,
@@ -106,7 +108,7 @@ const ReturnItem = () => {
         <div className="Details-Content">
           <div className="Item-Return-Row">
             <h4>Entry number: </h4>
-            <p>{}</p>
+            <p>{_id}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Item: </h4>
@@ -203,12 +205,7 @@ const ReturnItem = () => {
     );
   } else {
     return (
-      <div className="Return-Section">
-        <h3>Admin has to login</h3>
-        <Link to="/login" className="login-btn">
-          Admin login
-        </Link>
-      </div>
+      <NonAdmin/>
     );
   }
 };
