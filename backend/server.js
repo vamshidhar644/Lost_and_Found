@@ -3,7 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const itemRoutes = require('./routes/items');
-const userRoutes = require('./routes/user')
+const userRoutes = require('./routes/user');
+const all_itemRoutes = require('./routes/all_items');
 // Express app
 const app = express();
 
@@ -17,20 +18,22 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/items', itemRoutes);
-app.use('/api/user', userRoutes)
+app.use('/api/user', userRoutes);
+app.use('/api/all_items', all_itemRoutes);
 
 mongoose.set('strictQuery', false);
 
 // connect to DB
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {        
-        // Listen for request
-        app.listen(process.env.PORT, () => {
-            console.log('Connected to DB Listening on port ', process.env.PORT);
-        });
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    // Listen for request
+    app.listen(process.env.PORT, () => {
+      console.log('Connected to DB Listening on port ', process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 process.env;

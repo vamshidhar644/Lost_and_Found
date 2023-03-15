@@ -1,3 +1,18 @@
+.FormBoxes{
+  display: flex;
+  gap: 30px;
+  justify-content: first baseline;
+  
+}
+
+.FormBoxes .Box{
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  gap: 5px;
+  width: 100%;
+}
+
 /* new item form */
 
 label, input {
@@ -14,12 +29,13 @@ label, input {
     resize: none;
   }
   
-  form button {
+  .Form-Btn-Container button {
     background: var(--primary);
     border: 0;
     border-radius: 10px;
     color: #fff;
     padding: 10px;
+    width: 150px;
     font-family: "Poppins";
     cursor: pointer;
   }
@@ -31,33 +47,55 @@ label, input {
     color: var(--error);
     border-radius: 4px;
     margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-parent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
   }
   
   .create{
-    width: 500px;
+    display: flex;
+    width: fit-content;
+    height: 90%;
+    padding: 15px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;    
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   }
 
+  .Form-Btn-Container{
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   .create h3{
     margin: 0px;
     padding: 0 10px 10px 0;
   }
   
-  .Form-Content{
-    align-items: top;
-    gap: 5px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
   .Item-form-Row{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
 
   .Form-Content label{
-    width: 65%;
+    white-space: nowrap;
+  }
+
+  .Input-Box, .wrapper{
+    width: 300px;
   }
 
   input.error {
@@ -88,18 +126,16 @@ label, input {
   }
   
   #item-inputbox{
-    width: 100%;
+    /* width: 100%; */
     border: 1px solid #ddd;
   }
 
 
 /* Auto complete */
-.wrapper{
-  width: 100%;
-}
 .wrapper .search-input{
     background: #fff;
     width: 100%;
+    align-items: right;
     border-radius: 5px;
     position: relative;
 }
@@ -118,6 +154,7 @@ label, input {
 .search-input.item-active .autocom-box{
     opacity: 1;
     pointer-events: auto;
+    z-index: 999;
 }
 
 .search-input.item-active .autocom-box li{
@@ -137,3 +174,7 @@ label, input {
     background-color: #efefef;
 }
 
+
+.invisible{
+  display: none;
+}

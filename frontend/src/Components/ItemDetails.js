@@ -8,24 +8,6 @@ const ItemDetails = ({ item }) => {
   const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
 
-  // const navigate = Navigate();
-
-  const handleClick = async () => {
-    // if (!user) {
-    //   return;
-    // }
-    // const response = await fetch('/api/items/' + item._id, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     Authorization: `Bearer ${user.token}`,
-    //   },
-    // });
-    // const json = await response.json();
-    // if (response.ok) {
-    //   dispatch({ type: 'DELETE_ITEM', payload: json });
-    // }
-  };
-
   return (
     <div className="item-details">
       <div>
@@ -47,14 +29,14 @@ const ItemDetails = ({ item }) => {
           className="Return-btn"
           to="return-item"
           state={{
-            Item_id: item._id,
-            Item_Title: item.name,
-            Item_Desc: item.desc,
-            Item_Place: item.place,
-            Item_Date: item.date,
-            Item_SubmitedBy: item.submitedBy,
-            Item_RegId: item.regId,
-            Item_Phone: item.phone,
+            _id: item._id,
+            name: item.name,
+            desc: item.desc,
+            place_found: item.place,
+            submited_date: item.date,
+            submitedBy_Name: item.submitedBy,
+            submitedBy_regId: item.regId,
+            submitedBy_phone: item.phone,
           }}
         >
           Return to owner

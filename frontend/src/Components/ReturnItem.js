@@ -1,32 +1,108 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLocation } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import '../Styles/ItemReturn.css'
+import '../Styles/ItemReturn.css';
+import { useAllentriesContext } from '../hooks/useAllentriesContext';
 
 const ReturnItem = () => {
   // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
-
+  const navigate = useNavigate();
   const location = useLocation();
 
+  const [recieved_date, setRecievedDate] = useState('');
+  const [recievedBy_Name, setRecievedBy] = useState('');
+  const [recievedBy_regId, setRecievedRegid] = useState('');
+  const [recievedBy_phone, setRecievedPhone] = useState();
+  const [father_phone, setFatherPhone] = useState('');
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
+
   const { dispatch } = useItemsContext();
+  const { Alldispatch} = useAllentriesContext();
+
   if (user) {
     const {
-      Item_Title,
-      Item_Desc,
-      Item_Place,
-      Item_Date,
-      Item_SubmitedBy,
-      Item_RegId,
-      Item_Phone,
+      _id,
+      name,
+      desc,
+      place_found,
+      submited_date,
+      submitedBy_Name,
+      submitedBy_regId,
+      submitedBy_phone,
     } = location.state;
 
+    const handleClick = async (e) => {
+      e.preventDefault();
+      if (!user) {
+        return;
+      }
+
+      const itemDetais = {
+        name,
+        desc,
+        place_found,
+        submited_date,
+        submitedBy_Name,
+        submitedBy_regId,
+        submitedBy_phone,
+        recieved_date,
+        recievedBy_Name,
+        recievedBy_regId,
+        recievedBy_phone,
+        father_phone,
+      };
+
+      const Addresponse = await fetch('/api/all_items', {
+        method: 'POST',
+        body: JSON.stringify(itemDetais),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const Addjson = await Addresponse.json();
+      if (!Addresponse.ok) {
+        setError(Addjson.error);
+        setEmptyFields(Addjson.emptyFields);
+      }
+
+      if (Addresponse.ok) {
+        setRecievedDate('');
+        setRecievedBy('');
+        setRecievedRegid('');
+        setRecievedPhone('');
+        setFatherPhone('');
+        setError(null);
+        setEmptyFields([]);
+        // console.log('new item added', json);
+        Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
+
+
+        const response = await fetch('/api/items/' + _id, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        const json = await response.json();
+        if (response.ok) {
+          dispatch({ type: 'DELETE_ITEM', payload: json });
+        }
+        navigate('/items');
+      }
+
+      
+    };
+
     return (
-      <div className="Retrun-Container">
+      <div className="Return-Container">
         <div className="Details-Content">
           <div className="Item-Return-Row">
             <h4>Entry number: </h4>
@@ -34,59 +110,73 @@ const ReturnItem = () => {
           </div>
           <div className="Item-Return-Row">
             <h4>Item: </h4>
-            <p>{Item_Title}</p>
+            <p>{name}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Description: </h4>
-            <p>{Item_Desc}</p>
+            <p>{desc}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Place found: </h4>
-            <p>{Item_Place}</p>
+            <p>{place_found}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Date: </h4>
-            <p>{Item_Date}</p>
+            <p>{submited_date}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Submitted by: </h4>
-            <p>{Item_SubmitedBy}</p>
+            <h4>Submited by: </h4>
+            <p>{submitedBy_Name}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Registration number / Employee id: </h4>
-            <p>{Item_RegId}</p>
+            <p>{submitedBy_regId}</p>
           </div>
           <div className="Item-Return-Row">
             <h4>Phone number: </h4>
-            <p>{Item_Phone}</p>
+            <p>{submitedBy_phone}</p>
           </div>
         </div>
 
-        
-        <div className='Owner-Content'>
+        <div className="Owner-Content">
+        {error && <div className="error">{error}</div>}
           <div className="Item-Return-Row">
             <h5>Reciever Details: </h5>
           </div>
-          
           <div className="Item-Return-Row">
-          <label>Recieved by:</label>
-          <input
-            type="text"
-            // className={emptyFields.includes('submitedBy') ? 'error' : ''}
-          />
+            <label>Recieved Date: </label>
+            <input
+              type="date"
+              onChange={(e) => setRecievedDate(e.target.value)}
+              value={recieved_date}
+              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
+            />
           </div>
-          
           <div className="Item-Return-Row">
-          <label>Registration number / Employee id: </label>
-          <input
-            type="text"
-            // className={emptyFields.includes('submitedBy') ? 'error' : ''}
-          />
+            <label>Recieved by:</label>
+            <input
+              type="text"
+              onChange={(e) => setRecievedBy(e.target.value)}
+              value={recievedBy_Name}
+              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
+            />
+          </div>
+
+          <div className="Item-Return-Row">
+            <label>Registration number / Employee id: </label>
+            <input
+              type="text"
+              onChange={(e) => setRecievedRegid(e.target.value)}
+              value={recievedBy_regId}
+              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
+            />
           </div>
           <div className="Item-Return-Row">
             <label>Phone number: </label>
             <input
               type="text"
+              onChange={(e) => setRecievedPhone(e.target.value)}
+              value={recievedBy_phone}
               // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
@@ -94,24 +184,21 @@ const ReturnItem = () => {
             <label>Father Phone: </label>
             <input
               type="text"
+              onChange={(e) => setFatherPhone(e.target.value)}
+              value={father_phone}
               // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
-          <div className="Item-Return-Row">
-          <label>Recieved Date: </label>
-          <input
-            type="text"
-            // className={emptyFields.includes('submitedBy') ? 'error' : ''}
-          />
-          </div>
-          <div className='Return-BtnS'>
-            <div className="Returned-btn">Returned</div><br/>
-            <Link to="/" className="Returned-btn">
+          <div className="Return-BtnS">
+            <div className="Returned-btn" onClick={handleClick}>
+              Returned
+            </div>
+            <br />
+            <Link to="/items" className="Returned-btn">
               Back
             </Link>
           </div>
         </div>
-        
       </div>
     );
   } else {

@@ -18,7 +18,7 @@ body {
 header {
   background: #fff;
 }
-header .container {
+header .Navcontainer {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
@@ -32,11 +32,11 @@ header a, .login-btn {
 }
 .pages{
   max-width: 1400px;
-  padding: 20px;
+  padding: 14px;
   margin: 0 auto;
 }
 
-.container h1 span{
+.Navcontainer h1 span{
   font-weight: 400;
   font-size: 20px;
 }
