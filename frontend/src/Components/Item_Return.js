@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  //  useState
+} from 'react';
 import ItemDetails from './ItemDetails';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -38,8 +41,8 @@ const Item_Return = () => {
     } else {
       fetchItems();
     }
-  }, []);
-  
+  });
+
   return (
     <div className="home">
       <div className="items">

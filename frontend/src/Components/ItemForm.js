@@ -110,6 +110,8 @@ const ItemForm = () => {
 
   const itemName = (name) => {
     setName(name);
+    // console.log(`location: ${name}`);
+    // console.log(name);
   };
 
   if (user) {
@@ -126,9 +128,7 @@ const ItemForm = () => {
               <div className="Item-form-Row">
                 <label>Item:</label>
                 {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
-                <div className="suggestion-parent">
-                  <Suggestions className="Input-Box" />
-                </div>
+                  <Suggestions onChange={itemName} />
               </div>
 
               <div className="Item-form-Row">

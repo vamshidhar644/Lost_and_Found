@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Autocomplete from 'react-autocomplete';
+import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useItemTypesContext } from '../hooks/useItemTypeContext';
 
-function Suggestions() {
+const Suggestions = ({ onChange }) => {
   const { itemTypes, itemTypedispatch } = useItemTypesContext();
   const { user } = useAuthContext();
-
-  const [value, setValue] = useState('');
 
   useEffect(() => {
     const fetchItemTypes = async () => {
@@ -28,36 +25,58 @@ function Suggestions() {
     }
   });
 
+  function SelectOpt() {
+    const type = document.getElementById('input-box').value;
+    onChange(type);
+  }
+  // console.log(text);
+  const [ele, setElement] = useState('');
+
+  // document.getElementById('new-item').style.display = 'none';
+
+  // newBtn.style.display = 'none';
+
+  function handleChange(element) {
+    setElement(element);
+
+    // for (let i = 0; i < itemTypes.length; i++) {
+    //   if (itemTypes[i].itemType !== ele) {
+    //     console.log('not present');
+    //     // document.getElementById('new-item').style.display = 'block';
+    //   }
+    //   if (itemTypes[i].itemType === ele) {
+    //     console.log('present');
+    //     // document.getElementById('new-item').style.display = 'none';
+    //   }
+    // }
+  }
+
+  function checlElement() {}
+
   return (
-    <div>
-      <Autocomplete
-        items={itemTypes}
-        shouldItemRender={(item, value) =>
-          item.itemType.toLowerCase().indexOf(value.toLowerCase()) > -1
-        }
-        getItemValue={(item) => item.itemType}
-        renderItem={(item, isHighlighted) => (
-          // Styling to highlight selected item
-          <div
-            className="sugg-list"
-            style={{
-              background: isHighlighted ? '#1aac83' : 'white',
-              // padding: '8px 12px',
-              width: 'inherit',
-              padding: '0px',
-            }}
-            key={item._id}
-          >
-            {item.itemType}
-          </div>
-        )}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onSelect={(val) => setValue(val)}
-        // Added style in Autocomplete component
+    <div className="suggestion-parent">
+      <input
+        list="item-types"
+        id="input-box"
+        onChange={SelectOpt}
+        onKeyDown={(e) => handleChange(e.target.value)}
       />
+      <datalist id="item-types">
+        {itemTypes &&
+          itemTypes.map((itemType, ind) => {
+            return (
+              <option key={ind} value={itemType.itemType}>
+                {itemType.itemType}
+              </option>
+            );
+          })}
+        {/* <option>Russia</option> */}
+      </datalist>
+      <p onClick={checlElement} id="new-item">
+        New
+      </p>
     </div>
   );
-}
+};
 
 export default Suggestions;

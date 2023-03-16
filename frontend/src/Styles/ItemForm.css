@@ -94,7 +94,7 @@ label, input {
     white-space: nowrap;
   }
 
-  .Input-Box, .wrapper{
+  .Input-Box, .wrapper, .suggestion-parent{
     width: 300px;
   }
 
@@ -179,12 +179,21 @@ label, input {
   display: none;
 }
 
-.suggestion-parent div{
-  width: 300px;
+.suggestion-parent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
-.sugg-list{
-  overflow-x: hidden !important;
-  width: auto !important;
-  padding: 8px !important;
+.suggestion-parent p{
+  margin: 0px;
+}
+
+.suggestion-parent div{
+  width: 100%;
+}
+
+#new-item{
+  display: none;
 }

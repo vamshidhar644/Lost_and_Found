@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Admin_Home.css';
 
-import { useItemsContext } from '../hooks/useItemsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useAllentriesContext } from '../hooks/useAllentriesContext';
 
 const Admin_Home = () => {  
   return (

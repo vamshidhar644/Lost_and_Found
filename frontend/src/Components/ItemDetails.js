@@ -1,11 +1,10 @@
 import React from 'react';
-import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const ItemDetails = ({ item }) => {
-  const { dispatch } = useItemsContext();
+  // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
   // console.log(item._id);
   return (
