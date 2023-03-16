@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLocation } from 'react-router-dom';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+// import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../Styles/ItemReturn.css';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import NonAdmin from './NonAdmin';
 
-const ReturnItem = () => {
+const ReturnItem = () => { 
   // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ReturnItem = () => {
   const [recievedBy_phone, setRecievedPhone] = useState('');
   const [father_phone, setFatherPhone] = useState('');
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
+  // const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useItemsContext();
   const { Alldispatch} = useAllentriesContext();
@@ -72,7 +72,7 @@ const ReturnItem = () => {
       const Addjson = await Addresponse.json();
       if (!Addresponse.ok) {
         setError(Addjson.error);
-        setEmptyFields(Addjson.emptyFields);
+        // setEmptyFields(Addjson.emptyFields);
       }
 
       if (Addresponse.ok) {
@@ -82,8 +82,8 @@ const ReturnItem = () => {
         setRecievedPhone('');
         setFatherPhone('');
         setError(null);
-        setEmptyFields([]);
-        // console.log('new item added', json);
+        // setEmptyFields([]);
+        // console.log('new item added', json); 
         Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
 
 
@@ -127,7 +127,7 @@ const ReturnItem = () => {
             <p>{submited_date}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Submited by: </h4>
+            <h4>Submitted by: </h4>
             <p>{submitedBy_Name}</p>
           </div>
           <div className="Item-Return-Row">

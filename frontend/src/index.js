@@ -5,6 +5,7 @@ import App from './App';
 import { ItemsContextProvider } from './context/ItemContext';
 import { AuthContextProvider } from './context/AuthContext';
 import { AllItemsContextProvider } from './context/AllEntriesContext';
+import { ItemTypeContextProvider } from './context/ItemTypeContext';
 // import "antd/dist/antd.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,7 +14,9 @@ root.render(
     <AuthContextProvider>
       <AllItemsContextProvider>
         <ItemsContextProvider>
-          <App />
+          <ItemTypeContextProvider>
+            <App />
+          </ItemTypeContextProvider>
         </ItemsContextProvider>
       </AllItemsContextProvider>
     </AuthContextProvider>

@@ -5,8 +5,8 @@ import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/ItemForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-import ItemSuggestions from './ItemSuggestions';
 import NonAdmin from './NonAdmin';
+import Suggestions from './Suggestions';
 
 const ItemForm = () => {
   const { items, dispatch } = useItemsContext();
@@ -26,10 +26,10 @@ const ItemForm = () => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const navigate = useNavigate();
-  var ItemFullId;
+
   useEffect(() => {
     const adminfetchItem = async () => {
-      const response = await fetch('/api/items', { 
+      const response = await fetch('/api/items', {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -42,14 +42,14 @@ const ItemForm = () => {
     };
 
     const fetchAllItems = async () => {
-      const response = await fetch('/api/all_items', {
+      const Allitemresponse = await fetch('/api/all_items', {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      const json = await response.json();
+      const json = await Allitemresponse.json();
 
-      if (response.ok) {
+      if (Allitemresponse.ok) {
         Alldispatch({ type: 'SET_ITEMS', payload: json });
       }
     };
@@ -61,7 +61,7 @@ const ItemForm = () => {
 
     if (items) {
       if (Allitems) {
-        ItemFullId = items.length + Allitems.length+1;
+        let ItemFullId = items.length + Allitems.length + 1;
         setItemid('SRCITM_' + ItemFullId);
       }
     }
@@ -125,7 +125,10 @@ const ItemForm = () => {
             <div className="Box">
               <div className="Item-form-Row">
                 <label>Item:</label>
-                <ItemSuggestions itemName={itemName} className="Input-Box" />
+                {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
+                <div className="suggestion-parent">
+                  <Suggestions className="Input-Box" />
+                </div>
               </div>
 
               <div className="Item-form-Row">

@@ -53,8 +53,8 @@ const AllEntries = () => {
               <th style={{ textAlign: 'center' }}>Item</th>
               <th style={{ textAlign: 'center' }}>Description</th>
               <th style={{ textAlign: 'center' }}>Place found</th>
-              <th style={{ textAlign: 'center' }}>Submited date</th>
-              <th style={{ textAlign: 'center' }}>Submited by</th>
+              <th style={{ textAlign: 'center' }}>Submitted date</th>
+              <th style={{ textAlign: 'center' }}>Submitted by</th>
               <th style={{ textAlign: 'center' }}>
                 Registration number / Employee id
               </th>
@@ -87,12 +87,12 @@ const AllEntries = () => {
               <th style={{ textAlign: 'center' }}>Item</th>
               <th style={{ textAlign: 'center' }}>Description</th>
               <th style={{ textAlign: 'center' }}>Place found</th>
-              <th style={{ textAlign: 'center' }}>Submited date</th>
-              <th style={{ textAlign: 'center' }}>Submited by</th>
+              <th style={{ textAlign: 'center' }}>Submitted date</th>
+              <th style={{ textAlign: 'center' }}>Submitted by</th>
               <th style={{ textAlign: 'center' }}>
-                Registration number/Employee id (Submited)
+                Registration number/Employee id (Submitted)
               </th>
-              <th style={{ textAlign: 'center' }}>Phone number (submited)</th>
+              <th style={{ textAlign: 'center' }}>Phone number (submitted)</th>
               <th style={{ textAlign: 'center' }}>Recieved date</th>
               <th style={{ textAlign: 'center' }}>Recieved by</th>
               <th style={{ textAlign: 'center' }}>

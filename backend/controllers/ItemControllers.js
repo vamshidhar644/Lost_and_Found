@@ -44,7 +44,7 @@ const createItem = async (req, res) => {
     emptyFields.push('date');
   }
   if (!submitedBy) {
-    emptyFields.push('submitedBy');
+    emptyFields.push('submittedBy');
   }
   if (!regId) {
     emptyFields.push('regId');

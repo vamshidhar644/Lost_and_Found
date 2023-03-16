@@ -27,7 +27,7 @@ const create_AllItem = async (req, res) => {
   const {
     _id,
     name,
-    desc,
+    desc, 
     place_found,
     submited_date,
     submitedBy_Name,

@@ -178,3 +178,13 @@ label, input {
 .invisible{
   display: none;
 }
+
+.suggestion-parent div{
+  width: 300px;
+}
+
+.sugg-list{
+  overflow-x: hidden !important;
+  width: auto !important;
+  padding: 8px !important;
+}
