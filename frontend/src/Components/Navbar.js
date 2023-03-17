@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="Navcontainer">
         <Link to="/">
           <h1>
-            Lost and Found <span>Student Record Center</span>
+            Lost and Found <span>Student Record Section</span>
           </h1>
         </Link>
         <nav>

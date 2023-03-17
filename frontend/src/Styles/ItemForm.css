@@ -73,9 +73,10 @@ label, input {
   }
 
   .Form-Btn-Container{
-    width: 60%;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    padding: 5px;
+    justify-content: space-around;
     align-items: center;
   }
   .create h3{
@@ -192,8 +193,4 @@ label, input {
 
 .suggestion-parent div{
   width: 100%;
-}
-
-#new-item{
-  display: none;
 }

@@ -62,7 +62,7 @@ const ItemForm = () => {
     if (items) {
       if (Allitems) {
         let ItemFullId = items.length + Allitems.length + 1;
-        setItemid('SRCITM_' + ItemFullId);
+        setItemid('SRSITM_' + ItemFullId);
       }
     }
   });
@@ -106,11 +106,9 @@ const ItemForm = () => {
       navigate('/items');
     }
   };
-  // console.log(date);
 
   const itemName = (name) => {
     setName(name);
-    // console.log(`location: ${name}`);
     // console.log(name);
   };
 
@@ -128,7 +126,7 @@ const ItemForm = () => {
               <div className="Item-form-Row">
                 <label>Item:</label>
                 {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
-                  <Suggestions onChange={itemName} />
+                <Suggestions onChange={itemName} />
               </div>
 
               <div className="Item-form-Row">
@@ -162,9 +160,7 @@ const ItemForm = () => {
                   // className={emptyFields.includes('date') ? 'error' : ''}
                 />
               </div>
-            </div>
 
-            <div className="Box">
               <div className="Item-form-Row">
                 <label>Submitted by</label>
                 <input
@@ -196,12 +192,12 @@ const ItemForm = () => {
                   // className={emptyFields.includes('phone') ? 'error' : ''}
                 />
               </div>
-              <div className="actions">
+              {/* <div className="actions">
                 <label htmlFor="file" className="button upload-btn">
                   Choose File
                   <input className="file" hidden="" type="file" id="file" />
                 </label>
-              </div>
+              </div> */}
             </div>
           </div>
 

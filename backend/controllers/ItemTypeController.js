@@ -29,7 +29,7 @@ const createItemType = async (req, res) => {
   let emptyFields = [];
 
   if (!itemType) {
-    emptyFields.push('itemType');
+    emptyFields.push('itemType'); 
   }
 
   if (emptyFields.length > 0) {

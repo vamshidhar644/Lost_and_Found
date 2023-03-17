@@ -25,43 +25,60 @@ const Suggestions = ({ onChange }) => {
     }
   });
 
+  const [ele, setElement] = useState('');
   function SelectOpt() {
     const type = document.getElementById('input-box').value;
     onChange(type);
-  }
-  // console.log(text);
-  const [ele, setElement] = useState('');
-
-  // document.getElementById('new-item').style.display = 'none';
-
-  // newBtn.style.display = 'none';
-
-  function handleChange(element) {
-    setElement(element);
-
-    // for (let i = 0; i < itemTypes.length; i++) {
-    //   if (itemTypes[i].itemType !== ele) {
-    //     console.log('not present');
-    //     // document.getElementById('new-item').style.display = 'block';
-    //   }
-    //   if (itemTypes[i].itemType === ele) {
-    //     console.log('present');
-    //     // document.getElementById('new-item').style.display = 'none';
-    //   }
-    // }
+    setElement(type);
+    for (let i = 0; i < itemTypes.length; i++) {
+      if (itemTypes[i].itemType === type) {
+        document.getElementById('new-item').style.display = 'none';
+        break;
+      } else {
+        document.getElementById('new-item').style.display = 'block';
+      }
+    }
   }
 
-  function checlElement() {}
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
+
+  const NewElement = async () => {
+    const TypeofItem = { ele };
+    // console.log(ele);
+    const response = await fetch('/api/itemTypes', {
+      method: 'POST',
+      body: JSON.stringify(TypeofItem),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+      setError(json.error);
+      setEmptyFields(json.emptyFields);
+    } 
+    if (response.ok) {
+      setError(null);
+      setEmptyFields([]);
+      // console.log('new item added', json);
+      itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
+    }
+    console.log(error);
+  };
 
   return (
     <div className="suggestion-parent">
       <input
-        list="item-types"
         id="input-box"
+        name="item_list"
+        type="text"
+        list="Input-box"
         onChange={SelectOpt}
-        onKeyDown={(e) => handleChange(e.target.value)}
       />
-      <datalist id="item-types">
+      <datalist id="Input-box">
         {itemTypes &&
           itemTypes.map((itemType, ind) => {
             return (
@@ -70,9 +87,8 @@ const Suggestions = ({ onChange }) => {
               </option>
             );
           })}
-        {/* <option>Russia</option> */}
       </datalist>
-      <p onClick={checlElement} id="new-item">
+      <p onClick={NewElement} id="new-item">
         New
       </p>
     </div>

@@ -16,7 +16,7 @@ export const ItemTypeReducer = (state, action) => {
       return {
         itemTypes: state.items.filter(
           (item) => item._id !== action.payload._id
-        ), 
+        ),
       };
     default:
       return state;
