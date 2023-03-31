@@ -1,14 +1,16 @@
 .Cards-Container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+  align-items: center;
     padding: 50px;
+    gap: 25px;
 }
 
 .card {
   box-sizing: border-box;
   width: 250px;
   height: 300px;
-  background: rgba(217, 217, 217, 0.58);
+  background-color: #fff;
   border: 1px solid white;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
@@ -34,3 +36,27 @@
 .card:active {
   transform: scale(0.95);
 }
+
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+  .Cards-Container{
+    flex-direction: column;
+  }
+
+  .card{
+    height: fit-content;
+    padding: 20px 12px;
+  }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+  
+}
+

@@ -65,7 +65,7 @@ const ItemForm = () => {
         setItemid('SRSITM_' + ItemFullId);
       }
     }
-  });
+  }, [Alldispatch, Allitems, dispatch, items, user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -207,9 +207,7 @@ const ItemForm = () => {
             </div>
           </div>
 
-          <div className="Form-Btn-Container">
-            
-          </div>
+          <div className="Form-Btn-Container"></div>
         </form>
       </div>
     );

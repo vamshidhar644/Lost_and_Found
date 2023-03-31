@@ -42,7 +42,7 @@ const AllEntries = () => {
       adminfetchItem();
       fetchAllItems();
     }
-  });
+  }, [dispatch, Alldispatch, user]);
   if (user) {
     return (
       <div className="Items-Container">

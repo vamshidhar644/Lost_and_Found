@@ -23,7 +23,7 @@ const Suggestions = ({ onChange }) => {
     if (user) {
       fetchItemTypes();
     }
-  });
+  }, [itemTypedispatch, user]);
 
   const [ele, setElement] = useState('');
   function SelectOpt() {

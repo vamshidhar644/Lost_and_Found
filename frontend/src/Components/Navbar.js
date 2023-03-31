@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
-
+import '../Styles/Navbar.css'
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
 
   const handleClick = () => {
     logout();
-    window.location.reload(false);
+    // window.location.reload(false);
   };
   return (
     <header>
@@ -19,22 +19,21 @@ const Navbar = () => {
             Lost and Found <span>Student Record Section</span>
           </h1>
         </Link>
-        <nav>
+        
           {user && (
-            <div>
+            <div className='login-logout'>
               <span>{user.email} </span>
-              <button onClick={handleClick}>Logout</button>
+              <div onClick={handleClick}>Logout</div>
             </div>
           )}
           {!user && (
-            <div>
+            <div className='login-logout'>
               <Link to="/login" className="login-btn">
                 Admin login
               </Link>
               {/* <Link to="/signup">Signup</Link> */}
             </div>
           )}
-        </nav>
       </div>
     </header>
   );

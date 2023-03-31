@@ -6,6 +6,7 @@ import '../Styles/Admin_Home.css';
 const Admin_Home = () => {  
   return (
     <div className="Cards-Container">
+      
       <Link className="card" to="item-entry">
         Item Entry
       </Link>

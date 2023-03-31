@@ -1,13 +1,9 @@
-import React, {
-  useEffect,
-  useState,
-  //  useState
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemDetails from './ItemDetails';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useItemTypesContext } from '../hooks/useItemTypeContext';
-
+import '../Styles/ItemReturn.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link } from 'react-router-dom';
 
@@ -19,9 +15,8 @@ const Item_Return = () => {
   const [itemsArray, setItemArray] = useState('');
   const [arrLength, setArraylength] = useState('');
   const [filteredArray, setFilteredArray] = useState('');
-
-  const filtered = [];
-
+  const [countitems, setCount] = useState();
+  const [errorcount, setErrorcount] = useState('');
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -62,43 +57,36 @@ const Item_Return = () => {
       fetchItems();
     }
     fetchItemTypes();
+  }, [dispatch, itemTypedispatch, user]);
 
+  useEffect(() => {
+    const filtered = [];
+    let count = null;
     setItemArray(items);
 
+    if (arrLength) {
+      for (let i = 0; i < arrLength; i++) {
+        if (selectedValue === itemsArray[i].name) {
+          filtered.push(itemsArray[i]);
+          count++;
+        }
+      }
+    }
+    setCount(count);
     if (filtered.length === 0) {
       setFilteredArray(itemsArray);
     } else {
       setFilteredArray(filtered);
     }
-  });
+  }, [arrLength, items, itemsArray, selectedValue]);
 
   function handleChange(event) {
     setSelectedValue(event.target.value);
     setArraylength(itemsArray.length);
-  }
-
-  if (arrLength) {
-    for (let i = 0; i < arrLength; i++) {
-      if (selectedValue === itemsArray[i].name) {
-        filtered.push(itemsArray[i]);
-      }
+    if (countitems === null) {
+      setErrorcount('No such item');
     }
   }
-
-  const menu = document.getElementById('menu');
-  const chevron = document.getElementById('chevron');
-
-  const toggleDropDown = () => {
-    menu.classList.toggle('open');
-    chevron.innerHTML = !menu.classList.contains('open')
-      ? 'expand_more'
-      : 'close';
-  };
-
-  const handleMenuButtonClicked = () => {
-    toggleDropDown();
-  };
-
   return (
     <div className="home">
       <div className="items">
@@ -117,13 +105,21 @@ const Item_Return = () => {
         )}
 
         <div className="filter-items">
+          {countitems && (
+            <div className="itemCount">
+              {countitems}
+              <span> items</span>
+            </div>
+          )}
+          {!countitems && <div className="errorCount">{errorcount}</div>}
+
           <select
             value={selectedValue}
             onChange={handleChange}
             className="select-types"
           >
             <option value="" className="option-type">
-              Select an option
+              Select item type
             </option>
             {itemTypes &&
               itemTypes.map((itemType, ind) => {
@@ -139,7 +135,6 @@ const Item_Return = () => {
               })}
           </select>
         </div>
-
         {filteredArray &&
           filteredArray.map((item) => (
             <ItemDetails key={item._id} item={item} />
