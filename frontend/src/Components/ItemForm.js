@@ -192,23 +192,23 @@ const ItemForm = () => {
                   // className={emptyFields.includes('phone') ? 'error' : ''}
                 />
               </div>
-              {/* <div className="actions">
+              <div className="actions">
                 <label htmlFor="file" className="button upload-btn">
                   Choose File
                   <input className="file" hidden="" type="file" id="file" />
                 </label>
-              </div> */}
+              </div>
+              <div className="Item-form-Row">
+                <label></label>
+                <div className="Returned-btn" onClick={handleSubmit}>
+                  Save
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="Form-Btn-Container">
-            <div className="Returned-btn" onClick={handleSubmit}>
-              Save
-            </div>
-            <br />
-            <Link to="/" className="Returned-btn">
-              Back
-            </Link>
+            
           </div>
         </form>
       </div>

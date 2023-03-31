@@ -2,7 +2,7 @@
   display: flex;
   gap: 30px;
   justify-content: first baseline;
-  
+  height: fit-content;
 }
 
 .FormBoxes .Box{
@@ -11,6 +11,7 @@
   justify-content: baseline;
   gap: 5px;
   width: 100%;
+  height: fit-content;
 }
 
 /* new item form */
@@ -55,14 +56,13 @@ label, input {
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 70vh;
     align-items: center;
   }
   
   .create{
     display: flex;
     width: fit-content;
-    height: 90%;
+    height: fit-content;
     padding: 15px;
     justify-content: space-evenly;
     flex-direction: column;
@@ -90,6 +90,8 @@ label, input {
     align-items: center;
     gap: 10px;
   }
+
+
 
   .Form-Content label{
     white-space: nowrap;

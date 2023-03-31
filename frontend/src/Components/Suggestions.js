@@ -12,7 +12,7 @@ const Suggestions = ({ onChange }) => {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
-      });
+      }); 
       const json = await itemTyperesponse.json();
 
       if (itemTyperesponse.ok) {

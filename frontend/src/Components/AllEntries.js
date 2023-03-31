@@ -4,6 +4,7 @@ import { useItemsContext } from '../hooks/useItemsContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/All_Items.css';
 import NonAdmin from './NonAdmin';
+import { Link } from 'react-router-dom';
 
 const AllEntries = () => {
   const { items, dispatch } = useItemsContext();
@@ -44,7 +45,18 @@ const AllEntries = () => {
   });
   if (user) {
     return (
-      <div className="ReturnedItems-Container">
+      <div className="Items-Container">
+        <div className="all-buttons">
+          <Link to="/" className="Returned-btn">
+            Home
+          </Link>
+          <Link to="/item-entry" className="Returned-btn">
+            Item Entry
+          </Link>
+          <Link to="/items" className="Returned-btn">
+            Item Return
+          </Link>
+        </div>
         <h4>Not returned items</h4>
         <table className="styled-table">
           <thead>
@@ -59,6 +71,7 @@ const AllEntries = () => {
                 Registration number / Employee id
               </th>
               <th style={{ textAlign: 'center' }}>Phone number</th>
+              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>
@@ -74,6 +87,24 @@ const AllEntries = () => {
                     <td>{item.submitedBy}</td>
                     <td>{item.regId}</td>
                     <td>{item.phone}</td>
+                    {/* <th>
+                    <Link
+                        className="Returned-btn"
+                        to="return-item"
+                        state={{
+                          _id: item._id,
+                          name: item.name,
+                          desc: item.desc,
+                          place_found: item.place,
+                          submited_date: item.date,
+                          submitedBy_Name: item.submitedBy,
+                          submitedBy_regId: item.regId,
+                          submitedBy_phone: item.phone,
+                        }}
+                      >
+                      Return to owner
+                    </Link>
+                    </th> */}
                   </tr>
                 );
               })}
@@ -126,9 +157,7 @@ const AllEntries = () => {
       </div>
     );
   } else {
-    return(
-      <NonAdmin />
-    )
+    return <NonAdmin />;
   }
 };
 

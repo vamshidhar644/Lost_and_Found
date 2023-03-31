@@ -84,3 +84,34 @@
 .Returned-btn:hover{
     transform: scale(0.98);
 }
+
+.all-buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.all-buttons .Returned-btn{
+    background-color: #6e6c6c;
+    color: white;
+}
+
+.filter-items{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 18px;
+    gap: 10px;
+}
+
+.select-types{
+    width: fit-content;
+    height: fit-content;
+    font-size: 18px;
+    padding: 8px;
+}
+
+.option-type{
+    padding: 12px;
+}
