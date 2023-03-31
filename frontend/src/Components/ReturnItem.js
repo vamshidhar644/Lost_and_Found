@@ -9,7 +9,7 @@ import '../Styles/ReturnItems.css';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import NonAdmin from './NonAdmin';
 
-const ReturnItem = () => { 
+const ReturnItem = () => {
   // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const ReturnItem = () => {
   // const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useItemsContext();
-  const { Alldispatch} = useAllentriesContext();
+  const { Alldispatch } = useAllentriesContext();
 
   if (user) {
     const {
@@ -83,9 +83,8 @@ const ReturnItem = () => {
         setFatherPhone('');
         setError(null);
         // setEmptyFields([]);
-        // console.log('new item added', json); 
+        // console.log('new item added', json);
         Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
-
 
         const response = await fetch('/api/items/' + _id, {
           method: 'DELETE',
@@ -99,49 +98,47 @@ const ReturnItem = () => {
         }
         navigate('/items');
       }
-
-      
     };
 
     return (
       <div className="Return-Container">
         <div className="Details-Content">
           <div className="Item-Return-Row">
-            <h4>Entry number: </h4>
+            <h4>Entry number : </h4>
             <p>{_id}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Item: </h4>
+            <h4>Item : </h4>
             <p>{name}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Description: </h4>
+            <h4>Description : </h4>
             <p>{desc}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Place found: </h4>
+            <h4>Place found : </h4>
             <p>{place_found}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Date: </h4>
+            <h4>Date : </h4>
             <p>{submited_date}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Submitted by: </h4>
+            <h4>Submitted by : </h4>
             <p>{submitedBy_Name}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Registration number / Employee id: </h4>
+            <h4>Registration number : /Employee id </h4>
             <p>{submitedBy_regId}</p>
           </div>
           <div className="Item-Return-Row">
-            <h4>Phone number: </h4>
+            <h4>Phone number : </h4>
             <p>{submitedBy_phone}</p>
           </div>
         </div>
 
         <div className="Owner-Content">
-        {error && <div className="error">{error}</div>}
+          {error && <div className="error">{error}</div>}
           <div className="Item-Return-Row">
             <h5>Reciever Details: </h5>
           </div>
@@ -192,21 +189,18 @@ const ReturnItem = () => {
             />
           </div>
           <div className="Return-BtnS">
-            <div className="Returned-btn" onClick={handleClick}>
+            <div className="Return-btn" onClick={handleClick}>
               Returned
             </div>
-            <br />
-            <Link to="/items" className="Returned-btn">
-              Back
-            </Link>
+            <div className="Return-btn">
+              <Link to="/items">Back</Link>
+            </div>
           </div>
         </div>
       </div>
     );
   } else {
-    return (
-      <NonAdmin/>
-    );
+    return <NonAdmin />;
   }
 };
 

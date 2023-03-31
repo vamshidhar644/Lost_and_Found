@@ -40,7 +40,8 @@ header a, .login-btn {
 .login-logout div{
     background-color: #333;
     color: #fff;
-    padding: 4px 12px;
+    font-size: 14px;
+    padding: 2px 14px;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -58,10 +59,14 @@ header a, .login-btn {
     .Navcontainer h1{
         display: flex;
         flex-direction: column;
-        font-size: 38px;
+        font-size: 35px;
         margin: 15px;
         text-align: center;
         margin-bottom: 5px;
+    }
+
+    .Navcontainer h1 span{
+        font-size: 16px;
     }
 }
 

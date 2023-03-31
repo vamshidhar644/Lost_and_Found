@@ -121,88 +121,86 @@ const ItemForm = () => {
           </h3>
           {error && <div className="error">{error}</div>}
 
-          <div className="Form-Content FormBoxes">
-            <div className="Box">
-              <div className="Item-form-Row">
-                <label>Item:</label>
-                {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
-                <Suggestions onChange={itemName} />
-              </div>
+          <div className="FormBoxes">
+            <div className="Item-form-Row">
+              <label>Item:</label>
+              {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
+              <Suggestions onChange={itemName} />
+            </div>
 
-              <div className="Item-form-Row">
-                <label>Description:</label>
-                <textarea
-                  onChange={(e) => setDesc(e.target.value)}
-                  value={desc}
-                  className="Input-Box"
-                  // className={emptyFields.includes('desc') ? 'error' : ''}
-                ></textarea>
-              </div>
+            <div className="Item-form-Row">
+              <label>Description:</label>
+              <textarea
+                onChange={(e) => setDesc(e.target.value)}
+                value={desc}
+                className="Input-Box"
+                // className={emptyFields.includes('desc') ? 'error' : ''}
+              ></textarea>
+            </div>
 
-              <div className="Item-form-Row">
-                <label>Place found:</label>
-                <input
-                  type="text"
-                  onChange={(e) => setPlace(e.target.value)}
-                  value={place}
-                  className="Input-Box"
-                  // className={emptyFields.includes('place') ? 'error' : ''}
-                />
-              </div>
+            <div className="Item-form-Row">
+              <label>Place found:</label>
+              <input
+                type="text"
+                onChange={(e) => setPlace(e.target.value)}
+                value={place}
+                className="Input-Box"
+                // className={emptyFields.includes('place') ? 'error' : ''}
+              />
+            </div>
 
-              <div className="Item-form-Row">
-                <label>Date:</label>
-                <input
-                  type="date"
-                  onChange={(e) => setDate(e.target.value)}
-                  value={date}
-                  className="Input-Box"
-                  // className={emptyFields.includes('date') ? 'error' : ''}
-                />
-              </div>
+            <div className="Item-form-Row">
+              <label>Date:</label>
+              <input
+                type="date"
+                onChange={(e) => setDate(e.target.value)}
+                value={date}
+                className="Input-Box"
+                // className={emptyFields.includes('date') ? 'error' : ''}
+              />
+            </div>
 
-              <div className="Item-form-Row">
-                <label>Submitted by</label>
-                <input
-                  type="text"
-                  onChange={(e) => setSubmitedBy(e.target.value)}
-                  value={submitedBy}
-                  className="Input-Box"
-                  // className={emptyFields.includes('submitedBy') ? 'error' : ''}
-                />
-              </div>
+            <div className="Item-form-Row">
+              <label>Submitted by</label>
+              <input
+                type="text"
+                onChange={(e) => setSubmitedBy(e.target.value)}
+                value={submitedBy}
+                className="Input-Box"
+                // className={emptyFields.includes('submitedBy') ? 'error' : ''}
+              />
+            </div>
 
-              <div className="Item-form-Row">
-                <label>Registration number / Employee id:</label>
-                <input
-                  type="text"
-                  onChange={(e) => setRegId(e.target.value)}
-                  value={regId}
-                  className="Input-Box"
-                  // className={emptyFields.includes('regId') ? 'error' : ''}
-                />
-              </div>
-              <div className="Item-form-Row">
-                <label>Phone number</label>
-                <input
-                  type="text"
-                  onChange={(e) => setPhone(e.target.value)}
-                  value={phone}
-                  className="Input-Box"
-                  // className={emptyFields.includes('phone') ? 'error' : ''}
-                />
-              </div>
-              <div className="actions">
-                <label htmlFor="file" className="button upload-btn">
-                  Choose File
-                  <input className="file" hidden="" type="file" id="file" />
-                </label>
-              </div>
-              <div className="Item-form-Row">
-                <label></label>
-                <div className="Returned-btn" onClick={handleSubmit}>
-                  Save
-                </div>
+            <div className="Item-form-Row">
+              <label>Registration number / Employee id:</label>
+              <input
+                type="text"
+                onChange={(e) => setRegId(e.target.value)}
+                value={regId}
+                className="Input-Box"
+                // className={emptyFields.includes('regId') ? 'error' : ''}
+              />
+            </div>
+            <div className="Item-form-Row">
+              <label>Phone number</label>
+              <input
+                type="text"
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
+                className="Input-Box"
+                // className={emptyFields.includes('phone') ? 'error' : ''}
+              />
+            </div>
+            <div className="actions">
+              <label htmlFor="file" className="button upload-btn">
+                Choose File
+                <input className="file" hidden="" type="file" id="file" />
+              </label>
+            </div>
+            <div className="Item-form-Row">
+              <label></label>
+              <div className="Returned-btn" onClick={handleSubmit}>
+                Save
               </div>
             </div>
           </div>

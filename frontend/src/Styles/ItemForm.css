@@ -1,24 +1,18 @@
-.FormBoxes{
-  display: flex;
-  gap: 30px;
-  justify-content: first baseline;
-  height: fit-content;
-}
 
-.FormBoxes .Box{
+
+.FormBoxes{
   display: flex;
   flex-direction: column;
   justify-content: baseline;
   gap: 5px;
   width: 100%;
-  height: fit-content;
 }
 
-/* new item form */
-
-label, input {
-    display: block;
-  }
+.form-parent{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
   input, textarea{
     padding: 8px;
@@ -52,16 +46,9 @@ label, input {
     text-align: center;
   }
 
-  .form-parent{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   
   .create{
     display: flex;
-    width: fit-content;
     height: fit-content;
     padding: 15px;
     justify-content: space-evenly;
@@ -89,12 +76,6 @@ label, input {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-  }
-
-
-
-  .Form-Content label{
-    white-space: nowrap;
   }
 
   .Input-Box, .wrapper, .suggestion-parent{
@@ -195,4 +176,38 @@ label, input {
 
 .suggestion-parent div{
   width: 100%;
+}
+
+
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+  .form-parent{
+    padding: 10px 0px;
+  }
+  .Item-form-Row{
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2px;
+  }
+  .Item-form-Row label{
+    width: 100%;
+  }
+  .create{
+    width: 100%;
+  }
+  
+  .Input-Box, .wrapper, .suggestion-parent{
+    width: 100%;
+  }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+  
 }

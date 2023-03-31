@@ -5,13 +5,20 @@
     align-items: center;
 }
 
+.Items-Container .all-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .styled-table{
     border-collapse: collapse;
-    margin: auto;
+    /* margin: auto; */
     font-size: 0.70rem;
     font-family: sans-serif;
     max-width: 700px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0, 0,15);
+    width: 100%;
 }
 
 .styled-table thead tr{
@@ -38,3 +45,26 @@
     border-bottom: 2px solid #009879;
 }
 
+.table-container{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+    .styled-table{
+        overflow-x: scroll;
+    }
+
+  }
+  
+  /* Tablets */
+  @media screen and (max-width: 768px) {
+    
+  }
+  
+  /* Laptops */
+  @media screen and (max-width: 992px) {
+    
+  }
+  

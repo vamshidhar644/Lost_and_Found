@@ -105,14 +105,6 @@ const Item_Return = () => {
         )}
 
         <div className="filter-items">
-          {countitems && (
-            <div className="itemCount">
-              {countitems}
-              <span> items</span>
-            </div>
-          )}
-          {!countitems && <div className="errorCount">{errorcount}</div>}
-
           <select
             value={selectedValue}
             onChange={handleChange}
@@ -134,11 +126,21 @@ const Item_Return = () => {
                 );
               })}
           </select>
+          {countitems && (
+            <div className="itemCount">
+              {countitems}
+              <span> items</span>
+            </div>
+          )}
+          {!countitems && <div className="errorCount">{errorcount}</div>}
+
         </div>
+        <div className='all-items'>
         {filteredArray &&
           filteredArray.map((item) => (
             <ItemDetails key={item._id} item={item} />
           ))}
+        </div>
       </div>
     </div>
   );

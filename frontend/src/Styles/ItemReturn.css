@@ -3,20 +3,30 @@
 /* homepage */
 .home {
     display: flex;
-    justify-content: center;
-    align-self: center;
     gap: 100px;
+    width: 100%;
+    justify-content: center;
   }
 
-.items{
-    width: 60%;
+  .items{
+    width: 100%;
+    padding: 10px 50px;
+  }
+
+.all-items{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 60px;
+  justify-content: flex-start;
+  margin: 20px 0px;
 }
 
 .item-details {
     background: #fff;
     border-radius: 8px;
-    margin: 20px auto;
     padding: 20px;
+    width: 300px;
     position: relative;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   }
@@ -52,17 +62,16 @@
 
 .all-buttons{
     display: flex;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: flex-start;
     gap: 35px;
-    margin: 20px auto;
+    margin: 10px 0px;
 }
 
 
 .filter-items{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     font-size: 15px;
     gap: 10px;
@@ -75,7 +84,7 @@
 
 .select-types{
     font-size: 15px;
-    padding: 2px 18px;
+    padding: 4px 18px;
     background-color: #fff;
     border: 1px solid;
     border-radius: 3px;
@@ -90,7 +99,7 @@ div.itemCount{
     font-size: 15px;
     padding: 2px 18px;
     background: #fff;
-    border: 1px solid var(--primary);
+    border: 1px solid;
     border-radius: 4px;
     text-align: center;    
 }
@@ -108,8 +117,17 @@ div.errorCount{
 /* Smart phones */
 @media screen and (max-width: 600px) {
     .items{
-        width: 100%;
+      width: 90%;        
+      padding: 10px;
     }
+    .all-items{
+      justify-content: center;
+    }
+    .all-buttons{
+      justify-content: center;
+      gap: 10px;
+    }
+    
 }
 
 /* Tablets */
