@@ -62,6 +62,10 @@
     .styled-table{
         overflow-x: scroll;
     }
+    .table-container{        
+    justify-content: start;
+    align-items: center;
+    }
 
   }
   

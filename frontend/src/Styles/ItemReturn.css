@@ -17,7 +17,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 60px;
+  gap: 50px;
   justify-content: flex-start;
   margin: 20px 0px;
 }
@@ -126,6 +126,11 @@ div.errorCount{
       justify-content: center;
       gap: 10px;
     }
+    .Item-Return-Row h5{
+      width: 100%;
+      text-align: center;
+    }
+
     
 }
 
