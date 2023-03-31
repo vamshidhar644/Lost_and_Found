@@ -59,10 +59,10 @@ const AllEntries = () => {
         </div>
         <h4>Not returned items</h4>
         <div className="table-container">
-          <table className="styled-table">
+          <table className="styled-table notreturned">
             <thead>
               <tr>
-                <th style={{ textAlign: 'center' }}>Entry </th>
+                <th style={{ textAlign: 'center' }}>Item id </th>
                 <th style={{ textAlign: 'center' }}>Item</th>
                 <th style={{ textAlign: 'center' }}>Description</th>
                 <th style={{ textAlign: 'center' }}>Place found</th>
@@ -99,7 +99,7 @@ const AllEntries = () => {
           <table className="styled-table">
             <thead>
               <tr>
-                <th style={{ textAlign: 'center' }}>Entry </th>
+                <th style={{ textAlign: 'center' }}>Item id </th>
                 <th style={{ textAlign: 'center' }}>Item</th>
                 <th style={{ textAlign: 'center' }}>Description</th>
                 <th style={{ textAlign: 'center' }}>Place found</th>

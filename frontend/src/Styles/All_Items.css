@@ -13,7 +13,6 @@
 
 .styled-table{
     border-collapse: collapse;
-    /* margin: auto; */
     font-size: 0.70rem;
     font-family: sans-serif;
     max-width: 700px;
@@ -22,8 +21,13 @@
 }
 
 .styled-table thead tr{
-    background-color: #009879;
+    background-color: var(--primary);
     color: #ffffff;
+    font-size: 12px;
+}
+
+.notreturned thead tr{
+    white-space: nowrap;
 }
 
 .styled-table th, .styled-table td{
@@ -42,12 +46,15 @@
 }
 
 .styled-table tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid var(--buttons);
 }
 
 .table-container{
     width: 100%;
     overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Smart phones */

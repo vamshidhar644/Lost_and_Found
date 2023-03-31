@@ -35,24 +35,6 @@ const Login = () => {
         {error && <div className="error">{error}</div>}
       </form>
     </div>
-    // <form className="login" onSubmit={handleSubmit}>
-    //   <h3>Login</h3>
-    //   <label>Email: </label>
-    //   <input
-
-    //   />
-    //   <label>Password: </label>
-    //   <input
-
-    //   />
-
-    //   <button>
-    //     {' '}
-    //     Login
-    //     <span></span>
-    //   </button>
-    //
-    // </form>
   );
 };
 

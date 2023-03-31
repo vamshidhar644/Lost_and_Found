@@ -71,7 +71,6 @@
 .filter-items{
     width: 100%;
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     font-size: 15px;
     gap: 10px;

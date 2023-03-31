@@ -7,7 +7,6 @@ import Login from './pages/Login';
 import ReturnItem from './Components/ReturnItem';
 import ItemForm from './Components/ItemForm';
 import AllEntries from './Components/AllEntries';
-// import Signup from './pages/Signup';
 
 function App() {
   const { user } = useAuthContext();
@@ -28,7 +27,7 @@ function App() {
 
             <Route path="/all-entries" element={<AllEntries />} />
             <Route
-              path="/login"
+              path="/login" 
               element={!user ? <Login /> : <Navigate to="/" />}
             />
 

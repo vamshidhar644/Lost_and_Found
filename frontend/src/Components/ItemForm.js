@@ -3,7 +3,7 @@ import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/ItemForm.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import NonAdmin from './NonAdmin';
 import Suggestions from './Suggestions';
@@ -124,7 +124,6 @@ const ItemForm = () => {
           <div className="FormBoxes">
             <div className="Item-form-Row">
               <label>Item:</label>
-              {/* <ItemSuggestions itemName={itemName} className="Input-Box" /> */}
               <Suggestions onChange={itemName} />
             </div>
 
@@ -134,7 +133,6 @@ const ItemForm = () => {
                 onChange={(e) => setDesc(e.target.value)}
                 value={desc}
                 className="Input-Box"
-                // className={emptyFields.includes('desc') ? 'error' : ''}
               ></textarea>
             </div>
 
@@ -145,7 +143,6 @@ const ItemForm = () => {
                 onChange={(e) => setPlace(e.target.value)}
                 value={place}
                 className="Input-Box"
-                // className={emptyFields.includes('place') ? 'error' : ''}
               />
             </div>
 
@@ -156,7 +153,6 @@ const ItemForm = () => {
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
                 className="Input-Box"
-                // className={emptyFields.includes('date') ? 'error' : ''}
               />
             </div>
 
@@ -167,7 +163,6 @@ const ItemForm = () => {
                 onChange={(e) => setSubmitedBy(e.target.value)}
                 value={submitedBy}
                 className="Input-Box"
-                // className={emptyFields.includes('submitedBy') ? 'error' : ''}
               />
             </div>
 
@@ -178,7 +173,6 @@ const ItemForm = () => {
                 onChange={(e) => setRegId(e.target.value)}
                 value={regId}
                 className="Input-Box"
-                // className={emptyFields.includes('regId') ? 'error' : ''}
               />
             </div>
             <div className="Item-form-Row">
@@ -188,7 +182,6 @@ const ItemForm = () => {
                 onChange={(e) => setPhone(e.target.value)}
                 value={phone}
                 className="Input-Box"
-                // className={emptyFields.includes('phone') ? 'error' : ''}
               />
             </div>
             <div className="actions">

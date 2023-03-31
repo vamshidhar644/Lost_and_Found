@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const ItemDetails = ({ item }) => {
-  // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
 
   return (

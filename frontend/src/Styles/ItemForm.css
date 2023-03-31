@@ -110,7 +110,6 @@
   }
   
   #item-inputbox{
-    /* width: 100%; */
     border: 1px solid #ddd;
   }
 
@@ -125,7 +124,6 @@
 }
 
 .search-input .autocom-box{
-    /* padding: 0px; */
     width: 100%;
     overflow-y: auto;
     opacity: 0;

@@ -12,7 +12,7 @@ const Suggestions = ({ onChange }) => {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
-      }); 
+      });
       const json = await itemTyperesponse.json();
 
       if (itemTyperesponse.ok) {
@@ -45,7 +45,7 @@ const Suggestions = ({ onChange }) => {
 
   const NewElement = async () => {
     const TypeofItem = { ele };
-    // console.log(ele);
+
     const response = await fetch('/api/itemTypes', {
       method: 'POST',
       body: JSON.stringify(TypeofItem),
@@ -59,11 +59,11 @@ const Suggestions = ({ onChange }) => {
     if (!response.ok) {
       setError(json.error);
       setEmptyFields(json.emptyFields);
-    } 
+    }
     if (response.ok) {
       setError(null);
       setEmptyFields([]);
-      // console.log('new item added', json);
+
       itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
     }
     console.log(error);

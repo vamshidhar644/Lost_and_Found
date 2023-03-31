@@ -133,13 +133,12 @@ const Item_Return = () => {
             </div>
           )}
           {!countitems && <div className="errorCount">{errorcount}</div>}
-
         </div>
-        <div className='all-items'>
-        {filteredArray &&
-          filteredArray.map((item) => (
-            <ItemDetails key={item._id} item={item} />
-          ))}
+        <div className="all-items">
+          {filteredArray &&
+            filteredArray.map((item) => (
+              <ItemDetails key={item._id} item={item} />
+            ))}
         </div>
       </div>
     </div>

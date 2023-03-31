@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLocation } from 'react-router-dom';
-// import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../Styles/ReturnItems.css';
@@ -10,7 +10,6 @@ import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import NonAdmin from './NonAdmin';
 
 const ReturnItem = () => {
-  // const { dispatch } = useItemsContext();
   const { user } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +20,6 @@ const ReturnItem = () => {
   const [recievedBy_phone, setRecievedPhone] = useState('');
   const [father_phone, setFatherPhone] = useState('');
   const [error, setError] = useState(null);
-  // const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useItemsContext();
   const { Alldispatch } = useAllentriesContext();
@@ -72,7 +70,6 @@ const ReturnItem = () => {
       const Addjson = await Addresponse.json();
       if (!Addresponse.ok) {
         setError(Addjson.error);
-        // setEmptyFields(Addjson.emptyFields);
       }
 
       if (Addresponse.ok) {
@@ -82,8 +79,7 @@ const ReturnItem = () => {
         setRecievedPhone('');
         setFatherPhone('');
         setError(null);
-        // setEmptyFields([]);
-        // console.log('new item added', json);
+
         Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
 
         const response = await fetch('/api/items/' + _id, {
@@ -148,7 +144,6 @@ const ReturnItem = () => {
               type="date"
               onChange={(e) => setRecievedDate(e.target.value)}
               value={recieved_date}
-              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
           <div className="Item-Return-Row">
@@ -157,7 +152,6 @@ const ReturnItem = () => {
               type="text"
               onChange={(e) => setRecievedBy(e.target.value)}
               value={recievedBy_Name}
-              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
 
@@ -167,7 +161,6 @@ const ReturnItem = () => {
               type="text"
               onChange={(e) => setRecievedRegid(e.target.value)}
               value={recievedBy_regId}
-              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
           <div className="Item-Return-Row">
@@ -176,7 +169,6 @@ const ReturnItem = () => {
               type="text"
               onChange={(e) => setRecievedPhone(e.target.value)}
               value={recievedBy_phone}
-              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
           <div className="Item-Return-Row">
@@ -185,7 +177,6 @@ const ReturnItem = () => {
               type="text"
               onChange={(e) => setFatherPhone(e.target.value)}
               value={father_phone}
-              // className={emptyFields.includes('submitedBy') ? 'error' : ''}
             />
           </div>
           <div className="Return-BtnS">
