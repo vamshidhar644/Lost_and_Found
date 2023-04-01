@@ -21,6 +21,9 @@ const ItemForm = () => {
   const [submitedBy, setSubmitedBy] = useState('');
   const [regId, setRegId] = useState('');
   const [phone, setPhone] = useState('');
+  const [testImage, setFile] = useState([]);
+  const [fileName, setFilename] = useState('');
+  const [imagefile, setImageFile] = useState();
 
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
@@ -65,11 +68,19 @@ const ItemForm = () => {
         setItemid('SRSITM_' + ItemFullId);
       }
     }
-  }, [Alldispatch, Allitems, dispatch, items, user]);
+    setFilename(testImage.name);
+  }, [Alldispatch, Allitems, dispatch, items, user, testImage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // const imagefile = await converToBase64(file);
+
+    // setPostimage({ ...postImage, myFile: base64 });
+
+    // console.log(imagefile);
+    // console.log(testImage);
+    // console.log(testImage.name);
     const itemDetais = {
       _id,
       name,
@@ -79,6 +90,8 @@ const ItemForm = () => {
       submitedBy,
       regId,
       phone,
+      testImage,
+      fileName,
     };
 
     const response = await fetch('/api/items', {
@@ -101,17 +114,31 @@ const ItemForm = () => {
       setPlace('');
       setError(null);
       setEmptyFields([]);
+      // setImageFile('');
       // console.log('new item added', json);
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
     }
   };
 
+  // console.log(imagefile);
   const itemName = (name) => {
     setName(name);
     // console.log(name);
   };
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+    setImageFile(testImage);
+  };
+
+  // console.log(fileName);
+  const handleUploadButtonClick = async (e) => {
+    e.preventDefault();
+    // console.log(testImage);
+  };
+
+  // console.log(imagefile);
   if (user) {
     return (
       <div className="form-parent">
@@ -185,13 +212,32 @@ const ItemForm = () => {
               />
             </div>
             <div className="actions">
-              <label htmlFor="file" className="button upload-btn">
-                Choose File
-                <input className="file" hidden="" type="file" id="file" />
+              <label
+                htmlFor="file"
+                className={
+                  imagefile
+                    ? 'button upload-btn imageExist'
+                    : 'button upload-btn'
+                }
+              >
+                Choose file
+                {/* {!imagefile && <p>Choose File</p>}
+                {imagefile && <p>{imagefile}</p>} */}
+                <input
+                  className="file"
+                  hidden=""
+                  type="file"
+                  id="file"
+                  accept="image/jpeg, image/png, image/jpg"
+                  onChange={handleFileChange}
+                  name="photo"
+                />
               </label>
             </div>
             <div className="Item-form-Row">
-              <label></label>
+              <label>
+                <button onClick={handleUploadButtonClick}>upload</button>
+              </label>
               <div className="Returned-btn" onClick={handleSubmit}>
                 Save
               </div>
@@ -208,3 +254,16 @@ const ItemForm = () => {
 };
 
 export default ItemForm;
+
+function converToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}

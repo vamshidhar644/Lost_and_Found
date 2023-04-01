@@ -87,6 +87,10 @@ const Item_Return = () => {
       setErrorcount('No such item');
     }
   }
+  if(filteredArray){
+    
+  // console.log(filteredArray[0].imgpath.data.data);
+  }
   return (
     <div className="home">
       <div className="items">

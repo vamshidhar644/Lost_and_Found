@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
 const Item = require('../models/ItemModel');
 
 // GET all items
@@ -24,12 +25,13 @@ const getItem = async (req, res) => {
 
 // create new item
 const createItem = async (req, res) => {
-  const { _id, name, desc, place, date, submitedBy, regId, phone } = req.body;
-
+  const { _id, name, desc, place, date, submitedBy, regId, phone, fileName } =
+    req.body;
+  console.log(fileName);
   let emptyFields = [];
 
-  // if (!_id) {
-  //   emptyFields.push('_id');
+  // if (!fileName) {
+  //   emptyFields.push('fileName');
   // }
   if (!name) {
     emptyFields.push('name');
@@ -44,7 +46,7 @@ const createItem = async (req, res) => {
     emptyFields.push('date');
   }
   if (!submitedBy) {
-    emptyFields.push('submittedBy');
+    emptyFields.push('submitedBy');
   }
   if (!regId) {
     emptyFields.push('regId');
@@ -65,6 +67,11 @@ const createItem = async (req, res) => {
       _id,
       name,
       desc,
+      // imgpath,
+      imgpath: {
+        data: fs.readFileSync('uploads/' + fileName),
+        contentType: 'image/png',
+      },
       place,
       date,
       submitedBy,
@@ -75,16 +82,29 @@ const createItem = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+
+  // const saveImage = Item({
+  //   imgpath: req.body.name,
+  //   img: {
+  //     data: fs.readFileSync('uploads/' + req.file.filename),
+  //     contentType: 'image/png',
+  //   },
+  // });
+  // saveImage
+  //   .save()
+  //   .then((res) => {
+  //     console.log('image is saved');
+  //   })
+  //   .catch((err) => {
+  //     console.log(err, 'error has occur');
+  //   });
+  // res.send('image is saved');
 };
 
 // delete a item
 const deleteItem = async (req, res) => {
   const { id } = req.params;
-
-  // if (!mongoose.Types.ObjectId.isValid(id)) {
-  //   return res.id.status(404).json({ error: 'No such item' });
-  // }
-
+  z;
   const item = await Item.findOneAndDelete({ _id: id });
   if (!item) {
     return res.id.status(404).json({ error: 'No such item' });
