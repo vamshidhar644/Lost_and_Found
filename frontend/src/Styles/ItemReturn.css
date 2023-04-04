@@ -8,17 +8,17 @@
     justify-content: center;
   }
 
-  .items{
-    width: 100%;
-    padding: 10px 50px;
-  }
+.items{
+  width: 100%;
+  padding: 10px 16px;
+}
 
 .all-items{
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 50px;
-  justify-content: center;
+  gap: 10px;
+  justify-content: flex-start;
   margin: 20px 0px;
 }
 
@@ -27,9 +27,10 @@
     /* flex-direction: column; */
     background: #fff;
     border-radius: 8px;
-    padding: 20px;
-    width: 400px;
-    min-height: 130px;
+    padding: 16px;
+    width: 360px;
+    min-height: 180px;
+    height: fit-content;
     position: relative;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   }
@@ -54,12 +55,11 @@
   }
 
 .Returns-btn{    
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 160px;
-  /* border: 1px solid var(--buttons); */
-  padding: 5px 12px;
-  border-radius: 3px;
+  height: 180px;
+  border-radius: 5px;
+  overflow: hidden;
   cursor: pointer;
   transition: 0.6s;
   text-align: center;
@@ -68,6 +68,14 @@
   color: black;
   white-space: nowrap;
   }
+
+  
+.Returns-btn img{
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
   
   .item-details .Return-btn {
     position: absolute;
@@ -139,15 +147,10 @@ div.errorCount{
     text-align: center;
 }
 
-.Returns-btn, .Returns-btn img{
-  height: 100%;
-}
-
 /* Smart phones */
 @media screen and (max-width: 600px) {
     .items{
-      width: 90%;        
-      padding: 10px;
+      width: 100%;    
     }
     .all-items{
       justify-content: center;
@@ -164,7 +167,6 @@ div.errorCount{
       height: fit-content;
       /* flex-direction: column; */
       justify-content: center;
-      text-align: center;
       align-items: center;
     }
     .details-box, .details-box2{

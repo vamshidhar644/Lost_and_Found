@@ -74,13 +74,6 @@ const ItemForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const imagefile = await converToBase64(file);
-
-    // setPostimage({ ...postImage, myFile: base64 });
-
-    // console.log(imagefile);
-    // console.log(testImage);
-    // console.log(testImage.name);
     const itemDetais = {
       _id,
       name,
@@ -137,6 +130,7 @@ const ItemForm = () => {
     e.preventDefault();
     // console.log(testImage);
   };
+
 
   // console.log(imagefile);
   if (user) {
@@ -254,16 +248,3 @@ const ItemForm = () => {
 };
 
 export default ItemForm;
-
-function converToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}

@@ -37,13 +37,15 @@ header a, .login-btn {
     gap: 15px;
 }
 
-.login-logout div{
-    background-color: #333;
-    color: #fff;
+.dropdown-container{
+   background-color:  #333;
+   color: #fff;
+   border-radius: 2px;
     font-size: 14px;
-    padding: 2px 14px;
-    border-radius: 4px;
+    width: 100px;
     cursor: pointer;
+    position: relative;
+    padding: 2px 20px;
 }
 
 .login-btn a{
@@ -70,6 +72,34 @@ header a, .login-btn {
     }
 }
 
+.dropdown-container p{
+    margin: 3px;
+}
+  
+  .dropdown-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    border-radius: 2px;
+    background-color: #333;
+    padding: 0px;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .item-drop {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+
+  }
+
+  .item-drop:hover {
+    background-color: #ccc;
+    color: #333;
+  }
+  
 /* Tablets */
 @media screen and (max-width: 768px) {
     

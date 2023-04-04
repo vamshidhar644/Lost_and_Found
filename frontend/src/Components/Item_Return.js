@@ -78,6 +78,7 @@ const Item_Return = () => {
     } else {
       setFilteredArray(filtered);
     }
+
   }, [arrLength, items, itemsArray, selectedValue]);
 
   function handleChange(event) {
@@ -87,10 +88,9 @@ const Item_Return = () => {
       setErrorcount('No such item');
     }
   }
-  if(filteredArray){
-    
-  // console.log(filteredArray[0].imgpath.data.data);
-  }
+  // const base64Data = btoa(String.fromCharCode(items.imgpath.data.data));
+  // console.log(base64Data);
+
   return (
     <div className="home">
       <div className="items">
@@ -140,9 +140,9 @@ const Item_Return = () => {
         </div>
         <div className="all-items">
           {filteredArray &&
-            filteredArray.map((item) => (
-              <ItemDetails key={item._id} item={item} />
-            ))}
+            filteredArray.map((item) => {
+              return <ItemDetails key={item._id} item={item} />;
+            })}
         </div>
       </div>
     </div>

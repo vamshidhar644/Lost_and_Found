@@ -82,23 +82,6 @@ const createItem = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-
-  // const saveImage = Item({
-  //   imgpath: req.body.name,
-  //   img: {
-  //     data: fs.readFileSync('uploads/' + req.file.filename),
-  //     contentType: 'image/png',
-  //   },
-  // });
-  // saveImage
-  //   .save()
-  //   .then((res) => {
-  //     console.log('image is saved');
-  //   })
-  //   .catch((err) => {
-  //     console.log(err, 'error has occur');
-  //   });
-  // res.send('image is saved');
 };
 
 // delete a item

@@ -39,34 +39,8 @@ const Suggestions = ({ onChange }) => {
       }
     }
   }
-
-  const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
-
   const NewElement = async () => {
-    const TypeofItem = { ele };
-
-    const response = await fetch('/api/itemTypes', {
-      method: 'POST',
-      body: JSON.stringify(TypeofItem),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-      setEmptyFields(json.emptyFields);
-    }
-    if (response.ok) {
-      setError(null);
-      setEmptyFields([]);
-
-      itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
-    }
-    console.log(error);
+    
   };
 
   return (
@@ -88,7 +62,7 @@ const Suggestions = ({ onChange }) => {
             );
           })}
       </datalist>
-      <p onClick={NewElement} id="new-item">
+      <p onClick={NewElement} id="new-item" className="new-item">
         New
       </p>
     </div>

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import ReturnItem from './Components/ReturnItem';
 import ItemForm from './Components/ItemForm';
 import AllEntries from './Components/AllEntries';
+import ChangePassword from './Components/changePassword';
 
 function App() {
   const { user } = useAuthContext();
@@ -27,11 +28,15 @@ function App() {
 
             <Route path="/all-entries" element={<AllEntries />} />
             <Route
-              path="/login" 
+              path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
 
             <Route path="/items/return-item" element={<ReturnItem />} />
+            <Route
+              path="/change-password"
+              element={user ? <ChangePassword /> : <Navigate to="/items" />}
+            />
           </Routes>
         </div>
       </BrowserRouter>

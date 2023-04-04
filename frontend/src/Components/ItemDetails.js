@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 // import avatar from '../assets/24809.jpg';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { useEffect } from 'react';
+import { Buffer } from 'buffer';
 
 const ItemDetails = ({ item }) => {
   const { user } = useAuthContext();
+  const [itemData, setItemdata] = useState([]);
+  const [imgSrc, setImageSrc] = useState();
 
-  
+  useEffect(() => {
+    if (item.imgpath) {
+      // console.log(item.imgpath.data);
+
+      const base64String = Buffer.from(item.imgpath.data).toString('base64');
+      const img = new Image();
+      img.src = `data:image/png;base64,${base64String}`;
+      // console.log(img.src);
+
+      setImageSrc(img.src);
+    }
+  });
 
   return (
     <div className="item-details">
@@ -15,7 +30,7 @@ const ItemDetails = ({ item }) => {
         <h4>{item.name} </h4>
         <p>{item._id}</p>
         <p>
-          <strong>Description: </strong>
+          {/* <strong>Description: </strong> */}
           {item.desc}
         </p>
         <p>
@@ -42,13 +57,12 @@ const ItemDetails = ({ item }) => {
               submitedBy_phone: item.phone,
             }}
           >
-            Return to owner
-            {/* <img src={avatar} alt="" className="image-container" /> */}
+            <img src={imgSrc} alt="not uploaded" className="image-container" />
           </Link>
         )}
         {!user && (
-          <div className='Returns-btn'>
-            {/* <img src={avatar} alt="" className="image-container" /> */}
+          <div className="Returns-btn">
+            <img src={imgSrc} alt="not uploaded" className="image-container" />
           </div>
         )}
       </div>
