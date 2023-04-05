@@ -24,9 +24,7 @@ const ItemForm = () => {
   const [phone, setPhone] = useState('');
   const [testImage, setTestImage] = useState([]);
   const [imgpath, setimgpath] = useState('');
-  const [imageSizeError, setImageSizeerror] = useState('');
   const [error, setError] = useState(null);
-  const [compressedFile, setCompressedFile] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const navigate = useNavigate();
@@ -88,7 +86,7 @@ const ItemForm = () => {
 
     const response = await fetch('/api/items', {
       method: 'POST',
-      body: JSON.stringify(itemDetais),
+      body: JSON.stringify(itemDetais), 
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`,
@@ -132,12 +130,12 @@ const ItemForm = () => {
       // console.log(compressedFile);
 
       // setTestImage(compressedFile);
-      console.log(compressedFile);
+      // console.log(compressedFile);
 
       const reader = new FileReader();
       reader.onload = () => {
         const binaryData = reader.result;
-        console.log(binaryData);
+        // console.log(binaryData);
         setimgpath(binaryData);
       };
       reader.readAsDataURL(compressedFile);
@@ -254,7 +252,6 @@ const ItemForm = () => {
               <div className="Returned-btn" onClick={handleSubmit}>
                 Save
               </div>
-              {imageSizeError && <p className="size-error">{imageSizeError}</p>}
             </div>
           </div>
 

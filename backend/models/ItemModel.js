@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const multer = require('multer');
+
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema(
@@ -10,7 +10,7 @@ const itemSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
+      required: true, 
     },
     desc: {
       type: String,

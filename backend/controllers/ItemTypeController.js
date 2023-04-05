@@ -29,7 +29,7 @@ const createItemType = async (req, res) => {
   let emptyFields = [];
 
   if (!itemType) {
-    emptyFields.push('itemType'); 
+    emptyFields.push('itemType');
   }
 
   if (emptyFields.length > 0) {
@@ -41,7 +41,7 @@ const createItemType = async (req, res) => {
   // add doc to db
   try {
     const item = await ItemType.create({
-      itemType
+      itemType,
     });
     res.status(200).json(item);
   } catch (error) {

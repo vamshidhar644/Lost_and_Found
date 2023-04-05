@@ -4,7 +4,6 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect } from 'react';
-import { Buffer } from 'buffer';
 
 const ItemDetails = ({ item }) => {
   const { user } = useAuthContext();

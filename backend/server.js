@@ -9,7 +9,6 @@ const all_itemRoutes = require('./routes/all_items');
 const itemTypeRoutes = require('./routes/itemType');
 // Express app
 const app = express();
-const multer = require('multer');
 
 // middleware
 app.use(express.json());

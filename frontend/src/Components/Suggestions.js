@@ -5,7 +5,7 @@ import { useItemTypesContext } from '../hooks/useItemTypeContext';
 const Suggestions = ({ onChange }) => {
   const { itemTypes, itemTypedispatch } = useItemTypesContext();
   const { user } = useAuthContext();
-
+  const [itemType, setitemType] = useState('');
   useEffect(() => {
     const fetchItemTypes = async () => {
       const itemTyperesponse = await fetch('/api/itemTypes', {
@@ -25,9 +25,9 @@ const Suggestions = ({ onChange }) => {
     }
   }, [itemTypedispatch, user]);
 
-  const [ele, setElement] = useState('');
   function SelectOpt() {
     const type = document.getElementById('input-box').value;
+    setitemType(type);
     onChange(type);
     for (let i = 0; i < itemTypes.length; i++) {
       if (itemTypes[i].itemType === type || type === '') {
@@ -38,7 +38,38 @@ const Suggestions = ({ onChange }) => {
       }
     }
   }
-  const NewElement = async () => {};
+
+  // console.log(inputVal);
+
+  const NewElement = async () => {
+    // e.preventDefault();
+    const confirmed = window.confirm('Add ' + itemType + ' to item types');
+    if (confirmed) {
+      console.log(itemType);
+      const itemTypes = { itemType };
+      const response = await fetch('/api/itemTypes', {
+        method: 'POST',
+        body: JSON.stringify(itemTypes),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = await response.json();
+      if (!response.ok) {
+        console.log(json.error);
+      }
+      if (response.ok) {
+        setitemType('');
+        // console.log('new item added', json);
+        itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
+      }
+      // Do something if the user confirms
+    } else {
+      // Do something if the user cancels
+    }
+  };
 
   return (
     <div className="suggestion-parent">
