@@ -25,7 +25,12 @@
 .item-details {
     display: flex;
     /* flex-direction: column; */
-    background: #fff;
+    /* background: #fff; */
+    
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #1e358a, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     border-radius: 8px;
     padding: 16px;
     width: 360px;
@@ -39,19 +44,21 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
+    
   }
   
   .item-details h4 {
     margin: 0 0 10px 0;
     font-size: 1.2em;
-    color: var(--primary);
+    font-weight: 500;
+    color: #fff;
   }
   
   .item-details p {
     margin: 0;
     font-size: 0.9em;
-    color: #555;
+    color: black;
   }
 
 .Returns-btn{    
@@ -100,6 +107,7 @@
     justify-content: flex-start;
     gap: 35px;
     margin: 10px 0px;
+    
 }
 
 
@@ -118,34 +126,71 @@
 
 .select-types{
     font-size: 15px;
-    padding: 4px 18px;
-    background-color: #fff;
+    padding: 6px 18px;
+    /* background-color: #fff; */
     border: 1px solid;
-    border-radius: 3px;
+    border-radius: 6px;
+    color: #fff;
+
+    background: #1488CC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
     
 }
 
 .option-type{
     padding: 12px;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #333;
 }
 
 div.itemCount{
     font-size: 15px;
     padding: 2px 18px;
-    background: #fff;
-    border: 1px solid;
     border-radius: 4px;
-    text-align: center;    
+    text-align: center;   
+    color: #fff;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 div.errorCount{
     padding: 2px 18px;
     background: #ffefef;
-    border: 1px solid var(--error);
+    /* border: 1px solid var(--error); */
     color: var(--error);
     border-radius: 4px;
     text-align: center;
 }
+
+.go-to-top-button {
+  position: fixed;
+  bottom: -100px;
+  right: 40px;
+  padding: 0px;
+  font-size: 50px;
+  height: fit-content;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  transition: opacity 1s ease-in-out, bottom 1s ease-in-out;
+  
+  color: #0575E6;  /* fallback for old browsers */
+}
+
+.go-to-top-button.visible {
+  bottom: 5px;
+  opacity: 1;
+}
+
+.go-to-top-button.visible:hover{
+  color: #021B79;
+}
+
 
 /* Smart phones */
 @media screen and (max-width: 600px) {

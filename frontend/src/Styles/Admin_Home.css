@@ -4,14 +4,15 @@
   align-items: center;
     padding: 50px;
     gap: 25px;
+    height: 100%;
 }
 
 .card {
   box-sizing: border-box;
   width: 250px;
   height: 300px;
-  background-color: #fff;
-  border: 1px solid white;
+  /* background-color: #fff; */
+  /* border: 1px solid white; */
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
   border-radius: 13px;
@@ -22,9 +23,14 @@
   align-items: center;
   justify-content: center;
   user-select: none;
-  font-weight: bolder;
+  font-weight: 600;
   text-decoration: none;
-  color: var(--primary);
+  /* color: var(--primary); */
+  color: #fff;
+  background: #1488CC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   font-size: 23px;
 }
 

@@ -49,6 +49,7 @@ const Navbar = () => {
               <p>Profile</p>
               {showDropdown && (
                 <div className="dropdown-items">
+                  <div class="arrow-down"></div>
                   <Link className="item-drop" to="/change-password">
                     Change Password
                   </Link>

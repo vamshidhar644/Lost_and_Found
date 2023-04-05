@@ -30,7 +30,7 @@ const ItemDetails = ({ item }) => {
         <h4>{item.name} </h4>
         <p>{item._id}</p>
         <p>
-          {/* <strong>Description: </strong> */}
+          <strong>Description: <br/></strong>
           {item.desc}
         </p>
         <p>

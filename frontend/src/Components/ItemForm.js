@@ -107,7 +107,8 @@ const ItemForm = () => {
       setPlace('');
       setError(null);
       setEmptyFields([]);
-      // setImageFile('');
+      setImageFile('');
+      setFile('');
       // console.log('new item added', json);
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
@@ -126,11 +127,10 @@ const ItemForm = () => {
   };
 
   // console.log(fileName);
-  const handleUploadButtonClick = async (e) => {
-    e.preventDefault();
-    // console.log(testImage);
-  };
-
+  // console.log(testImage);
+  // const handleUploadButtonClick = async (e) => {
+  //   e.preventDefault();
+  // };
 
   // console.log(imagefile);
   if (user) {
@@ -229,9 +229,9 @@ const ItemForm = () => {
               </label>
             </div>
             <div className="Item-form-Row">
-              <label>
+              {/* <label>
                 <button onClick={handleUploadButtonClick}>upload</button>
-              </label>
+              </label> */}
               <div className="Returned-btn" onClick={handleSubmit}>
                 Save
               </div>

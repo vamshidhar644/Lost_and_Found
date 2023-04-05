@@ -27,7 +27,7 @@ const getItem = async (req, res) => {
 const createItem = async (req, res) => {
   const { _id, name, desc, place, date, submitedBy, regId, phone, fileName } =
     req.body;
-  console.log(fileName);
+  // console.log(fileName);
   let emptyFields = [];
 
   // if (!fileName) {

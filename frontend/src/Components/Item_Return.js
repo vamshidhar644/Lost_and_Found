@@ -6,6 +6,7 @@ import { useItemTypesContext } from '../hooks/useItemTypeContext';
 import '../Styles/ItemReturn.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link } from 'react-router-dom';
+import GoToTop from './GoToTop';
 
 const Item_Return = () => {
   const { items, dispatch } = useItemsContext();
@@ -78,7 +79,6 @@ const Item_Return = () => {
     } else {
       setFilteredArray(filtered);
     }
-
   }, [arrLength, items, itemsArray, selectedValue]);
 
   function handleChange(event) {
@@ -145,6 +145,7 @@ const Item_Return = () => {
             })}
         </div>
       </div>
+      <GoToTop/>
     </div>
   );
 };

@@ -24,6 +24,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/all_items', all_itemRoutes);
 app.use('/api/itemTypes', itemTypeRoutes);
 
+
 mongoose.set('strictQuery', false);
 
 // connect to DB
