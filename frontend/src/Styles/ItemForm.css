@@ -14,8 +14,17 @@
   align-items: center;
 }
 
-.new-item{
+.suggestion-parent p{
+  cursor: pointer;
   min-width: fit-content;
+  border: 2px solid transparent;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.suggestion-parent p:hover{
+  color: #efefef;
+  border: 2px solid #20e3b2 ;
 }
   
   input, textarea{
@@ -188,11 +197,6 @@
     background-color: #efefef;
 }
 
-
-.invisible{
-  display: none;
-}
-
 .suggestion-parent{
   display: flex;
   justify-content: space-between;
@@ -208,6 +212,12 @@
   width: 100%;
 }
 
+.size-error{
+  margin: 0;
+  font-size: 14px;
+  color: #C33764;
+  font-weight: 550;
+}
 
 
 /* Smart phones */

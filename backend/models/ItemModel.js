@@ -17,8 +17,8 @@ const itemSchema = new Schema(
       required: true,
     },
     imgpath: {
-      data: Buffer,
-      contentType: String,
+      type: String,
+      required: true,
     },
     place: {
       type: String,

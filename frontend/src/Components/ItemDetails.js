@@ -8,21 +8,16 @@ import { Buffer } from 'buffer';
 
 const ItemDetails = ({ item }) => {
   const { user } = useAuthContext();
-  const [itemData, setItemdata] = useState([]);
   const [imgSrc, setImageSrc] = useState();
 
   useEffect(() => {
     if (item.imgpath) {
-      // console.log(item.imgpath.data);
-
-      const base64String = Buffer.from(item.imgpath.data).toString('base64');
       const img = new Image();
-      img.src = `data:image/png;base64,${base64String}`;
-      // console.log(img.src);
+      img.src = `${item.imgpath}`;
 
       setImageSrc(img.src);
     }
-  });
+  }, [item.imgpath]);
 
   return (
     <div className="item-details">
@@ -30,7 +25,9 @@ const ItemDetails = ({ item }) => {
         <h4>{item.name} </h4>
         <p>{item._id}</p>
         <p>
-          <strong>Description: <br/></strong>
+          <strong>
+            Description: <br />
+          </strong>
           {item.desc}
         </p>
         <p>

@@ -29,9 +29,8 @@ const Suggestions = ({ onChange }) => {
   function SelectOpt() {
     const type = document.getElementById('input-box').value;
     onChange(type);
-    setElement(type);
     for (let i = 0; i < itemTypes.length; i++) {
-      if (itemTypes[i].itemType === type) {
+      if (itemTypes[i].itemType === type || type === '') {
         document.getElementById('new-item').style.display = 'none';
         break;
       } else {
@@ -39,9 +38,7 @@ const Suggestions = ({ onChange }) => {
       }
     }
   }
-  const NewElement = async () => {
-    
-  };
+  const NewElement = async () => {};
 
   return (
     <div className="suggestion-parent">

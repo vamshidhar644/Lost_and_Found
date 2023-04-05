@@ -25,14 +25,14 @@ const getItem = async (req, res) => {
 
 // create new item
 const createItem = async (req, res) => {
-  const { _id, name, desc, place, date, submitedBy, regId, phone, fileName } =
+  const { _id, name, desc, place, date, submitedBy, regId, phone, imgpath } =
     req.body;
-  // console.log(fileName);
+
   let emptyFields = [];
 
-  // if (!fileName) {
-  //   emptyFields.push('fileName');
-  // }
+  if (!imgpath) {
+    emptyFields.push('imgpath');
+  }
   if (!name) {
     emptyFields.push('name');
   }
@@ -68,10 +68,7 @@ const createItem = async (req, res) => {
       name,
       desc,
       // imgpath,
-      imgpath: {
-        data: fs.readFileSync('uploads/' + fileName),
-        contentType: 'image/png',
-      },
+      imgpath,
       place,
       date,
       submitedBy,

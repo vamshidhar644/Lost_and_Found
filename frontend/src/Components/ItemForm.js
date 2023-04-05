@@ -4,6 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/ItemForm.css';
 import { useNavigate } from 'react-router-dom';
+import imageCompression from 'browser-image-compression';
 
 import NonAdmin from './NonAdmin';
 import Suggestions from './Suggestions';
@@ -21,11 +22,11 @@ const ItemForm = () => {
   const [submitedBy, setSubmitedBy] = useState('');
   const [regId, setRegId] = useState('');
   const [phone, setPhone] = useState('');
-  const [testImage, setFile] = useState([]);
-  const [fileName, setFilename] = useState('');
-  const [imagefile, setImageFile] = useState();
-
+  const [testImage, setTestImage] = useState([]);
+  const [imgpath, setimgpath] = useState('');
+  const [imageSizeError, setImageSizeerror] = useState('');
   const [error, setError] = useState(null);
+  const [compressedFile, setCompressedFile] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const navigate = useNavigate();
@@ -68,7 +69,6 @@ const ItemForm = () => {
         setItemid('SRSITM_' + ItemFullId);
       }
     }
-    setFilename(testImage.name);
   }, [Alldispatch, Allitems, dispatch, items, user, testImage]);
 
   const handleSubmit = async (e) => {
@@ -83,8 +83,7 @@ const ItemForm = () => {
       submitedBy,
       regId,
       phone,
-      testImage,
-      fileName,
+      imgpath,
     };
 
     const response = await fetch('/api/items', {
@@ -107,8 +106,7 @@ const ItemForm = () => {
       setPlace('');
       setError(null);
       setEmptyFields([]);
-      setImageFile('');
-      setFile('');
+      setTestImage('');
       // console.log('new item added', json);
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
@@ -121,18 +119,41 @@ const ItemForm = () => {
     // console.log(name);
   };
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-    setImageFile(testImage);
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+
+    const options = {
+      maxSizeMB: 0.2,
+      maxWidthOrHeight: 240,
+    };
+    try {
+      const compressedFile = await imageCompression(file, options);
+
+      // console.log(compressedFile);
+
+      // setTestImage(compressedFile);
+      console.log(compressedFile);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const binaryData = reader.result;
+        console.log(binaryData);
+        setimgpath(binaryData);
+      };
+      reader.readAsDataURL(compressedFile);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // if (file.size < 49000) {
+
+    // } else {
+    //   setTestImage('');
+    //   setImageSizeerror('Image size should be < 50KB');
+    // }
   };
 
-  // console.log(fileName);
-  // console.log(testImage);
-  // const handleUploadButtonClick = async (e) => {
-  //   e.preventDefault();
-  // };
 
-  // console.log(imagefile);
   if (user) {
     return (
       <div className="form-parent">
@@ -209,9 +230,7 @@ const ItemForm = () => {
               <label
                 htmlFor="file"
                 className={
-                  imagefile
-                    ? 'button upload-btn imageExist'
-                    : 'button upload-btn'
+                  imgpath ? 'button upload-btn imageExist' : 'button upload-btn'
                 }
               >
                 Choose file
@@ -235,6 +254,7 @@ const ItemForm = () => {
               <div className="Returned-btn" onClick={handleSubmit}>
                 Save
               </div>
+              {imageSizeError && <p className="size-error">{imageSizeError}</p>}
             </div>
           </div>
 

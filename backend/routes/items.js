@@ -22,7 +22,7 @@ router.get('/', getItems);
 router.get('/:id', getItem);
 
 // POST a new item
-router.post('/', uploads.single('testImage'), createItem);
+router.post('/', uploads.single('image'), createItem);
 
 // DELETE a item
 router.delete('/:id', deleteItem);
