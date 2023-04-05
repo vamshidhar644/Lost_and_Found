@@ -84,7 +84,7 @@ const createItem = async (req, res) => {
 // delete a item
 const deleteItem = async (req, res) => {
   const { id } = req.params;
-  z;
+  
   const item = await Item.findOneAndDelete({ _id: id });
   if (!item) {
     return res.id.status(404).json({ error: 'No such item' });

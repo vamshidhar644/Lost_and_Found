@@ -16,10 +16,6 @@ const itemSchema = new Schema(
       type: String,
       required: true,
     },
-    imgpath:{
-        type:String,
-        required:true
-    },
     place_found: {
       type: String,
       required: true,

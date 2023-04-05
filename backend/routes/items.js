@@ -19,10 +19,10 @@ const router = express.Router();
 router.get('/', getItems);
 
 //GET a single item
-router.get('/:id', getItem); 
+router.get('/:id', getItem);
 
 // POST a new item
-// router.post('/', uploads.single('image'), createItem);
+router.post('/', createItem);
 
 // DELETE a item
 router.delete('/:id', deleteItem);

@@ -39,10 +39,7 @@ const Suggestions = ({ onChange }) => {
     }
   }
 
-  // console.log(inputVal);
-
   const NewElement = async () => {
-    // e.preventDefault();
     const confirmed = window.confirm('Add ' + itemType + ' to item types');
     if (confirmed) {
       console.log(itemType);
@@ -62,7 +59,6 @@ const Suggestions = ({ onChange }) => {
       }
       if (response.ok) {
         setitemType('');
-        // console.log('new item added', json);
         itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
       }
       // Do something if the user confirms

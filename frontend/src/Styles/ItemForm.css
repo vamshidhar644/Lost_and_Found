@@ -23,8 +23,7 @@
 }
 
 .suggestion-parent p:hover{
-  color: #efefef;
-  border: 2px solid #20e3b2 ;
+  border: 2px solid #457fca ;
 }
   
   input, textarea{
@@ -69,11 +68,7 @@
     align-items: center;    
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-
-    background: #667db6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-color: #fff;
   }
 
   .Form-Btn-Container{
@@ -87,10 +82,6 @@
     margin: 0px;
     padding: 0 10px 10px 0;
     font-weight: 500;
-  }
-
-  .create h3 span{
-    color: #FAFFD1;
   }
   
   .Item-form-Row{
@@ -115,7 +106,7 @@
   }
   
   .upload-btn {
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
     flex: 1;
     cursor: pointer;
     display: flex;
@@ -127,15 +118,32 @@
     padding: 6px;
     text-align: center;
     font-size: 14px;
-    
-    background: #56CCF2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #457fca;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   }
 
   .imageExist{
-    border: 2px solid #20e3b2;
+    border: px solid #20e3b2;
+  }
+
+  .add-btn-container p{
+    margin: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+    color: #457fca;
+    font-weight: 500;
+  }
+
+  .add-btn-container div{
+    align-items: flex-end;
+    /* width: 100%; */
+  }
+
+  .loadspinner{
+    width: 100%;
   }
   
   .upload-btn p{

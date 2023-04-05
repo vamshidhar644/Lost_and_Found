@@ -7,6 +7,7 @@ import '../Styles/ItemReturn.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link } from 'react-router-dom';
 import GoToTop from './GoToTop';
+import ItemLoader from '../Loaders/ItemLoader';
 
 const Item_Return = () => {
   const { items, dispatch } = useItemsContext();
@@ -138,14 +139,18 @@ const Item_Return = () => {
           )}
           {!countitems && <div className="errorCount">{errorcount}</div>}
         </div>
+
         <div className="all-items">
-          {filteredArray &&
+          {filteredArray ? (
             filteredArray.map((item) => {
               return <ItemDetails key={item._id} item={item} />;
-            })}
+            })
+          ) : (
+            <ItemLoader />
+          )}
         </div>
       </div>
-      <GoToTop/>
+      <GoToTop />
     </div>
   );
 };

@@ -42,27 +42,6 @@ const create_AllItem = async (req, res) => {
 
   let emptyFields = [];
 
-  // if (!name) {
-  //   emptyFields.push('name');
-  // }
-  // if (!desc) {
-  //   emptyFields.push('desc');
-  // }
-  // if (!place_found) {
-  //   emptyFields.push('place_found');
-  // }
-  // if (!submited_date) {
-  //   emptyFields.push('submited_date');
-  // }
-  // if (!submitedBy_Name) {
-  //   emptyFields.push('submitedBy_Name');
-  // }
-  // if (!submitedBy_regId) {
-  //   emptyFields.push('submitedBy_regId');
-  // }
-  // if (!submitedBy_phone) {
-  //   emptyFields.push('submitedBy_phone');
-  // }
   if (!recievedBy_Name) {
     emptyFields.push('recievedBy_Name');
   }

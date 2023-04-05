@@ -20,13 +20,14 @@ body {
 .pages{
   padding: 14px;
   margin: 0 auto;
-  
+  min-height: 80vh;
+  background-color: #efefef;
   /* overflow-x: hidden; */
 }
 
 
 .Returned-btn{
-  width: 200px;
+  width: 140px;
   
   padding: 5px 12px;
   border-radius: 3px;
@@ -35,9 +36,8 @@ body {
   text-align: center;
   text-decoration: none;
   font-weight: 400;
-  color: black;
-  white-space: nowrap;
   color: #fff;
+  white-space: nowrap;
   
   background: #1488CC;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */

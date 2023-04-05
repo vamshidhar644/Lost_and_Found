@@ -9,6 +9,7 @@ import imageCompression from 'browser-image-compression';
 import NonAdmin from './NonAdmin';
 import Suggestions from './Suggestions';
 
+import { AddItemLoader } from '../Loaders/AddItemLoader';
 const ItemForm = () => {
   const { items, dispatch } = useItemsContext();
   const { Allitems, Alldispatch } = useAllentriesContext();
@@ -26,6 +27,8 @@ const ItemForm = () => {
   const [imgpath, setimgpath] = useState('');
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -71,6 +74,7 @@ const ItemForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const itemDetais = {
       _id,
@@ -86,7 +90,7 @@ const ItemForm = () => {
 
     const response = await fetch('/api/items', {
       method: 'POST',
-      body: JSON.stringify(itemDetais), 
+      body: JSON.stringify(itemDetais),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`,
@@ -97,6 +101,7 @@ const ItemForm = () => {
     if (!response.ok) {
       setError(json.error);
       setEmptyFields(json.emptyFields);
+      setIsLoading(false);
     }
     if (response.ok) {
       setName('');
@@ -108,6 +113,7 @@ const ItemForm = () => {
       // console.log('new item added', json);
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
+      setIsLoading(false);
     }
   };
 
@@ -119,18 +125,13 @@ const ItemForm = () => {
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-
+    console.log(file);
     const options = {
       maxSizeMB: 0.2,
       maxWidthOrHeight: 240,
     };
     try {
       const compressedFile = await imageCompression(file, options);
-
-      // console.log(compressedFile);
-
-      // setTestImage(compressedFile);
-      // console.log(compressedFile);
 
       const reader = new FileReader();
       reader.onload = () => {
@@ -150,7 +151,6 @@ const ItemForm = () => {
     //   setImageSizeerror('Image size should be < 50KB');
     // }
   };
-
 
   if (user) {
     return (
@@ -232,8 +232,8 @@ const ItemForm = () => {
                 }
               >
                 Choose file
-                {/* {!imagefile && <p>Choose File</p>}
-                {imagefile && <p>{imagefile}</p>} */}
+                {/* {!imgpath && <p>Choose File</p>}
+                {imgpath && <p>{testImage}</p>} */}
                 <input
                   className="file"
                   hidden=""
@@ -245,13 +245,17 @@ const ItemForm = () => {
                 />
               </label>
             </div>
-            <div className="Item-form-Row">
+            <div className="Item-form-Row add-btn-container">
               {/* <label>
                 <button onClick={handleUploadButtonClick}>upload</button>
               </label> */}
-              <div className="Returned-btn" onClick={handleSubmit}>
-                Save
-              </div>
+              {isLoading ? (
+                <AddItemLoader/>
+              ) : (
+                <div className="Returned-btn" onClick={handleSubmit}>
+                  Save
+                </div>
+              )}
             </div>
           </div>
 
