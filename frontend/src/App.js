@@ -35,7 +35,7 @@ function App() {
             <Route path="/items/return-item" element={<ReturnItem />} />
             <Route
               path="/change-password"
-              element={user ? <ChangePassword /> : <Navigate to="/items" />}
+              element={user ? <ChangePassword /> : <Navigate to="/" />}
             />
           </Routes>
         </div>

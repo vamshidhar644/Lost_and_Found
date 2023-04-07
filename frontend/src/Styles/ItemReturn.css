@@ -126,9 +126,10 @@
 .select-types{
   font-size: 15px;
   padding: 6px 18px;
-  color: #fff;
+
   /* background-color: #fff; */
   border: 1px solid #fff;
+
   border-radius: 6px;
   background: #457fca;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
