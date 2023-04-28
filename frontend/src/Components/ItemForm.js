@@ -10,6 +10,7 @@ import NonAdmin from './NonAdmin';
 import Suggestions from './Suggestions';
 
 import { AddItemLoader } from '../Loaders/AddItemLoader';
+
 const ItemForm = () => {
   const { items, dispatch } = useItemsContext();
   const { Allitems, Alldispatch } = useAllentriesContext();
@@ -250,7 +251,7 @@ const ItemForm = () => {
                 <button onClick={handleUploadButtonClick}>upload</button>
               </label> */}
               {isLoading ? (
-                <AddItemLoader/>
+                <AddItemLoader />
               ) : (
                 <div className="Returned-btn" onClick={handleSubmit}>
                   Save

@@ -23,17 +23,25 @@ const ItemDetails = ({ item }) => {
       <div className="details-box">
         <h4>{item.name} </h4>
         <p>{item._id}</p>
+        {user && (
+          <div>
+            <p>
+              <strong>
+                Description: <br />
+              </strong>
+              {item.desc}
+            </p>
+            <p>
+              <strong>Place: </strong>
+              {item.place}
+            </p>
+          </div>
+        )}
+        <div>
+          <p>Found on: {item.date}</p>
+        </div>
         <p>
-          <strong>
-            Description: <br />
-          </strong>
-          {item.desc}
-        </p>
-        <p>
-          <strong>Place: </strong>
-          {item.place}
-        </p>
-        <p>
+          Updated{' '}
           {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
         </p>
       </div>
@@ -56,11 +64,11 @@ const ItemDetails = ({ item }) => {
             <img src={imgSrc} alt="not uploaded" className="image-container" />
           </Link>
         )}
-        {!user && (
+        {/* {!user && (
           <div className="Returns-btn">
             <img src={imgSrc} alt="not uploaded" className="image-container" />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

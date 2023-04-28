@@ -7,6 +7,7 @@ const itemRoutes = require('./routes/items');
 const userRoutes = require('./routes/user');
 const all_itemRoutes = require('./routes/all_items');
 const itemTypeRoutes = require('./routes/itemType');
+
 // Express app
 const app = express();
 

@@ -3,7 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/All_Items.css';
-import NonAdmin from './NonAdmin';
+import NonAdmin from '../Components/NonAdmin';
 import { Link } from 'react-router-dom';
 
 const AllEntries = () => {
