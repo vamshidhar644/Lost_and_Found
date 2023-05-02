@@ -56,8 +56,28 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
     width: 100%;
     overflow-x: scroll;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.download-section{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 10px;
+}
+
+.download-section label{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.download-section .Returned-btn{
+    height: fit-content;
 }
 
 /* Smart phones */

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ItemDetails from '../Components/ItemDetails';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ItemLoader from '../Loaders/ItemLoader';
 import GoToTop from '../Components/GoToTop';
 
@@ -16,22 +16,8 @@ const ItemTypes = () => {
   const [itemsArray, setItemArray] = useState([]);
   const [filteredArray, setFilteredArray] = useState([]);
   const [countitems, setCount] = useState();
-  const [errorcount, setErrorcount] = useState('');
 
   useEffect(() => {
-    const adminfetchItem = async () => {
-      const response = await fetch('/api/items', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
     const fetchItems = async () => {
       const response = await fetch('/api/items');
       const json = await response.json();
@@ -41,12 +27,8 @@ const ItemTypes = () => {
       }
     };
 
-    if (user) {
-      adminfetchItem();
-    } else {
-      fetchItems();
-    }
-  }, [dispatch, user]);
+    fetchItems();
+  }, [dispatch]);
 
   useEffect(() => {
     const filtered = [];
@@ -60,6 +42,10 @@ const ItemTypes = () => {
           count++;
         }
       }
+    }
+
+    if (type === 'All') {
+      console.log(items);
     }
     setCount(count);
     if (filtered.length === 0) {
@@ -77,14 +63,14 @@ const ItemTypes = () => {
         <div className="filter-items">
           {countitems && (
             <div className="itemCount">
-              {type}: {countitems}
+              {type}: {countitems} items
             </div>
           )}
-          {!countitems && <div className="errorCount">{errorcount}</div>}
         </div>
 
+        {!countitems && <div>No {type} found</div>}
+
         <div className="all-items">
-          {!countitems && <div>No {type} found</div>}
           {filteredArray ? (
             filteredArray.map((item) => {
               return <ItemDetails key={item._id} item={item} />;

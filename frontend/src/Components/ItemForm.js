@@ -10,6 +10,7 @@ import NonAdmin from './NonAdmin';
 import Suggestions from './Suggestions';
 
 import { AddItemLoader } from '../Loaders/AddItemLoader';
+import Camera from './CaptureCamera';
 
 const ItemForm = () => {
   const { items, dispatch } = useItemsContext();
@@ -259,7 +260,7 @@ const ItemForm = () => {
               )}
             </div>
           </div>
-
+          <Camera/>
           <div className="Form-Btn-Container"></div>
         </form>
       </div>

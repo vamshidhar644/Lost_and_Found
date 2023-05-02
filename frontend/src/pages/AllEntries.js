@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/All_Items.css';
 import NonAdmin from '../Components/NonAdmin';
 import { Link } from 'react-router-dom';
+import XLSX from 'xlsx';
 
 const AllEntries = () => {
   const { items, dispatch } = useItemsContext();
@@ -43,6 +44,45 @@ const AllEntries = () => {
       fetchAllItems();
     }
   }, [dispatch, Alldispatch, user]);
+
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const [AllstartDate, setAllStartDate] = useState('');
+  const [AllendDate, setAllEndDate] = useState('');
+
+  function downloadTable() {
+    const filteredData = items.filter((row) => {
+      const date = new Date(row.date);
+      return date >= new Date(startDate) && date <= new Date(endDate);
+    });
+    const requiredData = filteredData.map(
+      ({ imgpath, createdAt, updatedAt, __v, ...rest }) => rest
+    );
+
+    const worksheet = XLSX.utils.json_to_sheet(requiredData);
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Data');
+    XLSX.writeFile(workbook, 'table.xlsx');
+  }
+
+  function downloadAllTable() {
+    const filteredData = Allitems.filter((row) => {
+      const date = new Date(row.submited_date);
+      return date >= new Date(AllstartDate) && date <= new Date(AllendDate);
+    });
+    const requiredData = filteredData.map(
+      ({ imgpath, createdAt, updatedAt, __v, ...rest }) => rest
+    );
+
+    const worksheet = XLSX.utils.json_to_sheet(requiredData);
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Table Data');
+    XLSX.writeFile(workbook, 'table.xlsx');
+  }
+
   if (user) {
     return (
       <div className="Items-Container">
@@ -58,6 +98,7 @@ const AllEntries = () => {
           </Link>
         </div>
         <h4>Not returned items</h4>
+
         <div className="table-container">
           <table className="styled-table notreturned">
             <thead>
@@ -93,7 +134,30 @@ const AllEntries = () => {
                 })}
             </tbody>
           </table>
+
+          <div className="download-section">
+            <label>
+              From:
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </label>
+            <label>
+              To:
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </label>
+            <div className="Returned-btn" onClick={downloadTable}>
+              Download
+            </div>
+          </div>
         </div>
+
         <h4>Returned items</h4>
         <div className="table-container">
           <table className="styled-table">
@@ -141,6 +205,27 @@ const AllEntries = () => {
                 ))}
             </tbody>
           </table>
+          <div className="download-section">
+            <label>
+              From:
+              <input
+                type="date"
+                value={AllstartDate}
+                onChange={(e) => setAllStartDate(e.target.value)}
+              />
+            </label>
+            <label>
+              To:
+              <input
+                type="date"
+                value={AllendDate}
+                onChange={(e) => setAllEndDate(e.target.value)}
+              />
+            </label>
+            <div className="Returned-btn" onClick={downloadAllTable}>
+              Download
+            </div>
+          </div>
         </div>
       </div>
     );

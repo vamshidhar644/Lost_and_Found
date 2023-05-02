@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useItemTypesContext } from '../hooks/useItemTypeContext';
 import { useEffect } from 'react';
 import '../Styles/ItemReturn.css';
@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import RandomIcon from '../Components/ShapeGenerator';
 import { BsBorderAll } from 'react-icons/bs';
 import { useAuthContext } from '../hooks/useAuthContext';
+import CameraCapture from '../Components/CaptureCamera';
 
 const ItemReturn = () => {
   const { itemTypes, itemTypedispatch } = useItemTypesContext();
   const { user } = useAuthContext();
-
+ 
   useEffect(() => {
     const fetchItemTypes = async () => {
       const itemTyperesponse = await fetch('/api/itemTypes');
