@@ -69,6 +69,24 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      {user && (
+        <div className="sub-navbar">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/item-entry">Item Entry</Link>
+            </li>
+            <li>
+              <Link to="/items">Item Return</Link>
+            </li>
+            <li>
+              <Link to="all-entries">All Data</Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };

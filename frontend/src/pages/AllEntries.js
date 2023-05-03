@@ -86,17 +86,6 @@ const AllEntries = () => {
   if (user) {
     return (
       <div className="Items-Container">
-        <div className="all-buttons">
-          <Link to="/" className="Returned-btn">
-            Home
-          </Link>
-          <Link to="/item-entry" className="Returned-btn">
-            Item Entry
-          </Link>
-          <Link to="/items" className="Returned-btn">
-            Item Return
-          </Link>
-        </div>
         <h4>Not returned items</h4>
 
         <div className="table-container">

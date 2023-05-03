@@ -42,6 +42,7 @@ const ItemTypes = () => {
           count++;
         }
       }
+      console.log(count);
     }
 
     if (type === 'All') {

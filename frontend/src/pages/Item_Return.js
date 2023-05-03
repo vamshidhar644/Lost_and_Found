@@ -95,20 +95,6 @@ const Item_Return = () => {
   return (
     <div className="home">
       <div className="items">
-        {user && (
-          <div className="all-buttons">
-            <Link to="/" className="Returned-btn">
-              Home
-            </Link>
-            <Link to="/item-entry" className="Returned-btn">
-              Item Entry
-            </Link>
-            <Link to="/all-entries" className="Returned-btn">
-              All Entries
-            </Link>
-          </div>
-        )}
-
         <div className="filter-items">
           <select
             value={selectedValue}

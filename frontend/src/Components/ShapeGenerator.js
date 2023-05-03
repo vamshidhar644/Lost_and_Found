@@ -15,13 +15,17 @@ const iconList = [
 ];
 
 const RandomIcon = () => {
-  const [randomIcon, setRandomIcon] = useState(iconList[0]);
+  const [randomIcon, setRandomIcon] = useState(iconList[null]);
 
   // const generateRandomIcon = () => {
   // };
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * iconList.length);
     setRandomIcon(iconList[randomIndex]);
+    
+    const chosenIcon = iconList[randomIndex];
+    const remainingIcons = iconList.filter((icon) => icon !== chosenIcon);
+    setRandomIcon(chosenIcon);
   }, []);
 
   return (

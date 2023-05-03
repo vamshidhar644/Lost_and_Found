@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import '../Styles/ReturnItems.css';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
-import NonAdmin from './NonAdmin';
+import NonAdmin from '../Components/NonAdmin';
 
 const ReturnItem = () => {
   const { user } = useAuthContext();
@@ -98,20 +98,6 @@ const ReturnItem = () => {
 
     return (
       <>
-        <div className="all-buttons">
-          <Link to="/" className="Returned-btn">
-            Home
-          </Link>
-          <Link to="/items" className="Returned-btn">
-            Back
-          </Link>
-          <Link to="/item-entry" className="Returned-btn">
-            Item Entry
-          </Link>
-          <Link to="/all-entries" className="Returned-btn">
-            All Entries
-          </Link>
-        </div>
         <div className="Return-Container">
           <div className="Details-Content">
             <div className="Item-Return-Row">

@@ -14,6 +14,52 @@
   align-items: center;
 }
 
+.Form-Sections{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.Camera{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  align-items: center;
+}
+
+.Camera video{
+  width: 370px;
+}
+
+.Camera img{  
+  width: 370px;
+  overflow: hidden;
+}
+
+.camera-btn-section{
+  position: absolute;
+  bottom: 115px;
+}
+
+.Camera-btn{
+  background-color: #5691c8;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 20px;
+  cursor: pointer;
+  height: 20px;
+}
+
+.Camera-btn:hover{
+  background-color: #457fca;
+}
+
 .suggestion-parent p{
   cursor: pointer;
   min-width: fit-content;
@@ -119,8 +165,8 @@
     text-align: center;
     font-size: 14px;
     background: #457fca;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   }
 
@@ -160,6 +206,13 @@ background: linear-gradient(to bottom, #5691c8, #457fca); /* W3C, IE 10+/ Edge, 
   
   #item-inputbox{
     border: 1px solid #ddd;
+  }
+
+  .capture-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
 
@@ -267,6 +320,10 @@ background: linear-gradient(to bottom, #5691c8, #457fca); /* W3C, IE 10+/ Edge, 
   
   .Input-Box, .wrapper, .suggestion-parent{
     width: 100%;
+  }
+
+  .Camera{
+    display: none;
   }
 }
 

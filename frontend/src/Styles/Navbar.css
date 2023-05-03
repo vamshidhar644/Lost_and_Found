@@ -121,6 +121,18 @@ header a, .login-btn {
   .item-drop:hover {
     color: #56CCF2;
   }
+
+.sub-navbar ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.sub-navbar ul li{
+    list-style: none;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
   
 /* Tablets */
 @media screen and (max-width: 768px) {
