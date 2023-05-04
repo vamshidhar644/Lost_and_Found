@@ -1,10 +1,10 @@
 
 header {
     background: #36D1DC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
+    background: -webkit-linear-gradient(to left, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}   
 
 header .Navcontainer {
     padding: 10px 20px;
@@ -12,6 +12,7 @@ header .Navcontainer {
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    height: fit-content;
 }
 header a, .login-btn {
     color: black;
@@ -62,6 +63,7 @@ header a, .login-btn {
 .login-btn a{
     font-size: 20px;
 }
+
 
 /* Smart phones */
 @media screen and (max-width: 600px) {
@@ -122,8 +124,13 @@ header a, .login-btn {
     color: #56CCF2;
   }
 
+  .sub-navbar{
+    padding-bottom: 10px;
+  }
+
 .sub-navbar ul{
     display: flex;
+    margin: 0;
     justify-content: space-around;
 }
 

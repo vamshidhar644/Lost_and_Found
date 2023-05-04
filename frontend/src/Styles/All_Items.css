@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 25px;
+    height: fit-content;
 }
 
 .Items-Container .all-buttons{
@@ -54,7 +56,6 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
 
 .table-container{
     width: 100%;
-    overflow-x: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,6 +80,28 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
 .download-section .Returned-btn{
     height: fit-content;
 }
+
+.Returned-btn{
+    width: 140px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.6s;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    
+    background: #1488CC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  }
+  
+  .Returned-btn:hover{
+    transform: scale(0.98);
+  }
 
 /* Smart phones */
 @media screen and (max-width: 600px) {

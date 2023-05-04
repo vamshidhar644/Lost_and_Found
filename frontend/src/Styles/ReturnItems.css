@@ -67,6 +67,25 @@ background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Fir
 
 }
 
+
+.item-details .Return-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #333;
+    width: 160px;
+    background-color: var(--buttons);
+    padding: 5px 12px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: 0.4s;
+  }
+  
+  .Return-btn:hover, .Returns-btn:hover{
+    transform: scale(.95);
+  }
+
 .Return-btn a{
     text-decoration: none;
     color: #fff;

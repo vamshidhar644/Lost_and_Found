@@ -1,0 +1,44 @@
+
+.suggestion-parent p{
+    cursor: pointer;
+    min-width: fit-content;
+    border: 2px solid transparent;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+  
+.suggestion-parent p:hover{
+    border: 2px solid #457fca ;
+}
+
+
+.suggestion-parent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.suggestion-parent p{
+  margin: 0px;
+}
+
+.suggestion-parent div{
+  width: 100%;
+}
+
+.suggestion-parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .suggestion-parent p{
+    margin: 0px;
+  }
+  
+  .suggestion-parent div{
+    width: 100%;
+  }

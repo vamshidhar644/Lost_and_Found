@@ -24,7 +24,7 @@ const ItemReturn = () => {
   }, [itemTypedispatch]);
 
   return (
-    <div>
+    <div className='itemList-Container'>
       <div className="item-list">
         <div className="itemtype-item">
           <Link className="option-type" to="itemTypes" state={{ type: 'All' }}>

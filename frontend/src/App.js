@@ -29,7 +29,6 @@ function App() {
 
             <Route path="/items" element={<ItemReturn />} />
 
-            <Route path="/all-entries" element={<AllEntries />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
@@ -46,6 +45,7 @@ function App() {
               path="/change-password"
               element={user ? <ChangePassword /> : <Navigate to="/" />}
             />
+            <Route path="/all-entries" element={<AllEntries />} />
           </Routes>
         </div>
       </BrowserRouter>

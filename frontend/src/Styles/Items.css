@@ -1,0 +1,23 @@
+/* homepage */
+.home {
+    display: flex;
+    gap: 100px;
+    padding: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.items{
+  width: 100%;
+}
+
+.all-items{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-self: center;
+  gap: 10px;
+  justify-content: flex-start;
+  margin: 20px 0px;
+}
+

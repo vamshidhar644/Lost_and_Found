@@ -5,6 +5,9 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useLocation } from 'react-router-dom';
 import ItemLoader from '../Loaders/ItemLoader';
 import GoToTop from '../Components/GoToTop';
+import '../Styles/itemsTypes.css';
+import '../Styles/Items.css';
+import '../Styles/ItemReturn.css';
 
 const ItemTypes = () => {
   const location = useLocation();
@@ -38,6 +41,10 @@ const ItemTypes = () => {
     if (itemsArray) {
       for (let i = 0; i < itemsArray.length; i++) {
         if (type === itemsArray[i].name) {
+          filtered.push(itemsArray[i]);
+          count++;
+        }
+        if (type === 'All') {
           filtered.push(itemsArray[i]);
           count++;
         }

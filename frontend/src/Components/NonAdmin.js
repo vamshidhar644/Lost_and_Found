@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NonAdmin = () => {
   return (
-    <div className="Return-Section">
+    <div className="NonAdmin-Section">
       <h3>Admin has to login</h3>
       <Link to="/login" className="login-btn">
         Admin login
