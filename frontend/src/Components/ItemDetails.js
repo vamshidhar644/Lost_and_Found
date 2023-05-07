@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect } from 'react';
-import '../Styles/itemDetails.css'
+import '../Styles/itemDetails.css';
 
 const ItemDetails = ({ item }) => {
   const { user } = useAuthContext();
@@ -50,7 +50,7 @@ const ItemDetails = ({ item }) => {
         {user && (
           <Link
             className="Returns-btn"
-            to="return-item"
+            to="/itemTypes/return-item"
             state={{
               _id: item._id,
               name: item.name,

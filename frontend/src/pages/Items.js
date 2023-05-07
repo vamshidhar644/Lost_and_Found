@@ -76,15 +76,17 @@ const ItemTypes = () => {
           )}
         </div>
 
-        {!countitems && <div>No {type} found</div>}
+        {/* {!filteredArray && <div>No {type} found</div>} */}
 
         <div className="all-items">
           {filteredArray ? (
             filteredArray.map((item) => {
               return <ItemDetails key={item._id} item={item} />;
             })
+          ) : <ItemLoader /> ? (
+            <div>No {type} found</div>
           ) : (
-            <ItemLoader />
+            <></>
           )}
         </div>
       </div>

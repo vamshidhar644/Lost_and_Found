@@ -35,7 +35,7 @@ function App() {
             />
 
             <Route
-              path="/items/return-item"
+              path="/itemTypes/return-item"
               element={user ? <ReturnItem /> : <Navigate to="/items" />}
             />
 

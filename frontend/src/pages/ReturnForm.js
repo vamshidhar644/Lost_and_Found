@@ -73,7 +73,7 @@ const ReturnItem = () => {
       }
 
       if (Addresponse.ok) {
-        setRecievedDate('');
+        setRecievedDate(''); 
         setRecievedBy('');
         setRecievedRegid('');
         setRecievedPhone('');
