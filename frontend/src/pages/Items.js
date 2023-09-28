@@ -3,7 +3,7 @@ import ItemDetails from '../Components/ItemDetails';
 import { useItemsContext } from '../hooks/useItemsContext';
 
 import { useLocation } from 'react-router-dom';
-import ItemLoader from '../Loaders/ItemLoader';
+import ItemLoader from '../Components/Loaders/ItemLoader';
 import GoToTop from '../Components/GoToTop';
 import '../Styles/itemsTypes.css';
 import '../Styles/Items.css';

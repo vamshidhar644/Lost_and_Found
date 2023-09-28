@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 import NonAdmin from '../Components/NonAdmin';
 import Suggestions from '../Components/Suggestions';
-import { AddItemLoader } from '../Loaders/AddItemLoader';
+import { AddItemLoader } from '../Components/Loaders/AddItemLoader';
 import Camera from '../Components/CaptureCamera';
 import FetchItemID from '../Components/FetchItemID';
 
