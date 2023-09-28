@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 // import avatar from '../assets/24809.jpg';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -62,7 +62,11 @@ const ItemDetails = ({ item }) => {
               submitedBy_phone: item.phone,
             }}
           >
-            <img src={imgSrc} alt="not uploaded" className="image-container" />
+            <img
+              src={imgSrc}
+              alt="not uploaded"
+              crslassName="image-container"
+            />
           </Link>
         )}
         {/* {!user && (

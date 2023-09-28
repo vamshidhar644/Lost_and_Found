@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { useItemTypesContext } from '../hooks/useItemTypeContext';
 import '../Styles/Suggestions.css';
 const Suggestions = ({ onChange }) => {

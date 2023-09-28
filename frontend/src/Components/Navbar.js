@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLogout } from '../hooks/useLogout';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useLogout } from '../helpers/useLogout';
+import { useAuthContext } from '../auth/useAuthContext';
 import '../Styles/Navbar.css';
 const Navbar = () => {
   const { logout } = useLogout();

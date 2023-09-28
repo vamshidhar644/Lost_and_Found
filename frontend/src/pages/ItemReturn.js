@@ -5,11 +5,9 @@ import '../Styles/ItemReturn.css';
 import { Link } from 'react-router-dom';
 import RandomIcon from '../Components/ShapeGenerator';
 import { BsBorderAll } from 'react-icons/bs';
-import { useAuthContext } from '../hooks/useAuthContext';
 
 const ItemReturn = () => {
   const { itemTypes, itemTypedispatch } = useItemTypesContext();
-  const { user } = useAuthContext();
  
   useEffect(() => {
     const fetchItemTypes = async () => {

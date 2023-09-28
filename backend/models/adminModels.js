@@ -4,7 +4,7 @@ const validator = require('validator');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const adminSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -17,18 +17,7 @@ const userSchema = new Schema({
 });
 
 // static signup method
-userSchema.statics.signup = async function (email, password) {
-  // validation
-  if (!email || !password) {
-    throw Error('All fields must be filled');
-  }
-  if (!validator.isEmail(email)) {
-    throw Error('Email is not valid');
-  }
-  if (!validator.isStrongPassword(password)) {
-    throw Error('Password in not strong enough');
-  }
-
+adminSchema.statics.signup = async function (email, password) {
   const exists = await this.findOne({ email });
 
   if (exists) {
@@ -37,41 +26,41 @@ userSchema.statics.signup = async function (email, password) {
 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
-  const user = await this.create({ email, password: hash });
+  const admin = await this.create({ email, password: hash });
 
-  return user;
+  return admin;
 };
 
 // static login method
-userSchema.statics.login = async function (email, password) {
+adminSchema.statics.login = async function (email, password) {
   // authentication
   if (!email || !password) {
     throw Error('All fields must be filled');
   }
 
-  const user = await this.findOne({ email });
+  const admin = await this.findOne({ email });
 
-  if (!user) {
+  if (!admin) {
     throw Error('Incorrect Email');
   }
 
-  const match = await bcrypt.compare(password, user.password);
+  const match = await bcrypt.compare(password, admin.password);
   if (!match) {
     throw Error('Incorrect password');
   }
 
-  return user;
+  return admin;
 };
 
-userSchema.statics.changepass = async function (email, password) {
+adminSchema.statics.changepass = async function (email, password) {
   const exists = await this.findOne({ email });
 
   if (exists) {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const user = await this.create({ email, password });
-    return user;
+    const admin = await this.create({ email, password });
+    return admin;
   }
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Admin', adminSchema);

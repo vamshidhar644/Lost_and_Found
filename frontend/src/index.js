@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ItemsContextProvider } from './context/ItemContext';
-import { AuthContextProvider } from './context/AuthContext';
+import { AuthContextProvider } from './auth/AuthContext';
 import { AllItemsContextProvider } from './context/AllEntriesContext';
 import { ItemTypeContextProvider } from './context/ItemTypeContext';
 // import "antd/dist/antd.css"

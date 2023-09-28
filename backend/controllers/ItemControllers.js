@@ -12,9 +12,7 @@ const getItems = async (req, res) => {
 // get a single item
 const getItem = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: 'No such item' });
-  }
+  
   const item = await Item.findById(id);
 
   if (!item) {
@@ -27,39 +25,6 @@ const getItem = async (req, res) => {
 const createItem = async (req, res) => {
   const { _id, name, desc, place, date, submitedBy, regId, phone, imgpath } =
     req.body;
-
-  let emptyFields = [];
-
-  if (!imgpath) {
-    emptyFields.push('imgpath');
-  }
-  if (!name) {
-    emptyFields.push('name');
-  }
-  if (!desc) {
-    emptyFields.push('desc');
-  }
-  if (!place) {
-    emptyFields.push('place');
-  }
-  if (!date) {
-    emptyFields.push('date');
-  }
-  if (!submitedBy) {
-    emptyFields.push('submitedBy');
-  }
-  if (!regId) {
-    emptyFields.push('regId');
-  }
-  if (!phone) {
-    emptyFields.push('phone');
-  }
-
-  if (emptyFields.length > 0) {
-    return res
-      .status(400)
-      .json({ error: 'Please fill in all the Fields', emptyFields });
-  }
 
   // add doc to db
   try {

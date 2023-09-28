@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useItemsContext } from '../hooks/useItemsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 
 const FetchItemID = ({ onId }) => {

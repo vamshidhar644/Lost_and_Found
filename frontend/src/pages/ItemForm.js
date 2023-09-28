@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { useItemsContext } from '../hooks/useItemsContext';
 
 import '../Styles/ItemForm.css';
@@ -24,10 +24,10 @@ const ItemForm = () => {
   const [submitedBy, setSubmitedBy] = useState('');
   const [regId, setRegId] = useState('');
   const [phone, setPhone] = useState('');
-  const [imgpath, setimgpath] = useState(''); 
- 
+  const [imgpath, setimgpath] = useState('');
+
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const ItemForm = () => {
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);
-      setEmptyFields(json.emptyFields);
+      // setEmptyFields(json.emptyFields);
       setIsLoading(false);
     }
     if (response.ok) {
@@ -68,8 +68,7 @@ const ItemForm = () => {
       setDesc('');
       setPlace('');
       setError(null);
-      setEmptyFields([]);
-      // console.log('new item added', json);
+
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
       setIsLoading(false);

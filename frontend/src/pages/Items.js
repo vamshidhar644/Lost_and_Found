@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetails from '../Components/ItemDetails';
 import { useItemsContext } from '../hooks/useItemsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+
 import { useLocation } from 'react-router-dom';
 import ItemLoader from '../Loaders/ItemLoader';
 import GoToTop from '../Components/GoToTop';
@@ -14,7 +14,6 @@ const ItemTypes = () => {
   const { type } = location.state;
 
   const { items, dispatch } = useItemsContext();
-  const { user } = useAuthContext();
 
   const [itemsArray, setItemArray] = useState([]);
   const [filteredArray, setFilteredArray] = useState([]);

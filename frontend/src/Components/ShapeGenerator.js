@@ -24,7 +24,7 @@ const RandomIcon = () => {
     setRandomIcon(iconList[randomIndex]);
     
     const chosenIcon = iconList[randomIndex];
-    const remainingIcons = iconList.filter((icon) => icon !== chosenIcon);
+    // const remainingIcons = iconList.filter((icon) => icon !== chosenIcon);
     setRandomIcon(chosenIcon);
   }, []);
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useItemsContext } from '../hooks/useItemsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { useLocation } from 'react-router-dom';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import '../Styles/ReturnItems.css';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
@@ -73,7 +73,7 @@ const ReturnItem = () => {
       }
 
       if (Addresponse.ok) {
-        setRecievedDate(''); 
+        setRecievedDate('');
         setRecievedBy('');
         setRecievedRegid('');
         setRecievedPhone('');

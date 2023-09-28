@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { useItemsContext } from '../hooks/useItemsContext';
 import { useAllentriesContext } from '../hooks/useAllentriesContext';
 import '../Styles/All_Items.css';
 import NonAdmin from '../Components/NonAdmin';
-import { Link } from 'react-router-dom';
+
 import XLSX from 'xlsx';
 
 const AllEntries = () => {

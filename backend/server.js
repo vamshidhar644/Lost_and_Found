@@ -3,8 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 
+const adminRoutes = require('./routes/admin');
 const itemRoutes = require('./routes/items');
-const userRoutes = require('./routes/user');
+// const userRoutes = require('./routes/user');
 const all_itemRoutes = require('./routes/all_items');
 const itemTypeRoutes = require('./routes/itemType');
 
@@ -20,8 +21,9 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.use('/api/admin', adminRoutes);
 app.use('/api/items', itemRoutes);
-app.use('/api/user', userRoutes);
+// app.use('/api/user', userRoutes);
 app.use('/api/all_items', all_itemRoutes);
 app.use('/api/itemTypes', itemTypeRoutes);
 
