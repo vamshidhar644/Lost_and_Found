@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../auth/useAuthContext';
+import { useAuthContext } from '../../auth/useAuthContext';
 // import avatar from '../assets/24809.jpg';
 import { Link } from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect } from 'react';
-import '../Styles/itemDetails.css';
+import './itemDetails.css';
 
 const ItemDetails = ({ item }) => {
-  const { user } = useAuthContext();
+  const { user } = useAuthContext(); 
   const [imgSrc, setImageSrc] = useState();
 
   useEffect(() => {

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useItemsContext } from '../hooks/useItemsContext';
-import { useAuthContext } from '../auth/useAuthContext';
+import { useItemsContext } from '../../../hooks/useItemsContext';
+import { useAuthContext } from '../../../auth/useAuthContext';
 import { useLocation } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
-import '../Styles/ReturnItems.css';
-import { useAllentriesContext } from '../hooks/useAllentriesContext';
-import NonAdmin from '../Components/NonAdmin';
+import './ReturnItems.css';
+import { useAllentriesContext } from '../../../hooks/useAllentriesContext';
+import NonAdmin from '../../NonAdmin';
 
 const ReturnItem = () => {
   const { user } = useAuthContext();

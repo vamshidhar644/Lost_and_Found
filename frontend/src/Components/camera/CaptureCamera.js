@@ -4,7 +4,7 @@ import { BsCameraFill } from 'react-icons/bs';
 import { IoMdReverseCamera, IoMdSave } from 'react-icons/io';
 
 import imageCompression from 'browser-image-compression';
-import '../Styles/CaptureCamera.css'
+import './CaptureCamera.css';
 
 const Camera = ({ onImage }) => {
   const videoRef = useRef(null);

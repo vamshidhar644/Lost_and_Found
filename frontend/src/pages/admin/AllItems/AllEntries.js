@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../auth/useAuthContext';
-import { useItemsContext } from '../hooks/useItemsContext';
-import { useAllentriesContext } from '../hooks/useAllentriesContext';
-import '../Styles/All_Items.css';
-import NonAdmin from '../Components/NonAdmin';
+import { useAuthContext } from '../../../auth/useAuthContext';
+import { useItemsContext } from '../../../hooks/useItemsContext';
+import { useAllentriesContext } from '../../../hooks/useAllentriesContext';
+import './All_Items.css';
+import NonAdmin from '../../NonAdmin';
 
 import XLSX from 'xlsx';
 

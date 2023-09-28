@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../auth/useAuthContext';
-import { useItemTypesContext } from '../hooks/useItemTypeContext';
-import '../Styles/Suggestions.css';
+import { useAuthContext } from '../../auth/useAuthContext';
+import { useItemTypesContext } from '../../hooks/useItemTypeContext';
+import './Suggestions.css';
 const Suggestions = ({ onChange }) => {
   const { itemTypes, itemTypedispatch } = useItemTypesContext();
   const { user } = useAuthContext();

@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './auth/useAuthContext';
 
-import Navbar from './Components/Navbar';
+import Navbar from './pages/navbar/Navbar';
 
-import ReturnItem from './pages/ReturnForm';
-import ItemForm from './pages/ItemForm';
-import AllEntries from './pages/AllEntries';
-import ChangePassword from './pages/changePassword';
-import AdminHome from './pages/Admin_Home';
-import ItemReturn from './pages/ItemReturn';
-import Login from './pages/Login';
-import ItemTypes from './pages/Items';
+import ReturnItem from './pages/admin/ItemReturn/ReturnForm';
+import ItemForm from './pages/admin/ItemEntry/ItemForm';
+import AllEntries from './pages/admin/AllItems/AllEntries';
+import ChangePassword from './pages/admin/Profile/changePassword';
+import AdminHome from './pages/admin/Admin_Home';
+import ItemReturn from './pages/admin/ItemReturn/ItemReturn';
+import Login from './pages/admin/login/Login';
+import ItemTypes from './pages/items/Items';
 
 function App() {
   const { user } = useAuthContext();

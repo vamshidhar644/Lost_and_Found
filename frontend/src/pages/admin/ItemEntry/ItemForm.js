@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-import { useAuthContext } from '../auth/useAuthContext';
-import { useItemsContext } from '../hooks/useItemsContext';
+import { useAuthContext } from '../../../auth/useAuthContext';
+import { useItemsContext } from '../../../hooks/useItemsContext';
 
-import '../Styles/ItemForm.css';
+import './ItemForm.css';
 import { useNavigate } from 'react-router-dom';
 
-import NonAdmin from '../Components/NonAdmin';
-import Suggestions from '../Components/Suggestions';
-import { AddItemLoader } from '../Components/Loaders/AddItemLoader';
-import Camera from '../Components/CaptureCamera';
-import FetchItemID from '../Components/FetchItemID';
+import NonAdmin from '../../NonAdmin';
+import Suggestions from '../../../Components/suggestions/Suggestions';
+import { AddItemLoader } from '../../../Components/Loaders/AddItemLoader';
+import Camera from '../../../Components/camera/CaptureCamera';
+import FetchItemID from '../../../helpers/FetchItemID';
 
 const ItemForm = () => {
   const { dispatch } = useItemsContext();

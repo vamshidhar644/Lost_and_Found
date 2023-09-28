@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ItemDetails from '../Components/ItemDetails';
-import { useItemsContext } from '../hooks/useItemsContext';
+import ItemDetails from './ItemDetails';
+import { useItemsContext } from '../../hooks/useItemsContext';
 
 import { useLocation } from 'react-router-dom';
-import ItemLoader from '../Components/Loaders/ItemLoader';
-import GoToTop from '../Components/GoToTop';
-import '../Styles/itemsTypes.css';
-import '../Styles/Items.css';
-import '../Styles/ItemReturn.css';
+import ItemLoader from '../../Components/Loaders/ItemLoader';
+import GoToTop from '../../helpers/GoToTop';
+import './Items.css';
 
 const ItemTypes = () => {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useLogin } from '../helpers/useLogin';
-import '../Styles/Login.css';
+import { useLogin } from '../../../helpers/useLogin';
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
