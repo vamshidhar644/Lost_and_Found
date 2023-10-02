@@ -1,16 +1,12 @@
-import { useAuthContext } from '../auth/useAuthContext';
-// import { useItemsContext } from './useItemsContext';
+import { UseAuthContext } from '../auth/useAuthContext';
 
 export const useLogout = () => {
-  const { dispatch } = useAuthContext();
-  // const { dispatch: itemsDispatch } = useItemsContext();
+  const { dispatch } = UseAuthContext();
 
   const logout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('admin');
 
     dispatch({ type: 'LOGOUT' });
-
-    // itemsDispatch({ type: 'SET_ITEMS', payload: null });
   };
   return { logout };
 };

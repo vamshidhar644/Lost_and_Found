@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../../helpers/useLogout';
-import { useAuthContext } from '../../auth/useAuthContext';
+
 import './Navbar.css';
-const Navbar = () => {
+
+const Navbar = ({ user }) => {
   const { logout } = useLogout();
-  const { user } = useAuthContext();
 
   const [showDropdown, setShowDropdown] = useState();
   const divRef = useRef(null);
@@ -29,6 +29,7 @@ const Navbar = () => {
   const handleClick = () => {
     logout();
   };
+
   return (
     <header>
       <div className="Navcontainer">
@@ -38,7 +39,7 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        {user && (
+        {user ? (
           <div className="login-logout">
             <span>{user.email} </span>
             <div
@@ -60,8 +61,7 @@ const Navbar = () => {
               )}
             </div>
           </div>
-        )}
-        {!user && (
+        ) : (
           <div className="login-logout">
             <Link to="/login" className="login-btn">
               Admin login

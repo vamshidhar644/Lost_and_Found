@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 
-import { useAuthContext } from '../../../auth/useAuthContext';
-import { useItemsContext } from '../../../hooks/useItemsContext';
-
 import './ItemForm.css';
-import { useNavigate } from 'react-router-dom';
 
 import NonAdmin from '../../NonAdmin';
 import Suggestions from '../../../Components/suggestions/Suggestions';
 import { AddItemLoader } from '../../../Components/Loaders/AddItemLoader';
 import Camera from '../../../Components/camera/CaptureCamera';
 import FetchItemID from '../../../helpers/FetchItemID';
+import PostMongo from '../../../helpers/postMongo';
 
-const ItemForm = () => {
-  const { dispatch } = useItemsContext();
-  const { user } = useAuthContext();
+const ItemForm = ({ user, items, allItems }) => {
+  const { itemEntry } = PostMongo();
 
   const [_id, setItemid] = useState('');
   const [name, setName] = useState('');
@@ -30,11 +26,9 @@ const ItemForm = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const itemDetais = {
       _id,
@@ -48,34 +42,25 @@ const ItemForm = () => {
       imgpath,
     };
 
-    const response = await fetch('/api/items', {
-      method: 'POST',
-      body: JSON.stringify(itemDetais),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-      // setEmptyFields(json.emptyFields);
-      setIsLoading(false);
-    }
-    if (response.ok) {
-      setName('');
-      setDesc('');
-      setPlace('');
-      setError(null);
-
-      dispatch({ type: 'CREATE_ITEM', payload: json });
-      navigate('/items');
-      setIsLoading(false);
+    console.log(itemDetais);
+    if (
+      _id === '' ||
+      name === '' ||
+      desc === '' ||
+      place === '' ||
+      date === '' ||
+      submitedBy === '' ||
+      regId === '' ||
+      phone === '' ||
+      imgpath === ''
+    ) {
+      setError('Please fill all the fields');
+    } else {
+      itemEntry(itemDetais);
+      setIsLoading(true);
     }
   };
 
-  // console.log(imagefile);
   const itemName = (name) => {
     setName(name);
   };
@@ -92,13 +77,18 @@ const ItemForm = () => {
     return (
       <div className="form-parent">
         <form className="create">
-          <FetchItemID onId={itemId} />
+          <FetchItemID
+            onId={itemId}
+            user={user}
+            items={items}
+            Allitems={allItems}
+          />
           {error && <div className="error">{error}</div>}
           <div className="Form-Sections">
             <div className="FormBoxes">
               <div className="Item-form-Row">
                 <label>Item:</label>
-                <Suggestions onChange={itemName} />
+                <Suggestions onChange={itemName} user={user} />
               </div>
 
               <div className="Item-form-Row">

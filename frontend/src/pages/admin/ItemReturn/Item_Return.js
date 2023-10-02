@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetails from '../../../Components/ItemDetails';
-import { useItemsContext } from '../../../hooks/useItemsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useItemTypesContext } from '../../../hooks/useItemTypeContext';
+
 import '../Styles/ItemReturn.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import GoToTop from '../../../Components/GoToTop';
 import ItemLoader from '../Loaders/ItemLoader';
+import fetchMongo from '../../../helpers/fetchMongo';
+import FilterItems from '../../../helpers/filterItems';
 
-const Item_Return = () => {
-  const { items, dispatch } = useItemsContext();
-  const { itemTypes, itemTypedispatch } = useItemTypesContext();
+const Item_Return = ({ user }) => {
+  const { fetchItems, fetchItemTypes, items, itemTypes } = fetchMongo();
+  const { filter } = FilterItems();
 
   const [selectedValue, setSelectedValue] = useState('');
   const [itemsArray, setItemArray] = useState('');
@@ -19,67 +19,14 @@ const Item_Return = () => {
   const [filteredArray, setFilteredArray] = useState('');
   const [countitems, setCount] = useState();
   const [errorcount, setErrorcount] = useState('');
-  const { user } = useAuthContext();
 
   useEffect(() => {
-    const adminfetchItem = async () => {
-      const response = await fetch('/api/items', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
-    const fetchItems = async () => {
-      const response = await fetch('/api/items');
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
-    const fetchItemTypes = async () => {
-      const itemTyperesponse = await fetch('/api/itemTypes');
-      const json = await itemTyperesponse.json();
-
-      if (itemTyperesponse.ok) {
-        itemTypedispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
-    if (user) {
-      adminfetchItem();
-    } else {
-      fetchItems();
-    }
+    fetchItems();
     fetchItemTypes();
-  }, [dispatch, itemTypedispatch, user]);
+  }, [user]);
 
   useEffect(() => {
-    const filtered = [];
-    let count = null;
-    setItemArray(items);
-
-    if (arrLength) {
-      for (let i = 0; i < arrLength; i++) {
-        if (selectedValue === itemsArray[i].name) {
-          filtered.push(itemsArray[i]);
-          count++;
-        }
-      }
-    }
-    setCount(count);
-    if (filtered.length === 0) {
-      setFilteredArray(itemsArray);
-    } else {
-      setFilteredArray(filtered);
-    }
+    filter();
   }, [arrLength, items, itemsArray, selectedValue]);
 
   function handleChange(event) {
@@ -89,8 +36,6 @@ const Item_Return = () => {
       setErrorcount('No such item');
     }
   }
-  // const base64Data = btoa(String.fromCharCode(items.imgpath.data.data));
-  // console.log(base64Data);
 
   return (
     <div className="home">
@@ -129,7 +74,7 @@ const Item_Return = () => {
         <div className="all-items">
           {filteredArray ? (
             filteredArray.map((item) => {
-              return <ItemDetails key={item._id} item={item} />;
+              return <ItemDetails key={item._id} item={item} user={user} />;
             })
           ) : (
             <ItemLoader />

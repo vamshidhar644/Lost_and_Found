@@ -1,95 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import ItemDetails from './ItemDetails';
-import { useItemsContext } from '../../hooks/useItemsContext';
+import React from 'react';
 
-import { useLocation } from 'react-router-dom';
-import ItemLoader from '../../Components/Loaders/ItemLoader';
-import GoToTop from '../../helpers/GoToTop';
+import { Link } from 'react-router-dom';
+import { BsBorderAll } from 'react-icons/bs';
+
+import RandomIcon from '../../helpers/ShapeGenerator';
 import './Items.css';
 
-const ItemTypes = () => {
-  const location = useLocation();
-  const { type } = location.state;
-
-  const { items, dispatch } = useItemsContext();
-
-  const [itemsArray, setItemArray] = useState([]);
-  const [filteredArray, setFilteredArray] = useState([]);
-  const [countitems, setCount] = useState();
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      const response = await fetch('/api/items');
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
-    fetchItems();
-  }, [dispatch]);
-
-  useEffect(() => {
-    const filtered = [];
-    let count = null;
-    setItemArray(items);
-
-    if (itemsArray) {
-      for (let i = 0; i < itemsArray.length; i++) {
-        if (type === itemsArray[i].name) {
-          filtered.push(itemsArray[i]);
-          count++;
-        }
-        if (type === 'All') {
-          filtered.push(itemsArray[i]);
-          count++;
-        }
-      }
-      console.log(count);
-    }
-
-    if (type === 'All') {
-      console.log(items);
-    }
-    setCount(count);
-    if (filtered.length === 0) {
-      // setFilteredArray(null);
-    } else {
-      setFilteredArray(filtered);
-    }
-  }, [items, itemsArray, type]);
-
-  // console.log(itemsArray);
-
+const Items = ({ itemTypes }) => {
   return (
-    <div className="home">
-      <div className="items">
-        <div className="filter-items">
-          {countitems && (
-            <div className="itemCount">
-              {type}: {countitems} items
-            </div>
-          )}
+    <div className="itemList-Container">
+      <div className="item-list">
+        <div className="itemtype-item">
+          <Link className="option-type" to="All Items">
+            <BsBorderAll />
+          </Link>
+          All items
         </div>
-
-        {/* {!filteredArray && <div>No {type} found</div>} */}
-
-        <div className="all-items">
-          {filteredArray ? (
-            filteredArray.map((item) => {
-              return <ItemDetails key={item._id} item={item} />;
-            })
-          ) : <ItemLoader /> ? (
-            <div>No {type} found</div>
-          ) : (
-            <></>
-          )}
-        </div>
+        {itemTypes ? (
+          itemTypes.map((itemType, ind) => {
+            return (
+              <div
+                key={ind}
+                value={itemType.itemType}
+                className="itemtype-item"
+              >
+                <Link
+                  className="option-type"
+                  to={`/items/${itemType.itemType}`}
+                >
+                  <RandomIcon />
+                </Link>
+                {itemType.itemType}
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
-      <GoToTop />
     </div>
   );
 };
 
-export default ItemTypes;
+export default Items;

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../../../auth/useAuthContext';
-import { useItemsContext } from '../../../hooks/useItemsContext';
-import { useAllentriesContext } from '../../../hooks/useAllentriesContext';
+
+import {
+  UseAllentriesContext,
+  UseItemsContext,
+} from '../../../context/useContexts';
+
 import './All_Items.css';
 import NonAdmin from '../../NonAdmin';
 
 import XLSX from 'xlsx';
 
-const AllEntries = () => {
-  const { items, dispatch } = useItemsContext();
-  const { Allitems, Alldispatch } = useAllentriesContext();
-  const { user } = useAuthContext();
+const AllEntries = ({ user }) => {
+  const { items, dispatch } = UseItemsContext();
+  const { Allitems, Alldispatch } = UseAllentriesContext();
 
   useEffect(() => {
     const adminfetchItem = async () => {

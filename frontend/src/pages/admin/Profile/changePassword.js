@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../../../auth/useAuthContext';
+
 import axios from 'axios';
 import { useLogout } from '../../../helpers/useLogout';
-const ChangePassword = () => {
-  const { user } = useAuthContext();
+const ChangePassword = ({ user }) => {
   const { logout } = useLogout();
 
   const [oldpassword, setOldPassword] = useState('');
@@ -72,7 +71,7 @@ const ChangePassword = () => {
           />
 
           <button className="form--submit">Change</button>
-        {error && <div className="error">{error}</div>}
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     );

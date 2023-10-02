@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthContext } from '../../auth/useAuthContext';
-import { useItemTypesContext } from '../../hooks/useItemTypeContext';
+
+import { UseItemTypesContext } from '../../context/useContexts';
 import './Suggestions.css';
-const Suggestions = ({ onChange }) => {
-  const { itemTypes, itemTypedispatch } = useItemTypesContext();
-  const { user } = useAuthContext();
+import fetchMongo from '../../helpers/fetchMongo';
+const Suggestions = ({ onChange, user }) => {
+  const { itemTypes, itemTypedispatch } = UseItemTypesContext();
+
   const [itemType, setitemType] = useState('');
+
+  const { fetchItemTypes } = fetchMongo();
   useEffect(() => {
-    const fetchItemTypes = async () => {
-      const itemTyperesponse = await fetch('/api/itemTypes', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await itemTyperesponse.json();
-
-      if (itemTyperesponse.ok) {
-        itemTypedispatch({ type: 'SET_ITEMS', payload: json });
-      }
-    };
-
     if (user) {
       fetchItemTypes();
     }

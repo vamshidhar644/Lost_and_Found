@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { useItemsContext } from '../../../hooks/useItemsContext';
-import { useAuthContext } from '../../../auth/useAuthContext';
+
 import { useLocation } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-
 import './ReturnItems.css';
-import { useAllentriesContext } from '../../../hooks/useAllentriesContext';
 import NonAdmin from '../../NonAdmin';
+import PostMongo from '../../../helpers/postMongo';
 
-const ReturnItem = () => {
-  const { user } = useAuthContext();
-  const navigate = useNavigate();
+const ReturnItem = ({ user }) => {
   const location = useLocation();
+  const { itemReturn } = PostMongo();
 
   const [recieved_date, setRecievedDate] = useState('');
   const [recievedBy_Name, setRecievedBy] = useState('');
@@ -20,9 +16,6 @@ const ReturnItem = () => {
   const [recievedBy_phone, setRecievedPhone] = useState('');
   const [father_phone, setFatherPhone] = useState('');
   const [error, setError] = useState(null);
-
-  const { dispatch } = useItemsContext();
-  const { Alldispatch } = useAllentriesContext();
 
   if (user) {
     const {
@@ -58,42 +51,7 @@ const ReturnItem = () => {
         father_phone,
       };
 
-      const Addresponse = await fetch('/api/all_items', {
-        method: 'POST',
-        body: JSON.stringify(itemDetais),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      const Addjson = await Addresponse.json();
-      if (!Addresponse.ok) {
-        setError(Addjson.error);
-      }
-
-      if (Addresponse.ok) {
-        setRecievedDate('');
-        setRecievedBy('');
-        setRecievedRegid('');
-        setRecievedPhone('');
-        setFatherPhone('');
-        setError(null);
-
-        Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
-
-        const response = await fetch('/api/items/' + _id, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
-        const json = await response.json();
-        if (response.ok) {
-          dispatch({ type: 'DELETE_ITEM', payload: json });
-        }
-        navigate('/items');
-      }
+      itemReturn(itemDetais);
     };
 
     return (
