@@ -33,7 +33,6 @@ const createItem = async (req, res) => {
       _id,
       name,
       desc,
-      // imgpath,
       imgpath,
       place,
       date,
