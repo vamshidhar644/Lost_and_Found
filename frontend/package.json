@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:4000",
+  "proxy": "https://lf-backend-aaqr.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +15,7 @@
     "canvas": "^2.11.2",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.29.3",
+    "gh-pages": "^6.0.0",
     "pako": "^2.1.0",
     "react": "^18.2.0",
     "react-autocomplete": "^1.8.1",

@@ -32,7 +32,7 @@ const Suggestions = ({ onChange, user }) => {
   const NewElement = async () => {
     const confirmed = window.confirm('Add ' + itemType + ' to item types');
     if (confirmed) {
-      console.log(itemType);
+      // console.log(itemType);
       const itemTypes = { itemType };
       const response = await fetch('/api/itemTypes', {
         method: 'POST',

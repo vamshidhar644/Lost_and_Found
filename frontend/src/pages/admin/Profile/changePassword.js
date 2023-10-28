@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
-import { useLogout } from '../../../helpers/useLogout';
+import { useLogout } from '../../../auth/useLogout';
 const ChangePassword = ({ user }) => {
   const { logout } = useLogout();
 

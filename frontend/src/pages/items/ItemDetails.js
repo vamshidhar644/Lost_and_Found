@@ -39,12 +39,12 @@ const ItemDetails = ({ item, user }) => {
         <div>
           <p>Found on: {item.date}</p>
         </div>
-        <p>
+        {/* <p>
           Updated{' '}
           {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
-        </p>
+        </p> */}
       </div>
-      <div className="details-box2">
+      <div className="details-box2"> 
         {user && (
           <Link
             className="Returns-btn"

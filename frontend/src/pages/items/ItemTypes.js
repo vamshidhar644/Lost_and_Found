@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import ItemDetails from './ItemDetails';
 import ItemLoader from '../../Components/Loaders/ItemLoader';
-import GoToTop from '../../helpers/GoToTop';
+import GoToTop from '../../Components/goTop/GoToTop';
 
 import './Items.css';
 import FilterItems from '../../helpers/filterItems';
@@ -18,6 +18,8 @@ const ItemTypes = ({ user, items }) => {
     filter(items, itemType);
     setC(c + 1);
   }, [c]);
+
+  console.log(filteredArray);
 
   return (
     <div className="home">
@@ -37,10 +39,10 @@ const ItemTypes = ({ user, items }) => {
             <div>No {itemType} found</div>
           ) : (
             <></>
-          )}
+          )}   
         </div>
-      </div>
-      <GoToTop />
+      </div> 
+      <GoToTop /> 
     </div>
   );
 };

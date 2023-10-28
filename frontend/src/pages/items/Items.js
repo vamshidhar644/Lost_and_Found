@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsBorderAll } from 'react-icons/bs';
 
-import RandomIcon from '../../helpers/ShapeGenerator';
+import RandomIcon from '../../Components/shapeGenerators/ShapeGenerator';
 import './Items.css';
 
 const Items = ({ itemTypes }) => {
@@ -30,7 +30,7 @@ const Items = ({ itemTypes }) => {
                 >
                   <RandomIcon />
                 </Link>
-                {itemType.itemType}
+                {itemType.itemType} 
               </div>
             );
           })

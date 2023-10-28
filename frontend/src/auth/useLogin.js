@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UseAuthContext } from '../auth/useAuthContext';
+import { UseAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -25,8 +25,6 @@ export const useLogin = () => {
       localStorage.setItem('admin', JSON.stringify(json));
 
       dispatch({ type: 'LOGIN', payload: json });
-
-      setIsLoading(false);
     }
   };
   return { login, isLoading, error };
