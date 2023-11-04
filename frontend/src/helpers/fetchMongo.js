@@ -11,8 +11,10 @@ const fetchMongo = () => {
   const { items, dispatch } = UseItemsContext();
   const { Allitems, Alldispatch } = UseAllentriesContext();
 
+  const backend_path = 'https://lf-backend-aaqr.onrender.com';
+
   const fetchItems = async () => {
-    const response = await fetch('/api/items');
+    const response = await fetch(`${backend_path}/api/items`);
     const json = await response.json();
 
     if (response.ok) {
@@ -21,7 +23,7 @@ const fetchMongo = () => {
   };
 
   const fetchAllItems = async () => {
-    const Allitemresponse = await fetch('/api/all_items', {
+    const Allitemresponse = await fetch(`${backend_path}/api/all_items`, {
       // headers: {
       //   Authorization: `Bearer ${user.token}`,
       // },
@@ -34,7 +36,7 @@ const fetchMongo = () => {
   };
 
   const fetchItemTypes = async () => {
-    const itemTyperesponse = await fetch('/api/itemTypes');
+    const itemTyperesponse = await fetch(`${backend_path}/api/itemTypes`);
     //  {
     // headers: {
     //   Authorization: `Bearer ${user.token}`,

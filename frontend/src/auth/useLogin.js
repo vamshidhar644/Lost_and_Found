@@ -10,7 +10,9 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch('/api/admin/login', {
+    const backend_path = 'https://lf-backend-aaqr.onrender.com';
+
+    const response = await fetch(`${backend_path}/api/admin/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),

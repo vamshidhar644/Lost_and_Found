@@ -10,8 +10,10 @@ const PostMongo = () => {
 
   const { user } = UseAuthContext(0);
 
+  const backend_path = 'https://lf-backend-aaqr.onrender.com';
+
   const itemEntry = async (itemDetais) => {
-    const response = await fetch('/api/items', {
+    const response = await fetch(`${backend_path}/api/items`, {
       method: 'POST',
       body: JSON.stringify(itemDetais),
       headers: {
@@ -30,7 +32,7 @@ const PostMongo = () => {
   };
 
   const itemReturn = async (itemDetais) => {
-    const Addresponse = await fetch('/api/all_items', {
+    const Addresponse = await fetch(`${backend_path}/api/all_items`, {
       method: 'POST',
       body: JSON.stringify(itemDetais),
       headers: {

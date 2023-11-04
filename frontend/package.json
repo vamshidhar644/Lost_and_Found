@@ -2,6 +2,7 @@
   "proxy": "https://lf-backend-aaqr.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "http://vamshidhar644.github.io/Lost_and_Found/",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
@@ -34,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
