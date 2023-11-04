@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Lost_and_Found/static/css/main.b9e2a9c0.css",
-    "main.js": "/Lost_and_Found/static/js/main.08eb876b.js",
+    "main.js": "/Lost_and_Found/static/js/main.ca02b020.js",
     "index.html": "/Lost_and_Found/index.html",
     "main.b9e2a9c0.css.map": "/Lost_and_Found/static/css/main.b9e2a9c0.css.map",
-    "main.08eb876b.js.map": "/Lost_and_Found/static/js/main.08eb876b.js.map"
+    "main.ca02b020.js.map": "/Lost_and_Found/static/js/main.ca02b020.js.map"
   },
   "entrypoints": [
     "static/css/main.b9e2a9c0.css",
-    "static/js/main.08eb876b.js"
+    "static/js/main.ca02b020.js"
   ]
 }
