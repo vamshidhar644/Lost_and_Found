@@ -19,7 +19,7 @@ const ItemTypes = ({ user, items }) => {
     setC(c + 1);
   }, [c]);
 
-  console.log(filteredArray);
+  // console.log(filteredArray);
 
   return (
     <div className="home">
@@ -39,10 +39,10 @@ const ItemTypes = ({ user, items }) => {
             <div>No {itemType} found</div>
           ) : (
             <></>
-          )}   
+          )}
         </div>
-      </div> 
-      <GoToTop /> 
+      </div>
+      <GoToTop />
     </div>
   );
 };

@@ -62,11 +62,7 @@ const Navbar = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div className="login-logout">
-            <Link to="/login" className="login-btn">
-              Admin login
-            </Link>
-          </div>
+          <></>
         )}
       </div>
       {user && (

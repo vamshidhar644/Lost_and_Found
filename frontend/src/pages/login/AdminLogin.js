@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useLogin } from '../../../auth/useLogin';
+import { useLogin } from '../../auth/useLogin';
 import './Login.css';
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, error } = useLogin();
@@ -38,4 +38,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

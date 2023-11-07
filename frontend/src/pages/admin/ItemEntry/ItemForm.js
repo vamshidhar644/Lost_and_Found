@@ -9,7 +9,7 @@ import Camera from '../../../Components/camera/CaptureCamera';
 import FetchItemID from '../../../helpers/FetchItemID';
 import PostMongo from '../../../helpers/postMongo';
 
-const ItemForm = ({ user, items, allItems }) => {
+const ItemForm = ({ user }) => {
   const { itemEntry } = PostMongo();
 
   const [_id, setItemid] = useState('');
@@ -73,100 +73,91 @@ const ItemForm = ({ user, items, allItems }) => {
     setItemid(itemId);
   };
 
-  if (user) {
-    return (
-      <div className="form-parent">
-        <form className="create">
-          <FetchItemID
-            onId={itemId}
-            user={user}
-            items={items}
-            Allitems={allItems}
-          />
-          {error && <div className="error">{error}</div>}
-          <div className="Form-Sections">
-            <div className="FormBoxes">
-              <div className="Item-form-Row">
-                <label>Item:</label>
-                <Suggestions onChange={itemName} user={user} />
-              </div>
-
-              <div className="Item-form-Row">
-                <label>Description:</label>
-                <textarea
-                  onChange={(e) => setDesc(e.target.value)}
-                  value={desc}
-                  className="Input-Box"
-                ></textarea>
-              </div>
-
-              <div className="Item-form-Row">
-                <label>Place found:</label>
-                <input
-                  type="text"
-                  onChange={(e) => setPlace(e.target.value)}
-                  value={place}
-                  className="Input-Box"
-                />
-              </div>
-
-              <div className="Item-form-Row">
-                <label>Date:</label>
-                <input
-                  type="date"
-                  onChange={(e) => setDate(e.target.value)}
-                  value={date}
-                  className="Input-Box"
-                />
-              </div>
-
-              <div className="Item-form-Row">
-                <label>Submitted by</label>
-                <input
-                  type="text"
-                  onChange={(e) => setSubmitedBy(e.target.value)}
-                  value={submitedBy}
-                  className="Input-Box"
-                />
-              </div>
-
-              <div className="Item-form-Row">
-                <label>Registration number / Employee id:</label>
-                <input
-                  type="text"
-                  onChange={(e) => setRegId(e.target.value)}
-                  value={regId}
-                  className="Input-Box"
-                />
-              </div>
-              <div className="Item-form-Row">
-                <label>Phone number</label>
-                <input
-                  type="text"
-                  onChange={(e) => setPhone(e.target.value)}
-                  value={phone}
-                  className="Input-Box"
-                />
-              </div>
-
-              <div className="Item-form-Row add-btn-container">
-                {isLoading ? (
-                  <AddItemLoader />
-                ) : (
-                  <div className="Returned-btn" onClick={handleSubmit}>
-                    Save
-                  </div>
-                )}
-              </div>
+  return (
+    <div className="form-parent">
+      <form className="create">
+        <FetchItemID onId={itemId} />
+        {error && <div className="error">{error}</div>}
+        <div className="Form-Sections">
+          <div className="FormBoxes">
+            <div className="Item-form-Row">
+              <label>Item:</label>
+              <Suggestions onChange={itemName} user={user} />
             </div>
-            <Camera onImage={imageName} />
+
+            <div className="Item-form-Row">
+              <label>Description:</label>
+              <textarea
+                onChange={(e) => setDesc(e.target.value)}
+                value={desc}
+                className="Input-Box"
+              ></textarea>
+            </div>
+
+            <div className="Item-form-Row">
+              <label>Place found:</label>
+              <input
+                type="text"
+                onChange={(e) => setPlace(e.target.value)}
+                value={place}
+                className="Input-Box"
+              />
+            </div>
+
+            <div className="Item-form-Row">
+              <label>Date:</label>
+              <input
+                type="date"
+                onChange={(e) => setDate(e.target.value)}
+                value={date}
+                className="Input-Box"
+              />
+            </div>
+
+            <div className="Item-form-Row">
+              <label>Submitted by</label>
+              <input
+                type="text"
+                onChange={(e) => setSubmitedBy(e.target.value)}
+                value={submitedBy}
+                className="Input-Box"
+              />
+            </div>
+
+            <div className="Item-form-Row">
+              <label>Registration number / Employee id:</label>
+              <input
+                type="text"
+                onChange={(e) => setRegId(e.target.value)}
+                value={regId}
+                className="Input-Box"
+              />
+            </div>
+            <div className="Item-form-Row">
+              <label>Phone number</label>
+              <input
+                type="text"
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
+                className="Input-Box"
+              />
+            </div>
+
+            <div className="Item-form-Row add-btn-container">
+              {isLoading ? (
+                <AddItemLoader />
+              ) : (
+                <div className="Returned-btn" onClick={handleSubmit}>
+                  Save
+                </div>
+              )}
+            </div>
           </div>
-        </form>
-      </div>
-    );
-  } else {
-    return <NonAdmin />;
-  }
+          <Camera onImage={imageName} />
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default ItemForm;

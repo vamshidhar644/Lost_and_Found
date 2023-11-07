@@ -8,7 +8,7 @@ import ItemForm from './pages/admin/ItemEntry/ItemForm';
 import AllEntries from './pages/admin/AllItems/AllEntries';
 import ChangePassword from './pages/admin/Profile/changePassword';
 import AdminHome from './pages/admin/Admin_Home';
-import Login from './pages/admin/login/Login';
+import MainLogin from './pages/login/MainLogin';
 import ItemTypes from './pages/items/ItemTypes';
 import { useEffect } from 'react';
 import Items from './pages/items/Items';
@@ -31,34 +31,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" basename="Lost_and_Found">
       <BrowserRouter>
         <Navbar user={user} />
         <div className="pages">
           <Routes>
             <Route
               path="/"
-              element={user ? <AdminHome /> : <Navigate to="/items" />}
+              element={user ? <AdminHome /> : <Navigate to="/login" />}
             />
 
             <Route
               path="/item-entry"
-              element={
-                <ItemForm user={user} items={items} allItems={Allitems} />
-              }
+              element={user ? <ItemForm /> : <Navigate to="/login" />}
             />
 
             <Route path="/items" element={<Items itemTypes={itemTypes} />} />
 
             <Route
               path="/login"
-              element={!user ? <Login /> : <Navigate to="/" />}
+              element={!user ? <MainLogin /> : <Navigate to="/" />}
             />
 
             <Route
               path="/itemTypes/return-item"
               element={
-                user ? <ReturnItem user={user} /> : <Navigate to="/items" />
+                user ? <ReturnItem user={user} /> : <Navigate to="/login" />
               }
             />
 
@@ -73,7 +71,16 @@ function App() {
                 user ? <ChangePassword user={user} /> : <Navigate to="/" />
               }
             />
-            <Route path="/all-entries" element={<AllEntries user={user} />} />
+            <Route
+              path="/all-entries"
+              element={
+                user ? (
+                  <AllEntries user={user} items={items} Allitems={Allitems} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>
