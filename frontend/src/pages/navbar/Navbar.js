@@ -39,7 +39,7 @@ const Navbar = ({ user }) => {
           </h1>
         </Link>
 
-        {user ? (
+        {user && user.role === 0 ? (
           <div className="login-logout">
             <span>{user.email} </span>
             <div
@@ -61,11 +61,17 @@ const Navbar = ({ user }) => {
               )}
             </div>
           </div>
+        ) : user && user.role === 1 ? (
+          <div className="login-logout">
+            <Link className="item-drop" onClick={handleClick}>
+              Logout
+            </Link>
+          </div>
         ) : (
           <></>
         )}
       </div>
-      {user && (
+      {user && user.role === 0 && (
         <div className="sub-navbar">
           <ul>
             <li>

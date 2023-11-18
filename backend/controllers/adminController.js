@@ -17,7 +17,7 @@ const loginAdmin = async (req, res) => {
     // create a token
     const token = createToken(admin._id);
 
-    res.status(200).json({ email, password, token });
+    res.status(200).json({ token, role: 0 });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -35,8 +35,8 @@ const signupAdmin = async (req, res) => {
     }
     if (!emailPattern.test(email)) {
       res.status(400).json({ erro: 'Use VIT-AP University mail' });
-    } 
-    
+    }
+
     // if (!validator.isStrongPassword(password)) {
     //   throw Error('Password in not strong enough');
     // }

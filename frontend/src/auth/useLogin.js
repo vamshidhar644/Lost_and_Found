@@ -6,13 +6,15 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = UseAuthContext();
 
-  const login = async (email, password) => {
+  const login = async (email, password, role) => {
     setIsLoading(true);
     setError(null);
 
-    const backend_path = 'https://lf-backend-aaqr.onrender.com';
+    // console.log(email, password, role);
+    // const backend_path = 'https://lf-backend-aaqr.onrender.com';
+    const backend_path = 'http://localhost:4000';
 
-    const response = await fetch(`${backend_path}/api/admin/login`, {
+    const response = await fetch(`${backend_path}/api/${role}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -24,7 +26,7 @@ export const useLogin = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem('admin', JSON.stringify(json));
+      localStorage.setItem('user', JSON.stringify(json));
 
       dispatch({ type: 'LOGIN', payload: json });
     }

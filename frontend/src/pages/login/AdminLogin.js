@@ -9,8 +9,9 @@ const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(email, password);
 
-    await login(email, password);
+    await login(email, password, 'admin');
   };
   return (
     <div className="login-Container" onSubmit={handleSubmit}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminLogin from './AdminLogin';
+import UserLogin from './UserLogin';
 
 const MainLogin = () => {
   return (
@@ -7,7 +8,7 @@ const MainLogin = () => {
       <div className="d-flex ">
         <div>
           User Login
-          <button>Continue with Google</button>
+          <UserLogin />
         </div>
 
         <div>

@@ -15,6 +15,7 @@ import Items from './pages/items/Items';
 
 function App() {
   const { user } = UseAuthContext();
+
   const {
     fetchItems,
     fetchItemTypes,
@@ -38,12 +39,22 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <AdminHome /> : <Navigate to="/login" />}
+              element={
+                user && user.role === 0 ? (
+                  <AdminHome />
+                ) : user && user.role === 1 ? (
+                  <Items />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
             />
 
             <Route
               path="/item-entry"
-              element={user ? <ItemForm /> : <Navigate to="/login" />}
+              element={
+                user && user === 0 ? <ItemForm /> : <Navigate to="/login" />
+              }
             />
 
             <Route path="/items" element={<Items itemTypes={itemTypes} />} />
