@@ -7,6 +7,7 @@ import RandomIcon from '../../Components/shapeGenerators/ShapeGenerator';
 import './Items.css';
 
 const Items = ({ itemTypes }) => {
+  // console.log(itemTypes);
   return (
     <div className="itemList-Container">
       <div className="item-list">
@@ -30,7 +31,7 @@ const Items = ({ itemTypes }) => {
                 >
                   <RandomIcon />
                 </Link>
-                {itemType.itemType} 
+                {itemType.itemType}
               </div>
             );
           })

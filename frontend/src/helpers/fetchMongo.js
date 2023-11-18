@@ -11,7 +11,8 @@ const fetchMongo = () => {
   const { items, dispatch } = UseItemsContext();
   const { Allitems, Alldispatch } = UseAllentriesContext();
 
-  const backend_path = 'https://lf-backend-aaqr.onrender.com';
+  // const backend_path = 'https://lf-backend-aaqr.onrender.com';
+  const backend_path = 'http://localhost:4000'
 
   const fetchItems = async () => {
     const response = await fetch(`${backend_path}/api/items`);

@@ -33,7 +33,14 @@ const ItemTypes = ({ user, items }) => {
         <div className="all-items">
           {filteredArray ? (
             filteredArray.map((item) => {
-              return <ItemDetails key={item._id} item={item} user={user} />;
+              return (
+                <ItemDetails
+                  key={item._id}
+                  item={item}
+                  user={user}
+                  type={itemType}
+                />
+              );
             })
           ) : <ItemLoader /> ? (
             <div>No {itemType} found</div>

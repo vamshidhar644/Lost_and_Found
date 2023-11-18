@@ -5,7 +5,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect } from 'react';
 import './itemDetails.css';
 
-const ItemDetails = ({ item, user }) => {
+const ItemDetails = ({ item, user, type }) => {
   const [imgSrc, setImageSrc] = useState();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ItemDetails = ({ item, user }) => {
       <div className="details-box">
         <h4>{item.name} </h4>
         <p>{item._id}</p>
-        {user && (
+        {user && user.role === 0 && (
           <div>
             <p>
               <strong>
@@ -44,8 +44,8 @@ const ItemDetails = ({ item, user }) => {
           {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
         </p> */}
       </div>
-      <div className="details-box2"> 
-        {user && (
+      <div className="details-box2">
+        {user && user.role === 0 ? (
           <Link
             className="Returns-btn"
             to="/itemTypes/return-item"
@@ -62,6 +62,14 @@ const ItemDetails = ({ item, user }) => {
           >
             <img src={imgSrc} alt="not uploaded" className="image-container" />
           </Link>
+        ) : (
+          <Link
+            className="Returns-btn"
+            to={`/items/${type}/${item._id}`}
+            state={{
+              _id: item._id,
+            }}
+          ></Link>
         )}
       </div>
     </div>
