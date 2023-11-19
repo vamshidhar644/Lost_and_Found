@@ -9,8 +9,9 @@ const itemRoutes = require('./routes/items');
 const userRoutes = require('./routes/user');
 const all_itemRoutes = require('./routes/all_items');
 const itemTypeRoutes = require('./routes/itemType');
+const requestRoutes = require('./routes/requests');
 
-// Express app 
+// Express app
 const app = express();
 
 // middleware
@@ -22,12 +23,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// routes
+// routes 
 app.use('/api/admin', adminRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/all_items', all_itemRoutes);
 app.use('/api/itemTypes', itemTypeRoutes);
+app.use('/api/requests', requestRoutes);
 
 mongoose.set('strictQuery', false);
 

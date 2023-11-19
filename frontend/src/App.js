@@ -53,12 +53,19 @@ function App() {
 
             <Route
               path="/item-entry"
-              element={
-                user && user === 0 ? <ItemForm /> : <Navigate to="/login" />
-              }
+              element={user ? <ItemForm /> : <Navigate to="/login" />}
             />
 
-            <Route path="/items" element={<Items itemTypes={itemTypes} />} />
+            <Route
+              path="/items"
+              element={
+                user ? (
+                  <Items itemTypes={itemTypes} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
 
             <Route
               path="/login"
@@ -68,27 +75,50 @@ function App() {
             <Route
               path="/itemTypes/return-item"
               element={
-                user ? <ReturnItem user={user} /> : <Navigate to="/login" />
+                user && user.role === 0 ? (
+                  <ReturnItem user={user} />
+                ) : (
+                  <Navigate to="/login" />
+                )
               }
             />
 
             <Route
               path="/items/:itemType"
-              element={<ItemTypes user={user} items={items} />}
+              element={
+                user ? (
+                  <ItemTypes user={user} items={items} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
             />
 
-            <Route path="/items/:type/:item_id" element={<RequestPage />} />
+            <Route
+              path="/items/:type/:item_id"
+              element={
+                user && user.role === 1 ? (
+                  <RequestPage />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
 
             <Route
               path="/change-password"
               element={
-                user ? <ChangePassword user={user} /> : <Navigate to="/" />
+                user && user.role === 0 ? (
+                  <ChangePassword user={user} />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
             <Route
               path="/all-entries"
               element={
-                user ? (
+                user && user.role === 0 ? (
                   <AllEntries user={user} items={items} Allitems={Allitems} />
                 ) : (
                   <Navigate to="/login" />
