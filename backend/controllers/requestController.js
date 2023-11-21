@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Requests = require('../models/requestModels');
 const Items = require('../models/ItemModel');
-const users = require('../models/userModel');
+const Users = require('../models/userModel');
 
 // GET all requests
 const getRequests = async (req, res) => {
@@ -36,31 +36,37 @@ const createRequest = async (req, res) => {
     image,
   } = req.body;
 
-  // add doc to db
-
   const status = 'pending';
 
-  const item = await Items.findOne({ _id: item_id });
+  try {
+    const item = await Items.findOne({ _id: item_id });
 
-  if (!item) {
-    res.status(404).json({ error: 'Item not exists' });
-    return;
+    if (!item) {
+      res.status(404).json({ error: 'Item not exists' });
+      return;
+    }
+
+    const request = await Requests.create({
+      req_id,
+      req_date,
+      item_id,
+      req_email,
+      regNo_empId,
+      req_name,
+      lost_date,
+      req_desc,
+      image,
+      status,
+    });
+
+    // Update "items" collection with the req_id
+    await Items.updateOne({ _id: item_id }, { $push: { requests: req_id } });
+
+    res.status(200).json(request);
+  } catch (error) {
+    console.error('Error adding request:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-
-  const request = await Requests.create({
-    req_id,
-    req_date,
-    item_id,
-    req_email,
-    regNo_empId,
-    req_name,
-    lost_date,
-    req_desc,
-    image,
-    status,
-  });
-
-  res.status(200).json(request);
 };
 
 // delete a request

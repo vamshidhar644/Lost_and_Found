@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-
 const itemSchema = new Schema(
   {
     _id: {
@@ -56,6 +55,10 @@ const itemSchema = new Schema(
     father_phone: {
       type: String,
       required: true,
+    },
+    requests: {
+      type: [String], // Assuming req_id is of type String, modify accordingly
+      default: [],
     },
   },
   { timestamps: true }

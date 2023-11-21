@@ -8,7 +8,6 @@ const {
 } = require('../controllers/ItemControllers');
 
 
-// const uploads = require('../middleware/imageUpload');
 // const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();

@@ -10,7 +10,7 @@ const itemSchema = new Schema(
     },
     name: {
       type: String,
-      required: true, 
+      required: true,
     },
     desc: {
       type: String,
@@ -40,9 +40,12 @@ const itemSchema = new Schema(
       type: String,
       required: true,
     },
+    requests: {
+      type: [String], // Assuming req_id is of type String, modify accordingly
+      default: [],
+    },
   },
   { timestamps: true }
 );
-
 
 module.exports = mongoose.model('Items', itemSchema);
