@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import './ItemForm.css';
 
-import NonAdmin from '../../NonAdmin';
 import Suggestions from '../../../Components/suggestions/Suggestions';
 import { AddItemLoader } from '../../../Components/Loaders/AddItemLoader';
 import Camera from '../../../Components/camera/CaptureCamera';
