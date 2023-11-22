@@ -10,8 +10,8 @@ const PostMongo = () => {
 
   const { user } = UseAuthContext(0);
 
-  // const backend_path = 'https://lf-backend-aaqr.onrender.com';
-  const backend_path = 'localhost:4000';
+  const backend_path = 'https://lf-backend-aaqr.onrender.com';
+  // const backend_path = 'localhost:4000';
 
   const itemEntry = async (itemDetais) => {
     const response = await fetch(`${backend_path}/api/items`, {
