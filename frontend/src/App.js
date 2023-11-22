@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App" basename="Lost_and_Found">
+    <div className="App">
       <BrowserRouter>
         <Navbar user={user} />
         <div className="pages">
