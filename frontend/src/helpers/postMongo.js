@@ -8,12 +8,12 @@ const PostMongo = () => {
   const { Alldispatch } = UseAllentriesContext();
   const navigate = useNavigate();
 
-  const { user } = UseAuthContext(0);
+  // const { user } = UseAuthContext(0);
 
   // const backend_path = 'https://lf-backend-aaqr.onrender.com';
-  const backend_path = 'localhost:4000';
+  const backend_path = 'http://localhost:4000';
 
-  const itemEntry = async (itemDetais) => {
+  const itemEntry = async (itemDetais, user) => {
     const response = await fetch(`${backend_path}/api/items`, {
       method: 'POST',
       body: JSON.stringify(itemDetais),
@@ -32,7 +32,9 @@ const PostMongo = () => {
     }
   };
 
-  const itemReturn = async (itemDetais) => {
+  const itemReturn = async (itemDetais, user) => {
+    // console.log(itemDetais, user);
+
     const Addresponse = await fetch(`${backend_path}/api/all_items`, {
       method: 'POST',
       body: JSON.stringify(itemDetais),
@@ -49,21 +51,39 @@ const PostMongo = () => {
     if (Addresponse.ok) {
       Alldispatch({ type: 'CREATE_ITEM', payload: Addjson });
 
-      const response = await fetch('/api/items/' + itemDetais._id, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-      if (response.ok) {
-        dispatch({ type: 'DELETE_ITEM', payload: json });
-      }
+      deleteItem(itemDetais._id, user);
       navigate('/items');
     }
   };
 
-  return { itemEntry, itemReturn };
+  const deleteItem = async (id, user) => {
+    const response = await fetch(`${backend_path}/api/items/` + id, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    const json = await response.json();
+    if (response.ok) {
+      dispatch({ type: 'DELETE_ITEM', payload: json });
+    }
+  };
+
+  const deleteAllItem = async (id, user) => {
+    const response = await fetch(`${backend_path}/api/all_items/` + id, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await response.json();
+    if (response.ok) {
+      Alldispatch({ type: 'DELETE_ITEM', payload: json });
+    }
+  };
+
+  return { itemEntry, itemReturn, deleteItem, deleteAllItem };
 };
 
 export default PostMongo;

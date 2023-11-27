@@ -103,6 +103,15 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
     transform: scale(0.98);
   }
 
+  .delete__btn{
+    font-size: 24px;
+  }
+
+  .delete__btn:hover{
+    color: #c82800;
+    cursor: pointer;
+  }
+
 /* Smart phones */
 @media screen and (max-width: 600px) {
     .styled-table{

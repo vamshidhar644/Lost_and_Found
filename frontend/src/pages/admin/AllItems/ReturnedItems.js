@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import DownloadTable from '../../../helpers/downloadTable';
+import PostMongo from '../../../helpers/postMongo';
+import { MdDelete } from 'react-icons/md';
 
-const ReturnedItems = ({ Allitems }) => {
+const ReturnedItems = ({ Allitems, user }) => {
   const { download } = DownloadTable();
+
+  const { deleteAllItem } = PostMongo();
 
   const [AllstartDate, setAllStartDate] = useState('');
   const [AllendDate, setAllEndDate] = useState('');
@@ -31,6 +35,7 @@ const ReturnedItems = ({ Allitems }) => {
               </th>
               <th style={{ textAlign: 'center' }}>Phone number (Recieved)</th>
               <th style={{ textAlign: 'center' }}>Father Phone</th>
+              <th style={{ textAlign: 'center' }}>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +55,12 @@ const ReturnedItems = ({ Allitems }) => {
                   <td>{item.recievedBy_regId}</td>
                   <td>{item.recievedBy_phone}</td>
                   <td>{item.father_phone}</td>
+                  <td
+                    onClick={() => deleteAllItem(item._id, user)}
+                    className="delete__btn"
+                  >
+                    <MdDelete />
+                  </td>
                 </tr>
               ))}
           </tbody>

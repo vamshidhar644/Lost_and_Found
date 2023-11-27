@@ -7,13 +7,9 @@ const {
   updateItem,
 } = require('../controllers/ItemControllers');
 
-
-// const requireAuth = require('../middleware/requireAuth');
+const adminAuth = require('../middleware/adminAuth');
 
 const router = express.Router();
-
-// require auth for all item routes
-// router.use(requireAuth);
 
 // GET all items
 router.get('/', getItems);
@@ -22,7 +18,7 @@ router.get('/', getItems);
 router.get('/:id', getItem);
 
 // POST a new item
-router.post('/', createItem);
+router.post('/', adminAuth, createItem);
 
 // DELETE a item
 router.delete('/:id', deleteItem);

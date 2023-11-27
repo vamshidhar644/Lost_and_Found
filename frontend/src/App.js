@@ -29,8 +29,8 @@ function App() {
   useEffect(() => {
     fetchItems();
     fetchItemTypes();
-    fetchAllItems();
-  }, []);
+    user && fetchAllItems(user);
+  }, [user]);
 
   return (
     <div className="App" basename="Lost_and_Found">
@@ -53,7 +53,9 @@ function App() {
 
             <Route
               path="/item-entry"
-              element={user ? <ItemForm /> : <Navigate to="/login" />}
+              element={
+                user ? <ItemForm user={user} /> : <Navigate to="/login" />
+              }
             />
 
             <Route

@@ -7,27 +7,23 @@ const {
   update_AllItem,
 } = require('../controllers/All_ItemController');
 
-// const requireAuth = require('../middleware/requireAuth');
-
+const adminAuth = require('../middleware/adminAuth');
 
 const router = express.Router();
 
-// require auth for all item routes
-// router.use(requireAuth);
-
 // GET all items
-router.get('/', get_AllItems);
+router.get('/', adminAuth, get_AllItems);
 
 //GET a single item
-router.get('/:id', get_AllItem);
+router.get('/:id', adminAuth, get_AllItem);
 
 // POST a new item
-router.post('/', create_AllItem);
+router.post('/', adminAuth, create_AllItem);
 
 // DELETE a item
-router.delete('/:id', delete_AllItem);
+router.delete('/:id', adminAuth, delete_AllItem);
 
 // UPDATE a item
-router.patch('/:id', update_AllItem);
+router.patch('/:id', adminAuth, update_AllItem);
 
 module.exports = router;

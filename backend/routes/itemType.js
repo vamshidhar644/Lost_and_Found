@@ -7,13 +7,9 @@ const {
   updateItemType,
 } = require('../controllers/ItemTypeController');
 
-// const requireAuth = require('../middleware/requireAuth');
-
+const adminAuth = require('../middleware/adminAuth');
 
 const router = express.Router();
-
-// require auth for all item routes
-// router.use(requireAuth);
 
 // GET all items
 router.get('/', getItemTypes);

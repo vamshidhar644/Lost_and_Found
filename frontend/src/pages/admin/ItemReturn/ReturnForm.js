@@ -31,9 +31,6 @@ const ReturnItem = ({ user }) => {
 
     const handleClick = async (e) => {
       e.preventDefault();
-      if (!user) {
-        return;
-      }
 
       const itemDetais = {
         _id,
@@ -51,7 +48,9 @@ const ReturnItem = ({ user }) => {
         father_phone,
       };
 
-      itemReturn(itemDetais);
+      if (user) {
+        await itemReturn(itemDetais, user);
+      }
     };
 
     return (
@@ -142,9 +141,6 @@ const ReturnItem = ({ user }) => {
               <div className="Return-btn" onClick={handleClick}>
                 Return
               </div>
-              {/* <div className="Return-btn">
-              <Link to="/items">Back</Link>
-            </div> */}
             </div>
           </div>
         </div>

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import DownloadTable from '../../../helpers/downloadTable';
+import PostMongo from '../../../helpers/postMongo';
 
-const NotReturnedItems = ({ items }) => {
+import { MdDelete } from 'react-icons/md';
+
+const NotReturnedItems = ({ items, user }) => {
   const { download } = DownloadTable();
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  console.log(items);
+  const { deleteItem } = PostMongo();
+
+  // console.log(items);
 
   return (
     <>
@@ -27,6 +32,7 @@ const NotReturnedItems = ({ items }) => {
                 Registration number / Employee id
               </th>
               <th style={{ textAlign: 'center' }}>Phone number</th>
+              <th style={{ textAlign: 'center' }}>Delete</th>
               {/* <th></th> */}
             </tr>
           </thead>
@@ -43,6 +49,12 @@ const NotReturnedItems = ({ items }) => {
                     <td>{item.submitedBy}</td>
                     <td>{item.regId}</td>
                     <td>{item.phone}</td>
+                    <td
+                      onClick={() => deleteItem(item._id, user)}
+                      className="delete__btn"
+                    >
+                      <MdDelete />
+                    </td>
                   </tr>
                 );
               })}

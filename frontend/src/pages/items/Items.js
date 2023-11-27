@@ -12,7 +12,7 @@ const Items = ({ itemTypes }) => {
     <div className="itemList-Container">
       <div className="item-list">
         <div className="itemtype-item">
-          <Link className="option-type" to="All Items">
+          <Link className="option-type" to="/items/All Items">
             <BsBorderAll />
           </Link>
           All items

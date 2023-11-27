@@ -41,7 +41,6 @@ const ItemForm = ({ user }) => {
       imgpath,
     };
 
-    console.log(itemDetais);
     if (
       _id === '' ||
       name === '' ||
@@ -55,7 +54,7 @@ const ItemForm = ({ user }) => {
     ) {
       setError('Please fill all the fields');
     } else {
-      itemEntry(itemDetais);
+      await itemEntry(itemDetais, user);
       setIsLoading(true);
     }
   };

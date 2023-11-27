@@ -22,78 +22,22 @@ const get_AllItem = async (req, res) => {
   res.status(200).json(item);
 };
 
-
 // create new item
 const create_AllItem = async (req, res) => {
-  const {
-    _id,
-    name,
-    desc, 
-    place_found,
-    submited_date,
-    submitedBy_Name,
-    submitedBy_regId,
-    submitedBy_phone,
-    recieved_date,
-    recievedBy_Name,
-    recievedBy_regId,
-    recievedBy_phone,
-    father_phone,
-  } = req.body;
-
-  let emptyFields = [];
-
-  if (!recievedBy_Name) {
-    emptyFields.push('recievedBy_Name');
-  }
-  if (!recieved_date) {
-    emptyFields.push('recieved_date');
-  }
-  if (!recievedBy_regId) {
-    emptyFields.push('recievedBy_regId');
-  }
-  if (!recievedBy_phone) {
-    emptyFields.push('recievedBy_phone');
-  }
-  if (!father_phone) {
-    emptyFields.push('father_phone');
-  }
-
-  if (emptyFields.length > 0) {
-    return res
-      .status(400)
-      .json({ error: 'Please fill in all the Fields', emptyFields });
-  }
-
-  // add doc to db
   try {
-    const item = await Item.create({
-      _id,
-      name,
-      desc,
-      place_found,
-      submited_date,
-      submitedBy_Name,
-      submitedBy_regId,
-      submitedBy_phone,
-      recieved_date,
-      recievedBy_Name,
-      recievedBy_regId,
-      recievedBy_phone,
-      father_phone,
-    });
-    res.status(200).json(item);
+    const itemDetails = req.body; // Assuming the data is sent in the request body
+    const newItem = new Item(itemDetails);
+    await newItem.save();
+    res.status(201).json({ message: 'Item added successfully' });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
 // delete a item
 const delete_AllItem = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.id.status(404).json({ error: 'No such item' });
-  }
 
   const item = await Item.findOneAndDelete({ _id: id });
   if (!item) {
