@@ -1,4 +1,3 @@
-import { UseAuthContext } from '../auth/useAuthContext';
 import {
   UseAllentriesContext,
   UseItemTypesContext,

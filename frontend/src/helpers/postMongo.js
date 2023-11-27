@@ -34,7 +34,6 @@ const PostMongo = () => {
 
   const itemReturn = async (itemDetais, user) => {
     // console.log(itemDetais, user);
-
     const Addresponse = await fetch(`${backend_path}/api/all_items`, {
       method: 'POST',
       body: JSON.stringify(itemDetais),
@@ -83,7 +82,26 @@ const PostMongo = () => {
     }
   };
 
-  return { itemEntry, itemReturn, deleteItem, deleteAllItem };
+  const createRequest = async (requestDetails, user) => {
+    const response = await fetch(`${backend_path}/api/requests`, {
+      method: 'POST',
+      body: JSON.stringify(requestDetails),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+    }
+    if (response.ok) {
+      console.log(json);
+      navigate('/items');
+    }
+  };
+
+  return { itemEntry, itemReturn, deleteItem, deleteAllItem, createRequest };
 };
 
 export default PostMongo;

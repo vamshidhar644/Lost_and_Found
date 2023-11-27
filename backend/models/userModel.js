@@ -12,6 +12,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  requests: {
+    type: [String], // Assuming req_id is of type String, modify accordingly
+    default: [],
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);

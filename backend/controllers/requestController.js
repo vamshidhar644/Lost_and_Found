@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Requests = require('../models/requestModels');
 const Items = require('../models/ItemModel');
-const Users = require('../models/userModel');
+const User = require('../models/userModel');
 
 // GET all requests
 const getRequests = async (req, res) => {
@@ -40,6 +40,12 @@ const createRequest = async (req, res) => {
 
   try {
     const item = await Items.findOne({ _id: item_id });
+    const user = await User.findOne({ email: req_email });
+
+    if (!user) {
+      res.status(404).json({ error: 'User does not exists' });
+      return;
+    }
 
     if (!item) {
       res.status(404).json({ error: 'Item not exists' });
@@ -61,6 +67,7 @@ const createRequest = async (req, res) => {
 
     // Update "items" collection with the req_id
     await Items.updateOne({ _id: item_id }, { $push: { requests: req_id } });
+    await User.updateOne({ email: req_email }, { $push: { requests: req_id } });
 
     res.status(200).json(request);
   } catch (error) {

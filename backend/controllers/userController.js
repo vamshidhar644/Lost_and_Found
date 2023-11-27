@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
     const token = createToken(user._id);
 
     if (existingUser) {
-      return res.status(200).json({ token, role: 1 });
+      return res.status(200).json({ email, token, role: 1 });
     }
 
     await user.save();
