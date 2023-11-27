@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import {
   UseAllentriesContext,
   UseItemTypesContext,
   UseItemsContext,
 } from '../context/useContexts';
 
-const fetchMongo = () => {
+const FetchMongo = () => {
   // const { user } = UseAuthContext();
   const { itemTypes, itemTypedispatch } = UseItemTypesContext();
   const { items, dispatch } = UseItemsContext();
   const { Allitems, Alldispatch } = UseAllentriesContext();
+  const [requests, setRequests] = useState();
 
   // const backend_path = 'https://lf-backend-aaqr.onrender.com';
   const backend_path = 'http://localhost:4000';
@@ -45,14 +47,26 @@ const fetchMongo = () => {
     }
   };
 
+  const fetchRequests = async () => {
+    const Reqresponse = await fetch(`${backend_path}/api/requests`);
+
+    const json = await Reqresponse.json();
+
+    if (Reqresponse.ok) {
+      setRequests(json);
+    }
+  };
+
   return {
     fetchItemTypes,
     fetchAllItems,
     fetchItems,
+    fetchRequests,
     items,
     Allitems,
     itemTypes,
+    requests,
   };
 };
 
-export default fetchMongo;
+export default FetchMongo;

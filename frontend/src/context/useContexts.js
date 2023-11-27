@@ -2,6 +2,7 @@ import { ItemsContext } from './ItemContext';
 import { ItemTypesContext } from './ItemTypeContext';
 import { AllEntriesContext } from '../context/AllEntriesContext';
 import { useContext } from 'react';
+import { RequestContext } from './RequestContext';
 
 export const UseItemsContext = () => {
   const context = useContext(ItemsContext);
@@ -36,3 +37,13 @@ export const UseAllentriesContext = () => {
 
   return context;
 };
+
+// export const UseRequestsContext = () => {
+//   const context = useContext(RequestContext);
+
+//   if (!context) {
+//     throw Error(
+//       'useRequestsContext must be used inside an RequestsContextProvider'
+//     );
+//   }
+// };

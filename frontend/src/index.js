@@ -6,6 +6,7 @@ import { ItemsContextProvider } from './context/ItemContext';
 import { AuthContextProvider } from './auth/AuthContext';
 import { AllItemsContextProvider } from './context/AllEntriesContext';
 import { ItemTypeContextProvider } from './context/ItemTypeContext';
+// import { RequestsContextProvider } from './context/RequestContext';
 // import "antd/dist/antd.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,9 @@ root.render(
       <AllItemsContextProvider>
         <ItemsContextProvider>
           <ItemTypeContextProvider>
+            {/* <RequestsContextProvider> */}
             <App />
+            {/* </RequestsContextProvider> */}
           </ItemTypeContextProvider>
         </ItemsContextProvider>
       </AllItemsContextProvider>

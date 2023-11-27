@@ -11,6 +11,9 @@ const Admin_Home = () => {
       <Link className="card" to="items">
         Item Return
       </Link>
+      <Link className="card" to="requests">
+        Requests
+      </Link>
       <Link className="card" to="all-entries">
         All Entries
       </Link>

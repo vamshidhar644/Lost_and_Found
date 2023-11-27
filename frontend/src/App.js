@@ -13,6 +13,7 @@ import ItemTypes from './pages/items/ItemTypes';
 import { useEffect } from 'react';
 import Items from './pages/items/Items';
 import RequestPage from './pages/user/RequestPage';
+import Requests from './pages/admin/Requests/Requests';
 
 function App() {
   const { user } = UseAuthContext();
@@ -43,9 +44,11 @@ function App() {
               element={
                 user && user.role === 0 ? (
                   <AdminHome />
-                ) : user && user.role === 1 ? <Navigate to='/items'/> : 
+                ) : user && user.role === 1 ? (
+                  <Navigate to="/items" />
+                ) : (
                   <Navigate to="/login" />
-                
+                )
               }
             />
 
@@ -120,6 +123,17 @@ function App() {
               element={
                 user && user.role === 0 ? (
                   <AllEntries user={user} items={items} Allitems={Allitems} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+
+            <Route
+              path="/requests"
+              element={
+                user && user.role === 0 ? (
+                  <Requests />
                 ) : (
                   <Navigate to="/login" />
                 )

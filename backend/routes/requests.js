@@ -14,10 +14,10 @@ const userAuth = require('../middleware/requireAuth');
 const router = express.Router();
 
 // GET all items
-router.get('/', adminAuth, getRequests);
+router.get('/', getRequests);
 
 //GET a single item
-router.get('/:id', adminAuth, getRequest);
+router.get('/:id', getRequest);
 
 // POST a new item
 router.post('/', userAuth, createRequest);
