@@ -33,7 +33,7 @@ function App() {
   }, [user]);
 
   return (
-    <div className="App" basename="Lost_and_Found">
+    <div className="App">
       <BrowserRouter>
         <Navbar user={user} />
         <div className="pages">
@@ -43,11 +43,9 @@ function App() {
               element={
                 user && user.role === 0 ? (
                   <AdminHome />
-                ) : user && user.role === 1 ? (
-                  <Items itemTypes={itemTypes} />
-                ) : (
+                ) : user && user.role === 1 ? <Navigate to='/items'/> : 
                   <Navigate to="/login" />
-                )
+                
               }
             />
 
