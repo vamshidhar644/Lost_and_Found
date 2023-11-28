@@ -26,6 +26,6 @@ router.post('/', userAuth, createRequest);
 router.delete('/:id', userAuth, deleteRequest);
 
 // UPDATE a item
-router.patch('/:id', adminAuth, updateRequest);
+router.patch('/:id', updateRequest);
 
 module.exports = router;
