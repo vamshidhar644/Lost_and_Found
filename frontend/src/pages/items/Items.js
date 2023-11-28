@@ -3,10 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsBorderAll } from 'react-icons/bs';
 
-import RandomIcon from '../../Components/shapeGenerators/ShapeGenerator';
 import './Items.css';
 
 const Items = ({ itemTypes }) => {
+  const getFirstLetters = (str) => {
+    return str
+      .split(' ')
+      .filter((word) => word.length > 0)
+      .map((word) => word[0])
+      .join('');
+  };
   // console.log(itemTypes);
   return (
     <div className="itemList-Container">
@@ -29,7 +35,8 @@ const Items = ({ itemTypes }) => {
                   className="option-type"
                   to={`/items/${itemType.itemType}`}
                 >
-                  <RandomIcon />
+                  {getFirstLetters(itemType.itemType)}
+                  {/* <RandomIcon /> */}
                 </Link>
                 {itemType.itemType}
               </div>

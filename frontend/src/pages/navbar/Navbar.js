@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLogout } from '../../auth/useLogout';
 
 import './Navbar.css';
+import { NAVBAR_ITEMS } from '../../constants';
 
 const Navbar = ({ user }) => {
   const { logout } = useLogout();
@@ -41,7 +42,6 @@ const Navbar = ({ user }) => {
 
         {user && user.role === 0 ? (
           <div className="login-logout">
-            <span>{user.email} </span>
             <div
               className="dropdown-container"
               onClick={handleHoverClick}
@@ -63,9 +63,24 @@ const Navbar = ({ user }) => {
           </div>
         ) : user && user.role === 1 ? (
           <div className="login-logout">
-            <Link className="item-drop" onClick={handleClick}>
-              Logout
-            </Link>
+            <div
+              className="dropdown-container"
+              onClick={handleHoverClick}
+              ref={divRef}
+            >
+              <p>Profile</p>
+              {showDropdown && (
+                <div className="dropdown-items">
+                  <div className="arrow-down"></div>
+                  <Link className="item-drop" to="/my-requests">
+                    Requests
+                  </Link>
+                  <Link className="item-drop" onClick={handleClick}>
+                    Logout
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         ) : (
           <></>
@@ -74,18 +89,9 @@ const Navbar = ({ user }) => {
       {user && user.role === 0 && (
         <div className="sub-navbar">
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/item-entry">Item Entry</Link>
-            </li>
-            <li>
-              <Link to="/items">Item Return</Link>
-            </li>
-            <li>
-              <Link to="all-entries">All Data</Link>
-            </li>
+            {NAVBAR_ITEMS.map((nav, i) => {
+              <li key={i}>{nav.name}</li>;
+            })}
           </ul>
         </div>
       )}

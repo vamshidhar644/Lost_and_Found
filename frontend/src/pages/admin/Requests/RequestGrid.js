@@ -7,19 +7,18 @@ import PostMongo from '../../../helpers/postMongo';
 const RequestsGrid = ({ requests, user }) => {
   const { updateStatus } = PostMongo();
   const [statusFilter, setStatusFilter] = useState('all');
-  const [dateFilter, setDateFilter] = useState('');
 
   const handleStatusChange = async (reqId, newStatus) => {
     // Implement your logic to update the status in the state or make an API call
-    // await updateStatus(reqId, newStatus, user);
+    await updateStatus(reqId, newStatus, user);
   };
 
   const filteredRequests =
     requests &&
     requests.filter((req) => {
       const statusMatch = statusFilter === 'all' || req.status === statusFilter;
-      const dateMatch = !dateFilter || req.req_date.includes(dateFilter);
-      return statusMatch && dateMatch;
+
+      return statusMatch;
     });
 
   return (
@@ -33,15 +32,6 @@ const RequestsGrid = ({ requests, user }) => {
             <option value="approved">Approved</option>
             <option value="rejected">Rejected</option>
           </select>
-        </label>
-        <label>
-          Date:
-          <input
-            type="text"
-            value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
-            placeholder="YYYY-MM-DD"
-          />
         </label>
       </div>
       <div className="grid-container">
@@ -59,6 +49,7 @@ const RequestsGrid = ({ requests, user }) => {
                   onChange={(e) =>
                     handleStatusChange(req.req_id, e.target.value)
                   }
+                  defaultValue={req.status}
                 >
                   <option value="pending">Pending</option>
                   <option value="approved">Approved</option>

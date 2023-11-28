@@ -104,10 +104,33 @@ const updateRequest = async (req, res) => {
   res.status(200).json(request);
 };
 
+// get user requests
+const getUserReq = async (req, res) => {
+  try {
+    const email = req.params.email;
+
+    // Find the user by email
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Find requests for the user using the requestIds array
+    const requests = await Requests.find({ req_id: { $in: user.requests } });
+
+    res.json(requests);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   createRequest,
   getRequest,
   getRequests,
   deleteRequest,
   updateRequest,
+  getUserReq,
 };

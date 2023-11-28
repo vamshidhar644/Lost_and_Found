@@ -6,6 +6,7 @@ const {
   getRequest,
   deleteRequest,
   updateRequest,
+  getUserReq,
 } = require('../controllers/requestController');
 
 const adminAuth = require('../middleware/adminAuth');
@@ -18,6 +19,9 @@ router.get('/', getRequests);
 
 //GET a single item
 router.get('/:id', getRequest);
+
+// GET user requests
+router.get('/my-req/:email', getUserReq);
 
 // POST a new item
 router.post('/', userAuth, createRequest);

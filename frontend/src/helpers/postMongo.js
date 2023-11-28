@@ -101,7 +101,7 @@ const PostMongo = () => {
   const updateStatus = async (id, status, user) => {
     const response = await fetch(`${backend_path}/api/requests/` + id, {
       method: 'PATCH',
-      body: JSON.stringify(status),
+      body: JSON.stringify({ status }),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`,

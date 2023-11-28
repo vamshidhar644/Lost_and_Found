@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import Items from './pages/items/Items';
 import RequestPage from './pages/user/RequestPage';
 import Requests from './pages/admin/Requests/Requests';
+import MyRequests from './pages/user/MyRequests';
 
 function App() {
   const { user } = UseAuthContext();
@@ -136,6 +137,17 @@ function App() {
               element={
                 user && user.role === 0 ? (
                   <Requests user={user} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+
+            <Route
+              path="/my-requests"
+              element={
+                user && user.role === 1 ? (
+                  <MyRequests user={user} />
                 ) : (
                   <Navigate to="/login" />
                 )

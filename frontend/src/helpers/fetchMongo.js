@@ -12,9 +12,9 @@ const FetchMongo = () => {
   const { items, dispatch } = UseItemsContext();
   const { Allitems, Alldispatch } = UseAllentriesContext();
   const [requests, setRequests] = useState();
+  const [userReq, setUserReq] = useState();
 
-  const backend_path = 'https://lf-backend-aaqr.onrender.com';
-  // const backend_path = 'http://localhost:4000';
+  const backend_path = process.env.REACT_APP_BACKEND;
 
   const fetchItems = async () => {
     const response = await fetch(`${backend_path}/api/items`);
@@ -58,15 +58,38 @@ const FetchMongo = () => {
     }
   };
 
+  const fetchUserRequests = async (user) => {
+    const response = await fetch(
+      `${backend_path}/api/requests/my-req/` + user.email,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+
+    const json = await response.json();
+    if (!response.ok) {
+    }
+    if (response.ok) {
+      // console.log(json)/;
+      setUserReq(json);
+    }
+  };
+
   return {
     fetchItemTypes,
     fetchAllItems,
     fetchItems,
     fetchRequests,
+    fetchUserRequests,
     items,
     Allitems,
     itemTypes,
     requests,
+    userReq,
   };
 };
 
