@@ -23,7 +23,7 @@ const loginUser = async (req, res) => {
 
     await user.save();
 
-    res.status(201).json({ token, role: 1 });
+    res.status(201).json({ email, token, role: 1 });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
