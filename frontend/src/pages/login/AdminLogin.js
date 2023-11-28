@@ -14,26 +14,33 @@ const AdminLogin = () => {
     await login(email, password, 'admin');
   };
   return (
-    <div className="login-Container" onSubmit={handleSubmit}>
-      <form className="form">
-        <span className="signup">Login</span>
-        <input
-          type="email"
-          placeholder="Email address"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          className="form--input"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          className="form--input"
-        />
+    <div className="admin_login__container p-5">
+      <form className="admin__form d-flex flex-column" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <input
+            type="email"
+            className="form-control p-3"
+            id="adminEmail"
+            placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            type="password"
+            className="form-control p-3"
+            id="adminPassword"
+            placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </div>
 
-        <button className="form--submit">Login</button>
-        {error && <div className="error">{error}</div>}
+        <button type="submit" className="btn btn-primary p-3">
+          Login
+        </button>
+        {error && <div className="login__error mt-3">{error}</div>}
       </form>
     </div>
   );

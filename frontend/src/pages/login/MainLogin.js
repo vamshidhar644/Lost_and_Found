@@ -1,23 +1,40 @@
-import React from 'react';
-import AdminLogin from './AdminLogin';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Login.css'; // Import your custom CSS file
 import UserLogin from './UserLogin';
+import AdminLogin from './AdminLogin';
 
-const MainLogin = () => {
+const App = () => {
+  const [showUserLogin, setShowUserLogin] = useState(true);
+
+  const toggleLogin = () => {
+    setShowUserLogin(!showUserLogin);
+  };
+
   return (
-    <>
-      <div className="d-flex ">
-        <div>
+    <div className="container mt-5">
+      <div className="d-flex justify-content-center gap-3">
+        <button
+          className={`btn btn-outline-primary ${showUserLogin ? 'active' : ''}`}
+          onClick={() => toggleLogin()}
+        >
           User Login
-          <UserLogin />
-        </div>
-
-        <div>
+        </button>
+        <button
+          className={`btn btn-outline-primary ${
+            !showUserLogin ? 'active' : ''
+          }`}
+          onClick={() => toggleLogin()}
+        >
           Admin Login
-          <AdminLogin />
-        </div>
+        </button>
       </div>
-    </>
+
+      <div className="login__container mt-3 p-5">
+        {showUserLogin ? <UserLogin /> : <AdminLogin />}
+      </div>
+    </div>
   );
 };
 
-export default MainLogin;
+export default App;

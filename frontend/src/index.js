@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { ItemsContextProvider } from './context/ItemContext';
 import { AuthContextProvider } from './auth/AuthContext';
 import { AllItemsContextProvider } from './context/AllEntriesContext';

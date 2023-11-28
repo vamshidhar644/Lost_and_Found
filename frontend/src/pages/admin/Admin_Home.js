@@ -4,7 +4,7 @@ import './Admin_Home.css';
 
 const Admin_Home = () => {
   return (
-    <div className="Cards-Container">
+    <div className="Cards-Container d-flex justify-content-center gap-3 p-5">
       <Link className="card" to="item-entry">
         Item Entry
       </Link>

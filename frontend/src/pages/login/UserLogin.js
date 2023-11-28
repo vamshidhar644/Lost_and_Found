@@ -29,15 +29,20 @@ const UserLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        className="user_email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      {error && <p>{error}</p>}
-
-      <button>Submit</button>
+    <form
+      onSubmit={handleSubmit}
+      className="user_login__form p-5 d-flex flex-column justify-content-center"
+    >
+      <div className="user__login_box d-flex gap-3">
+        <input
+          type="email"
+          className="user_email w-100 p-2 mb-2"
+          placeholder="Enter email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button className="user_login__submit p-2 px-4 h-100">Submit</button>
+      </div>
+      {error && <p className="login__error">{error}</p>}
     </form>
   );
 };

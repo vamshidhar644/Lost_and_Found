@@ -1,9 +1,9 @@
-.Cards-Container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    gap: 25px;
+/* Admin_Home.css */
+nav {
+  /* background-color: #333; */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
 }
 
 .card {
@@ -22,42 +22,55 @@
   font-weight: 600;
   text-decoration: none;
   color: #fff;
-  background: #1488CC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  background: #1488cc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #2b32b2,
+    #1488cc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #2b32b2,
+    #1488cc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-size: 22px;
 }
 
 .card:hover {
-  border: 1px solid black;
   transform: scale(1.05);
-  font-size: 25px;
+  color: #fff;
 }
 
 .card:active {
   transform: scale(0.95);
 }
 
-
 /* Smart phones */
 @media screen and (max-width: 600px) {
-  .Cards-Container{
+  .Cards-Container {
     flex-direction: column;
+    padding: 20px;
   }
 
-  .card{
+  .card {
     height: fit-content;
     padding: 20px 12px;
   }
 }
 
 /* Tablets */
-@media screen and (max-width: 768px) {
-  
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .Cards-Container {
+    flex-direction: column;
+  }
 }
 
 /* Laptops */
-@media screen and (max-width: 992px) {
-  
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  /* Add styles for tablets here if needed */
 }
 
+/* Larger screens */
+@media screen and (min-width: 993px) {
+  /* Add styles for larger screens here if needed */
+}
