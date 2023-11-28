@@ -46,7 +46,7 @@ const ReturnedItems = ({ Allitems, user }) => {
                   <td>{item.name}</td>
                   <td>{item.desc}</td>
                   <td>{item.place_found}</td>
-                  <td>{item.submited_date}</td>
+                  <td>{item.submited_date}</td> 
                   <td>{item.submitedBy_Name}</td>
                   <td>{item.submitedBy_regId}</td>
                   <td>{item.submitedBy_phone}</td>

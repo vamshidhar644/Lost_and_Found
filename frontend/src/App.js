@@ -28,9 +28,11 @@ function App() {
   } = fetchMongo();
 
   useEffect(() => {
-    fetchItems();
-    fetchItemTypes();
-    user && fetchAllItems(user);
+    if (user) {
+      fetchItems();
+      fetchItemTypes();
+      fetchAllItems(user);
+    }
   }, [user]);
 
   return (
@@ -133,7 +135,7 @@ function App() {
               path="/requests"
               element={
                 user && user.role === 0 ? (
-                  <Requests />
+                  <Requests user={user} />
                 ) : (
                   <Navigate to="/login" />
                 )

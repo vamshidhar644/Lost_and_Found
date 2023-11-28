@@ -1,0 +1,24 @@
+/* style.css */
+
+.requests-grid {
+    margin: 20px;
+  }
+  
+  .filters {
+    margin-bottom: 10px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+  }
+  
+  .grid-box {
+    border: 1px solid #ccc;
+    padding: 20px 4rem;
+    border-radius: 8px;
+  }
+  
+  /* Add more styles as needed */
+  

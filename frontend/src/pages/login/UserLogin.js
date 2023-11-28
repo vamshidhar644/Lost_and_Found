@@ -10,7 +10,7 @@ const UserLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const emailPattern = /^[a-zA-Z]+\.(\d{2}[a-zA-Z]{3}\d{4,})@vitap\.ac\.in$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@vitap\.ac\.in$/;
 
     if (!email) {
       setError('Email is Empty');
@@ -18,11 +18,11 @@ const UserLogin = () => {
     } else if (!emailPattern.test(email)) {
       setError('Invalid Email Format');
     } else {
-      const match = email.match(emailPattern);
+      const parts = email.split('.');
 
-      const extractedString = match[1];
+      const password = parts[parts.length - 1];
 
-      await login(email, extractedString, 'user');
+      await login(email, password, 'user');
 
       setError('correct');
     }

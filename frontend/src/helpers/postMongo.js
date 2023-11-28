@@ -8,10 +8,7 @@ const PostMongo = () => {
   const { Alldispatch } = UseAllentriesContext();
   const navigate = useNavigate();
 
-  // const { user } = UseAuthContext(0);
-
-  // const backend_path = 'https://lf-backend-aaqr.onrender.com';
-  const backend_path = 'http://localhost:4000';
+  const backend_path = process.env.REACT_APP_BACKEND;
 
   const itemEntry = async (itemDetais, user) => {
     const response = await fetch(`${backend_path}/api/items`, {
@@ -101,7 +98,32 @@ const PostMongo = () => {
     }
   };
 
-  return { itemEntry, itemReturn, deleteItem, deleteAllItem, createRequest };
+  const updateStatus = async (id, status, user) => {
+    const response = await fetch(`${backend_path}/api/requests/` + id, {
+      method: 'PATCH',
+      body: JSON.stringify(status),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+    }
+    if (response.ok) {
+      console.log(json);
+    }
+  };
+
+  return {
+    itemEntry,
+    itemReturn,
+    deleteItem,
+    deleteAllItem,
+    createRequest,
+    updateStatus,
+  };
 };
 
 export default PostMongo;
