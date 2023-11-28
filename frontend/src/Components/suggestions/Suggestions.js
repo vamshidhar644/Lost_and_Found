@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { UseItemTypesContext } from '../../context/useContexts';
 import './Suggestions.css';
 import fetchMongo from '../../helpers/fetchMongo';
+import PostMongo from '../../helpers/postMongo';
 const Suggestions = ({ onChange, user }) => {
   const { itemTypes, itemTypedispatch } = UseItemTypesContext();
+
+  const { addItemType } = PostMongo();
 
   const [itemType, setitemType] = useState('');
 
@@ -33,27 +36,7 @@ const Suggestions = ({ onChange, user }) => {
     const confirmed = window.confirm('Add ' + itemType + ' to item types');
     if (confirmed) {
       // console.log(itemType);
-      const itemTypes = { itemType };
-      const response = await fetch('/api/itemTypes', {
-        method: 'POST',
-        body: JSON.stringify(itemTypes),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      const json = await response.json();
-      if (!response.ok) {
-        console.log(json.error);
-      }
-      if (response.ok) {
-        setitemType('');
-        itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
-      }
-      // Do something if the user confirms
-    } else {
-      // Do something if the user cancels
+      await addItemType(itemType, user);
     }
   };
 

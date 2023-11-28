@@ -1,11 +1,16 @@
 import { UseAuthContext } from '../auth/useAuthContext';
-import { UseAllentriesContext, UseItemsContext } from '../context/useContexts';
+import {
+  UseAllentriesContext,
+  UseItemTypesContext,
+  UseItemsContext,
+} from '../context/useContexts';
 
 import { useNavigate } from 'react-router-dom';
 
 const PostMongo = () => {
   const { dispatch } = UseItemsContext();
   const { Alldispatch } = UseAllentriesContext();
+  const { itemTypedispatch } = UseItemTypesContext();
   const navigate = useNavigate();
 
   const backend_path = process.env.REACT_APP_BACKEND;
@@ -26,6 +31,25 @@ const PostMongo = () => {
     if (response.ok) {
       dispatch({ type: 'CREATE_ITEM', payload: json });
       navigate('/items');
+    }
+  };
+
+  const addItemType = async (itemType, user) => {
+    const response = await fetch(`${backend_path}/api/itemTypes`, {
+      method: 'POST',
+      body: JSON.stringify({ itemType }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+      console.log(json.error);
+    }
+    if (response.ok) {
+      itemTypedispatch({ type: 'CREATE_ITEM', payload: json });
     }
   };
 
@@ -123,6 +147,7 @@ const PostMongo = () => {
     deleteAllItem,
     createRequest,
     updateStatus,
+    addItemType,
   };
 };
 

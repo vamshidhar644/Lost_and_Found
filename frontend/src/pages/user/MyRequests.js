@@ -8,7 +8,7 @@ const MyRequests = ({ user }) => {
     fetchUserRequests(user);
   }, [user]);
 
-  console.log(userReq);
+  // console.log(userReq);
   return (
     <div className="grid-container">
       {userReq ? (
