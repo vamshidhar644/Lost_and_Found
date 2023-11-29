@@ -27,7 +27,7 @@ const createItemType = async (req, res) => {
 
     const newItem = ItemType.create({ itemType });
 
-    res.status(200).json(newItem);
+    res.status(200).json({ message: 'Item type added' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

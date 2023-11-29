@@ -24,7 +24,7 @@ router.get('/:id', getRequest);
 router.get('/my-req/:email', getUserReq);
 
 // POST a new item
-router.post('/', userAuth, createRequest);
+router.post('/', createRequest);
 
 // DELETE a item
 router.delete('/:id', userAuth, deleteRequest);

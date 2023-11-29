@@ -9,11 +9,10 @@ const getItems = async (req, res) => {
   res.status(200).json(items);
 };
 
-
 // get a single item
 const getItem = async (req, res) => {
   const { id } = req.params;
-  
+
   const item = await Item.findById(id);
 
   if (!item) {
@@ -49,7 +48,7 @@ const createItem = async (req, res) => {
 // delete a item
 const deleteItem = async (req, res) => {
   const { id } = req.params;
-  
+
   const item = await Item.findOneAndDelete({ _id: id });
   if (!item) {
     return res.id.status(404).json({ error: 'No such item' });
@@ -61,14 +60,14 @@ const deleteItem = async (req, res) => {
 // update a item
 const updateItem = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.id.status(404).json({ error: 'No such item' });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.id.status(404).json({ error: 'No such item' });
+  // }
 
   const item = await Item.findOneAndUpdate({ _id: id }, { ...req.body });
 
   if (!item) {
-    return res.id.status(404).json({ error: 'No such item' });
+    return res.status(404).json({ error: 'No such item' });
   }
 
   res.status(200).json(item);

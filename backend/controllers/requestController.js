@@ -98,10 +98,10 @@ const updateRequest = async (req, res) => {
   );
 
   if (!request) {
-    return res.id.status(404).json({ error: 'No such request' });
+    return res.status(404).json({ error: 'No such request' });
   }
 
-  res.status(200).json(request);
+  res.status(200).json({ message: 'Status Updated' });
 };
 
 // get user requests

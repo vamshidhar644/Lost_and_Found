@@ -47,7 +47,7 @@ const Navbar = ({ user }) => {
                   ) : (
                     <li>
                       <Link className="item-drop" to="/my-requests">
-                        Requests
+                        My Requests
                       </Link>
                     </li>
                   )}
