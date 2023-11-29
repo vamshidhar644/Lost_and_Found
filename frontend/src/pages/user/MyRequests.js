@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import FetchMongo from '../../helpers/fetchMongo';
+import './RequestPage.css';
 
 const MyRequests = ({ user }) => {
   const { fetchUserRequests, userReq } = FetchMongo();
@@ -10,22 +11,41 @@ const MyRequests = ({ user }) => {
 
   // console.log(userReq);
   return (
-    <div className="grid-container">
-      {userReq && userReq.lenght > 0 ? (
-        userReq.map((req) => (
-          <div key={req.req_id} className="grid-box">
-            <div>Request ID: {req.req_id}</div>
-            <div>Date: {req.req_date}</div>
-            <div>Item ID: {req.item_id}</div>
-            {/* Add other request details as needed */}
-            <div>Status: {req.status}</div>
-          </div>
-        ))
-      ) : (
-        <>
-          <h1>No Requests</h1>
-        </>
-      )}
+    <div className="requests-grid">
+      <h4 className="mb-5 ">My Requests</h4>
+      <div className="grid-container">
+        {userReq &&
+          userReq.map((req) => (
+            <div className={`grid-box ${req.status.toLowerCase()}`}>
+              <div>
+                <div className="mb-2">
+                  <strong>Request ID: </strong>
+                  {req.req_id}
+                </div>
+                <div className="mb-2">
+                  <strong>Date:</strong> {req.req_date}
+                </div>
+                <div className="mb-2">
+                  <strong>Item ID: </strong>
+                  {req.item_id}
+                </div>
+
+                <div className="mb-2">
+                  <strong>Lost date: </strong>
+                  {req.lost_date}
+                </div>
+                <div className="mb-2">
+                  <strong>Description: </strong>
+                  {req.req_desc}
+                </div>
+                <div className="mb-2">
+                  <strong>Status: </strong>
+                  {req.status}
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

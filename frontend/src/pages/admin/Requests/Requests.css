@@ -45,6 +45,7 @@
   
   .grid-box {
     padding: 15px;
+    min-width: 260px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -83,6 +84,55 @@
 .grid-box.rejected {
   background-color: #f8d7da; /* Light red for rejected status */
 }
+
+.open__button{
+  background-color: #000;
+  color:#fff;
+  text-align: center;
+  padding: 4px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.open__button:hover{
+  background-color: #303030;
+}
+
+
+.overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: #fff;
+  position: relative;
+  min-width: 40%;
+  min-height: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.req_image{
+  height: 200px;
+}
+
   
   /* Add more styles as needed */
   

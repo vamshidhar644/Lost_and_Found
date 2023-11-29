@@ -5,7 +5,7 @@ const FetchItemID = ({ onId }) => {
 
   const currentDate = new Date();
   const date = currentDate.getDate();
-  const month = currentDate.getMonth();
+  const month = currentDate.getMonth()+1;
   const year = currentDate.getFullYear() % 100;
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');

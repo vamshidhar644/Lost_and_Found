@@ -87,15 +87,13 @@ const MyForm = () => {
     };
 
     createRequest(requestDetails, user);
-
-    // console.log('Form Data:', requestDetails);
   };
 
   return (
     <form onSubmit={handleSubmit} className="request__form p-5 m-5">
       <h2>Request Form</h2>
       <div className="d-flex p-4 gap-4">
-        <div>
+        <div className="req__form">
           <div className="mb-3">
             <label htmlFor="itemId" className="form-label">
               Item ID:
