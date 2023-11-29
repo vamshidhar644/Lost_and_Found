@@ -72,86 +72,89 @@ const ItemForm = ({ user }) => {
   };
 
   return (
-    <div className="form-parent">
-      <form className="create">
-        <FetchItemID onId={itemId} />
-        {error && <div className="error">{error}</div>}
-        <div className="Form-Sections">
+    <div className="item__entry__container mt-5">
+      <form className="item__entry_from">
+        <div className="Form-Sections d-flex gap-3">
           <div className="FormBoxes">
+            <FetchItemID onId={itemId} />
             <div className="Item-form-Row">
-              <label>Item:</label>
+              <label className="mb-0">Item:</label>
               <Suggestions onChange={itemName} user={user} />
             </div>
 
             <div className="Item-form-Row">
-              <label>Description:</label>
+              <label className="mb-0">Description:</label>
               <textarea
                 onChange={(e) => setDesc(e.target.value)}
                 value={desc}
-                className="Input-Box"
+                className="Input-Box form-control"
               ></textarea>
             </div>
 
             <div className="Item-form-Row">
-              <label>Place found:</label>
+              <label className="mb-0">Place found:</label>
               <input
                 type="text"
                 onChange={(e) => setPlace(e.target.value)}
                 value={place}
-                className="Input-Box"
+                className="Input-Box form-control"
               />
             </div>
 
             <div className="Item-form-Row">
-              <label>Date:</label>
+              <label className="mb-0">Date:</label>
               <input
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
-                className="Input-Box"
+                className="Input-Box form-control"
               />
             </div>
 
             <div className="Item-form-Row">
-              <label>Submitted by</label>
+              <label className="mb-0">Submitted by</label>
               <input
                 type="text"
                 onChange={(e) => setSubmitedBy(e.target.value)}
                 value={submitedBy}
-                className="Input-Box"
+                className="Input-Box form-control"
               />
             </div>
 
             <div className="Item-form-Row">
-              <label>Registration number / Employee id:</label>
+              <label className="mb-0">Registration number / Employee id:</label>
               <input
                 type="text"
                 onChange={(e) => setRegId(e.target.value)}
                 value={regId}
-                className="Input-Box"
+                className="Input-Box form-control"
               />
             </div>
             <div className="Item-form-Row">
-              <label>Phone number</label>
+              <label className="mb-0">Phone number</label>
               <input
                 type="text"
                 onChange={(e) => setPhone(e.target.value)}
                 value={phone}
-                className="Input-Box"
+                className="Input-Box form-control"
               />
             </div>
-
+          </div>
+          <div>
+            <Camera onImage={imageName} />
             <div className="Item-form-Row add-btn-container">
               {isLoading ? (
                 <AddItemLoader />
               ) : (
-                <div className="Returned-btn" onClick={handleSubmit}>
+                <div
+                  className="Returned-btn btn btn-primary"
+                  onClick={handleSubmit}
+                >
                   Save
                 </div>
               )}
             </div>
           </div>
-          <Camera onImage={imageName} />
         </div>
       </form>
     </div>

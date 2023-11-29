@@ -8,93 +8,57 @@ import { NAVBAR_ITEMS } from '../../constants';
 const Navbar = ({ user }) => {
   const { logout } = useLogout();
 
-  const [showDropdown, setShowDropdown] = useState();
-  const divRef = useRef(null);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleHoverClick = () => {
-    setShowDropdown(true);
+  const handleMouseEnter = () => {
+    setDropdownOpen(true);
   };
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (divRef.current && !divRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    }
-    window.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      window.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [divRef]);
-
-  const handleClick = () => {
-    logout();
+  const handleMouseLeave = () => {
+    setDropdownOpen(false);
   };
 
   return (
     <header>
-      <div className="Navcontainer">
+      <div className="Navcontainer p-3 d-flex align-items-center justify-content-between">
         <Link to="/">
           <h1>
             Lost and Found <span>Student Record Section</span>
           </h1>
         </Link>
 
-        {user && user.role === 0 ? (
-          <div className="login-logout">
-            <div
-              className="dropdown-container"
-              onClick={handleHoverClick}
-              ref={divRef}
-            >
-              <p>Profile</p>
-              {showDropdown && (
-                <div className="dropdown-items">
-                  <div className="arrow-down"></div>
-                  <Link className="item-drop" to="/change-password">
-                    Change Password
-                  </Link>
-                  <Link className="item-drop" onClick={handleClick}>
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </div>
+        {user && (
+          <div
+            className="dropdown-container"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="dropdown-trigger px-5 py-2">Profile</div>
+            {isDropdownOpen && (
+              <div className="dropdown-content">
+                <ul>
+                  {user.role === 0 ? (
+                    <li>
+                      {' '}
+                      <Link className="item-drop" to="/change-password">
+                        Change Password
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link className="item-drop" to="/my-requests">
+                        Requests
+                      </Link>
+                    </li>
+                  )}
+
+                  <li onClick={() => logout()}>Logout</li>
+                </ul>
+              </div>
+            )}
           </div>
-        ) : user && user.role === 1 ? (
-          <div className="login-logout">
-            <div
-              className="dropdown-container"
-              onClick={handleHoverClick}
-              ref={divRef}
-            >
-              <p>Profile</p>
-              {showDropdown && (
-                <div className="dropdown-items">
-                  <div className="arrow-down"></div>
-                  <Link className="item-drop" to="/my-requests">
-                    Requests
-                  </Link>
-                  <Link className="item-drop" onClick={handleClick}>
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <></>
         )}
       </div>
-      {user && user.role === 0 && (
-        <div className="sub-navbar">
-          <ul>
-            {NAVBAR_ITEMS.map((nav, i) => {
-              <li key={i}>{nav.name}</li>;
-            })}
-          </ul>
-        </div>
-      )}
     </header>
   );
 };

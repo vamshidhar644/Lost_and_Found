@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { BsCameraFill } from 'react-icons/bs';
 import { IoMdReverseCamera, IoMdSave } from 'react-icons/io';
@@ -56,41 +56,55 @@ const Camera = ({ onImage }) => {
   };
 
   return (
-    <div className="Camera">
-      {imageSrc && (
-        <img
-          src={imageSrc}
-          ref={inputRef}
-          style={{ transform: 'scaleX(-1)', filter: 'FlipH' }}
-          alt=""
-        />
-      )}
-      {!imageSrc && (
-        <video
-          ref={videoRef}
-          style={{ transform: 'scaleX(-1)', filter: 'FlipH' }}
-        />
-      )}
-      <div className="camera-btn-section">
-        {!imageSrc && (
-          <div className="all-buttons">
-            <div onClick={ImageCapture} className="Camera-btn">
-              <BsCameraFill />
-            </div>
-          </div>
-        )}
+    <div className="camera__section">
+      <div className=" p-4">
         {imageSrc && (
-          <div className="all-buttons">
-            <div onClick={ReImageCapture} className="Camera-btn">
-              <IoMdReverseCamera /> Recapture
-            </div>
-            <div onClick={Save_Image} className="Camera-btn">
-              <IoMdSave /> Save
-            </div>
-          </div>
+          <img
+            src={imageSrc}
+            ref={inputRef}
+            className="img-fluid rounded"
+            style={{ transform: 'scaleX(-1)', filter: 'FlipH' }}
+            alt=""
+          />
         )}
+        {!imageSrc && (
+          <video
+            ref={videoRef}
+            className="img-fluid rounded"
+            style={{ transform: 'scaleX(-1)', filter: 'FlipH' }}
+          />
+        )}
+        <div className="camera-btn-section mt-3">
+          {!imageSrc && (
+            <div className="all-buttons">
+              <button
+                onClick={ImageCapture}
+                className="btn btn-primary Camera-btn"
+              >
+                <BsCameraFill /> Capture Image
+              </button>
+            </div>
+          )}
+          {imageSrc && (
+            <div className="all-buttons">
+              <div
+                onClick={ReImageCapture}
+                className="btn btn-secondary Camera-btn d-flex align-items-center gap-1"
+              >
+                <IoMdReverseCamera /> Recapture
+              </div>
+              <div
+                onClick={Save_Image}
+                className="btn btn-success Camera-btn  d-flex align-items-center gap-1"
+              >
+                <IoMdSave />
+                Save
+              </div>
+            </div>
+          )}
+        </div>
+        <canvas ref={canvasRef} style={{ display: 'none' }} />
       </div>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
     </div>
   );
 };

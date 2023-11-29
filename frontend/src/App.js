@@ -6,7 +6,7 @@ import Navbar from './pages/navbar/Navbar';
 import ReturnItem from './pages/admin/ItemReturn/ReturnForm';
 import ItemForm from './pages/admin/ItemEntry/ItemForm';
 import AllEntries from './pages/admin/AllItems/AllEntries';
-import ChangePassword from './pages/admin/Profile/changePassword';
+import ChangePassword from './pages/admin/ChangePassword/changePassword';
 import AdminHome from './pages/admin/Admin_Home';
 import MainLogin from './pages/login/MainLogin';
 import ItemTypes from './pages/items/ItemTypes';

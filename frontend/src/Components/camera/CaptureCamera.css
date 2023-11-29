@@ -1,52 +1,66 @@
+/* Add your custom styles to this CSS file */
 
-.Camera{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 17px;
-    align-items: center;
-  }
-  
-  .Camera video{
-    width: 370px;
-  }
-  
-  .Camera img{  
-    width: 370px;
-    overflow: hidden;
-  }
-  
-  .camera-btn-section{
-    position: absolute;
-    bottom: 15px;
-  }
-  
-  .Camera-btn{
-    background-color: #5691c8;
-    border-radius: 6%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    gap: 3px;
-    /* width: 20px; */
-    cursor: pointer;
-    /* height: 20px; */
-  }
-  
-  .Camera-btn:hover{
-    background-color: #457fca;
-  }
+.Camera {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  
+.camera-btn-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-.all-buttons{
-    display: flex;
-    justify-content: flex-start;
-    gap: 35px;
-    margin: 10px 0px;
+.all-buttons {
+  display: flex;
+}
+
+.Camera-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Adjust styles for different button colors */
+.Camera-btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.Camera-btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.Camera-btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Optional: Add hover effects to buttons */
+.Camera-btn:hover {
+  opacity: 0.8;
+}
+
+/* Optional: Add transition effects for smooth interactions */
+.Camera-btn {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.camera__section{
+  max-width: fit-content !important;
 }
 
 
-  

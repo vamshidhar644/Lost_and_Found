@@ -11,7 +11,7 @@ const MyRequests = ({ user }) => {
   // console.log(userReq);
   return (
     <div className="grid-container">
-      {userReq ? (
+      {userReq && userReq.lenght > 0 ? (
         userReq.map((req) => (
           <div key={req.req_id} className="grid-box">
             <div>Request ID: {req.req_id}</div>
@@ -22,7 +22,9 @@ const MyRequests = ({ user }) => {
           </div>
         ))
       ) : (
-        <></>
+        <>
+          <h1>No Requests</h1>
+        </>
       )}
     </div>
   );

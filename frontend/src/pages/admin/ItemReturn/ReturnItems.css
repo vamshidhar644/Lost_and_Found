@@ -1,142 +1,78 @@
 
-.Return-Container{
-    background: #fff;
+.Return__Container{
+    background-color: #fff;
     border-radius: 4px;
-    margin: 20px auto;
+    width: 90%;
+}
+
+.Details__Content{
+    width: 50%;
+}
+
+.Item_Return__Row{
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    justify-content: space-between;
+
 }
 
-.Item-Return-Row{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.Item-Return-Row h4{
-    margin: 0;
-    color: #414141;
-    font-weight: 600;
-    padding: 5px;
+.Item_Return__Row h4{
+    font-size: 16px !important;
+    margin: 0px;
     text-align: right;
 }
 
-.Item-Return-Row p{
-    margin: 0;
-    color: #343434;
-    padding: 5px;
-    font-size: 16px;
-    color: black;
-    font-weight: 400;
-    margin-left: 10px;
+.Item_Return__Row input{
+    max-width: 50%;
 }
 
-.Owner-Content h5{
-    margin: 0;
-    font-weight: 600;
-    font-size: 22px;
-}
-
-.Owner-Content div{
-    padding: 5px;
-    align-items: first baseline;
-}
-
-.Return-BtnS{
-    display: grid;
-    gap: 20px;
-    width: 100%;
-}
-
-.Return-btn{ 
-    margin: auto;
-    color: #fff;
-  padding: 5px 12px;
-  width: 200px;
-  border-radius: 3px;
-  cursor: pointer;
-  text-align: center;
-  transition: 0.4s;
-  font-weight: 450;
-  white-space: nowrap;
-  background: #1488CC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-
-.item-details .Return-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    color: #333;
-    width: 160px;
-    background-color: var(--buttons);
-    padding: 5px 12px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: 0.4s;
+.Owner-Content {
+    width: 60%;
+    /* max-width: 600px; */
+    margin: 0 auto;
   }
   
-  .Return-btn:hover, .Returns-btn:hover{
-    transform: scale(.95);
+  .Item_Return__Row {
+    margin-bottom: 20px;
   }
-
-.Return-btn a{
-    text-decoration: none;
-    color: #fff;
-}
-
-.image-container{
-    border: 2px solid transparent;
-}
-
-/* Smart phones */
-@media screen and (max-width: 600px) {
-    .Details-Content{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .Return-Container{
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .Owner-Content .Item-Return-Row{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .Item-Return-Row{
-        gap: 2px;
-    }
-
-    .Item-Return-Row h4{
-        font-size: 14px;
-    }
-    .Item-Return-Row p{
-        font-size: 16px;
-    }
-    
-    .Return-BtnS{
-        flex-direction: column;
-        gap: 8px;
-        justify-content: center;
-    }
-}
-
-/* Tablets */
-@media screen and (max-width: 768px) {
-    
-}
-
-/* Laptops */
-@media screen and (max-width: 992px) {
-    
-}
-
+  
+  h3, h4 {
+    margin: 0;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .Item_Return__Row input[type="date"] {
+    /* Style for date input if needed */
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .Return-BtnS {
+    text-align: center;
+  }
+  
+  .Return-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .Return-btn:hover {
+    background-color: #45a049;
+  }
+  

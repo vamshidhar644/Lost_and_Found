@@ -15,31 +15,24 @@ const Items = ({ itemTypes }) => {
   };
   // console.log(itemTypes);
   return (
-    <div className="itemList-Container">
-      <div className="item-list">
-        <div className="itemtype-item">
-          <Link className="option-type" to="/items/All Items">
-            <BsBorderAll />
-          </Link>
-          All items
-        </div>
+    <div className="itemList__container d-flex align-items-center mt-5">
+      <div className="item__list p-5">
+        <Link className="itemtype__item" to="/items/all-items">
+          <p className="m-0">AI</p>
+          <span>All items</span>
+        </Link>
         {itemTypes ? (
           itemTypes.map((itemType, ind) => {
             return (
-              <div
+              <Link
+                to={`/items/${itemType.itemType}`}
                 key={ind}
                 value={itemType.itemType}
-                className="itemtype-item"
+                className="itemtype__item"
               >
-                <Link
-                  className="option-type"
-                  to={`/items/${itemType.itemType}`}
-                >
-                  {getFirstLetters(itemType.itemType)}
-                  {/* <RandomIcon /> */}
-                </Link>
-                {itemType.itemType}
-              </div>
+                <p className="m-0">{getFirstLetters(itemType.itemType)}</p>
+                <span>{itemType.itemType}</span>
+              </Link>
             );
           })
         ) : (

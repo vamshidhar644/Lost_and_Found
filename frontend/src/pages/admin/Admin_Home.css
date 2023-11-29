@@ -1,18 +1,9 @@
-/* Admin_Home.css */
-nav {
-  /* background-color: #333; */
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-}
 
 .card {
   width: 250px;
-  height: 300px;
+  min-height: 300px;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
   border-radius: 13px;
-  text-align: center;
   cursor: pointer;
   transition: all 0.5s;
   display: flex;
@@ -48,29 +39,11 @@ nav {
 /* Smart phones */
 @media screen and (max-width: 600px) {
   .Cards-Container {
-    flex-direction: column;
-    padding: 20px;
+    flex-direction: column; /* Two columns */
   }
 
   .card {
-    height: fit-content;
-    padding: 20px 12px;
+    min-height: 160px;
+    padding: 12px;
   }
-}
-
-/* Tablets */
-@media screen and (min-width: 601px) and (max-width: 768px) {
-  .Cards-Container {
-    flex-direction: column;
-  }
-}
-
-/* Laptops */
-@media screen and (min-width: 769px) and (max-width: 992px) {
-  /* Add styles for tablets here if needed */
-}
-
-/* Larger screens */
-@media screen and (min-width: 993px) {
-  /* Add styles for larger screens here if needed */
 }

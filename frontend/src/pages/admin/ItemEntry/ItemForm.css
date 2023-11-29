@@ -1,108 +1,41 @@
 
-
-.FormBoxes{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.item__entry_section_2{
+  width: fit-content;
+}
+.item__entry_from {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
-.form-parent{  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.Item-form-Row {
+  margin-bottom: 15px;
 }
 
-.Form-Sections{
-  display: flex;
-  gap: 15px;
+.Input-Box, #input-box {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-  
-  input, textarea{
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: none;
-  }
-  
-  div.error {
-    padding: 10px;
-    background: #ffefef;
-    border: 1px solid var(--error);
-    color: var(--error);
-    border-radius: 4px;
-    margin: 10px 0;
-    width: 100%;
-    text-align: center;
-  }
 
-  .create{
-    display: flex;
-    padding: 15px;
-    flex-direction: column;
-    align-items: center;    
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-    background-color: #fff;
-  }
+.Returned-btn {
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
 
-  .create h3{
-    font-weight: 500;
-  }
-  
-  .Item-form-Row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
 
-  .Input-Box, .wrapper, .suggestion-parent{
-    width: 300px;
-  }
-
-  input.error {
-    border: 1px solid var(--error);
-  }
-
-  .add-btn-container{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-/* Smart phones */
 @media screen and (max-width: 600px) {
-  .form-parent{
-    padding: 10px 0px;
-  }
-  .Item-form-Row{
+  .Form-Sections{
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 2px;
-  }
-  .Item-form-Row label{
-    width: 100%;
-  }
-  .create{
-    width: 100%;
-  }
-  
-  .Input-Box, .wrapper, .suggestion-parent{
-    width: 100%;
   }
 
-  .Camera{
-    display: none;
+  .camera__section{
+    margin-top: 0px !important;
   }
-}
-
-/* Tablets */
-@media screen and (max-width: 768px) {
-  
-}
-
-/* Laptops */
-@media screen and (max-width: 992px) {
-  
 }

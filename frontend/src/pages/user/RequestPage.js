@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import RequestId from '../../helpers/RequestId';
 import { UseAuthContext } from '../../auth/useAuthContext';
 import PostMongo from '../../helpers/postMongo';
+import './RequestPage.css';
 
 const MyForm = () => {
   const { user } = UseAuthContext();
   const { item_id } = useParams();
   const { _id } = RequestId();
   const today = new Date().toISOString().split('T')[0];
- 
+
   const { createRequest } = PostMongo();
 
   const [formData, setFormData] = useState({
@@ -91,62 +92,106 @@ const MyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Item id: {item_id}</p>
-      <p>Request id: {_id}</p>
-      <p>Requested date: {today}</p>
-      <p>{user && user.email}</p>
+    <form onSubmit={handleSubmit} className="request__form p-5 m-5">
+      <h2>Request Form</h2>
+      <div className="d-flex p-4 gap-4">
+        <div>
+          <div className="mb-3">
+            <label htmlFor="itemId" className="form-label">
+              Item ID:
+            </label>
+            <p>{item_id}</p>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="requestId" className="form-label">
+              Request ID:
+            </label>
+            <p>{_id}</p>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="requestedDate" className="form-label">
+              Requested Date:
+            </label>
+            <p>{today}</p>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="userEmail" className="form-label">
+              User Email:
+            </label>
+            <p>{user && user.email}</p>
+          </div>
+        </div>
 
-      <div>
-        <label>Registration Number / Employee ID:</label>
-        <input
-          type="text"
-          name="regNo_empId"
-          value={formData.regNo_empId}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <div className="mb-3">
+            <label htmlFor="regNoEmpId" className="form-label">
+              Registration Number / Employee ID:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="regNo_empId"
+              value={formData.regNo_empId}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="reqName" className="form-label">
+              Name:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="req_name"
+              value={formData.req_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="lostDate" className="form-label">
+              Lost Date:
+            </label>
+            <input
+              type="date"
+              className="form-control"
+              name="lost_date"
+              value={formData.lost_date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="reqDesc" className="form-label">
+              Description:
+            </label>
+            <textarea
+              className="form-control"
+              name="req_desc"
+              value={formData.req_desc}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="image" className="form-label">
+              Upload Image:
+            </label>
+            <input
+              type="file"
+              className="form-control"
+              name="image"
+              onChange={handleChange}
+              accept="image/*"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </div>
       </div>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="req_name"
-          value={formData.req_name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Lost Date:</label>
-        <input
-          type="date"
-          name="lost_date"
-          value={formData.lost_date}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Description:</label>
-        <textarea
-          name="req_desc"
-          value={formData.req_desc}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Image:</label>
-        <input
-          type="file"
-          name="image"
-          onChange={handleChange}
-          accept="image/*"
-          // required
-        />
-      </div>
-      <button type="submit">Submit</button>
     </form>
   );
 };

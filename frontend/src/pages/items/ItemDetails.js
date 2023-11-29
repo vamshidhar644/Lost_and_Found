@@ -18,36 +18,40 @@ const ItemDetails = ({ item, user, type }) => {
   }, [item.imgpath]);
 
   return (
-    <div className="item-details">
-      <div className="details-box">
-        <h4>{item.name} </h4>
-        <p>{item._id}</p>
+    <div className="item__details">
+      <div className="details__box">
+        <h5>{item.name} </h5>
+        <p className="m-0">{item._id}</p>
         {user && user.role === 0 && (
           <div>
-            <p>
+            <p className="m-0">
               <strong>
                 Description: <br />
               </strong>
               {item.desc}
+              <br />
             </p>
-            <p>
+            <p className="m-0">
               <strong>Place: </strong>
               {item.place}
             </p>
           </div>
         )}
         <div>
-          <p>Found on: {item.date}</p>
+          <p className="m-0">
+            <strong>
+              Found on:
+              <br />
+            </strong>{' '}
+            {item.date}
+          </p>
         </div>
-        {/* <p>
-          Updated{' '}
-          {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
-        </p> */}
       </div>
-      <div className="details-box2">
-        {user && user.role === 0 ? (
+
+      {user && user.role === 0 ? (
+        <div className="details__box2">
           <Link
-            className="Returns-btn"
+            className="Returns-btn image__container"
             to="/itemTypes/return-item"
             state={{
               _id: item._id,
@@ -58,20 +62,25 @@ const ItemDetails = ({ item, user, type }) => {
               submitedBy_Name: item.submitedBy,
               submitedBy_regId: item.regId,
               submitedBy_phone: item.phone,
+              image: imgSrc,
             }}
           >
-            <img src={imgSrc} alt="not uploaded" className="image-container" />
+            <img src={imgSrc} alt="not uploaded" className="w-100 h-100" />
           </Link>
-        ) : (
+        </div>
+      ) : (
+        <div>
           <Link
-            className="Returns-btn"
+            className="Return__btn"
             to={`/items/${type}/${item._id}`}
             state={{
               _id: item._id,
             }}
-          ></Link>
-        )}
-      </div>
+          >
+            Request
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

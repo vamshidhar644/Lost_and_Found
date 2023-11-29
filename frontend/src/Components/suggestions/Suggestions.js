@@ -47,6 +47,7 @@ const Suggestions = ({ onChange, user }) => {
         name="item_list"
         type="text"
         list="Input-box"
+        className="w-100 p-2"
         onChange={SelectOpt}
       />
       <datalist id="Input-box">

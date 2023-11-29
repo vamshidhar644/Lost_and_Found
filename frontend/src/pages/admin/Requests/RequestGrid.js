@@ -25,7 +25,7 @@ const RequestsGrid = ({ requests, user }) => {
     <div className="requests-grid">
       <div className="filters">
         <label>
-          Status:
+          Status:{' '}
           <select onChange={(e) => setStatusFilter(e.target.value)}>
             <option value="all">All</option>
             <option value="pending">Pending</option>
@@ -37,7 +37,10 @@ const RequestsGrid = ({ requests, user }) => {
       <div className="grid-container">
         {filteredRequests &&
           filteredRequests.map((req) => (
-            <div key={req.req_id} className="grid-box">
+            <div
+              key={req.req_id}
+              className={`grid-box ${req.status.toLowerCase()}`}
+            >
               <div>Request ID: {req.req_id}</div>
               <div>Date: {req.req_date}</div>
               <div>Item ID: {req.item_id}</div>

@@ -19,8 +19,15 @@ const CaptureCamera = () => {
     };
 
     enableStream();
+
+    // Cleanup function to disable the stream when the component is unmounted
+    return () => {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach((track) => track.stop());
+      }
+    };
   }, []);
-  
 
   const captureImage = (canvasRef, videoRef) => {
     // e.preventDefault();
@@ -100,6 +107,7 @@ const CaptureCamera = () => {
     stream,
     setStream,
     imageSrc,
+    setImageSrc,
   };
 };
 

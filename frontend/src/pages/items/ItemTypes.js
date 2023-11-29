@@ -19,34 +19,33 @@ const ItemTypes = ({ user, items }) => {
     setC(c + 1);
   }, [c]);
 
-  // console.log(filteredArray);
-
   return (
-    <div className="home">
-      <div className="items">
-        <div className="filter-items">
-          <div className="itemCount">
-            {itemType}: {filteredArray.length} items
-          </div>
-        </div>
+    <div className="items_list__home w-100 h-100">
+      <div className="container mt-5">
+        <div className="items_list__home">
+          <div className="items_list">
+            <div className="filter__item">
+              <div className="item__count">
+                {itemType === 'all-items' ? 'All Items' : itemType}:{' '}
+                <strong>{filteredArray.length} items</strong>
+              </div>
+            </div>
 
-        <div className="all-items">
-          {filteredArray ? (
-            filteredArray.map((item) => {
-              return (
-                <ItemDetails
-                  key={item._id}
-                  item={item}
-                  user={user}
-                  type={itemType}
-                />
-              );
-            })
-          ) : <ItemLoader /> ? (
-            <div>No {itemType} found</div>
-          ) : (
-            <></>
-          )}
+            <div className="item__boxes">
+              {filteredArray && filteredArray.length > 0 ? (
+                filteredArray.map((item) => (
+                  <ItemDetails
+                    key={item._id}
+                    item={item}
+                    user={user}
+                    type={itemType}
+                  />
+                ))
+              ) : (
+                <div className="alert alert-info">No {itemType} found</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <GoToTop />

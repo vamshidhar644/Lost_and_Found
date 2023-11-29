@@ -1,12 +1,5 @@
 /* style.css */
-
-.requests-grid {
-    margin: 20px;
-  }
   
-  .filters {
-    margin-bottom: 10px;
-  }
   
   .grid-container {
     display: grid;
@@ -16,9 +9,86 @@
   
   .grid-box {
     border: 1px solid #ccc;
-    padding: 20px 4rem;
+    padding: 20px;
     border-radius: 8px;
   }
+
+  .requests-grid {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    min-width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filters {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  select {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .grid-container {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .grid-box {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .request-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  
+  .request-id,
+  .request-date,
+  .item-id,
+  .status,
+  .change-status {
+    margin-bottom: 10px;
+  }
+  
+  .change-status select {
+    width: 150px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+/* Add specific background colors for different statuses */
+.grid-box.pending {
+  background-color: #fce8b6; /* Light yellow for pending status */
+}
+
+.grid-box.approved {
+  background-color: #d4edda; /* Light green for approved status */
+}
+
+.grid-box.rejected {
+  background-color: #f8d7da; /* Light red for rejected status */
+}
   
   /* Add more styles as needed */
   
+  @media screen and (max-width: 600px) {
+    .grid-container{
+      display: flex;
+      flex-direction: column;
+    }
+  }

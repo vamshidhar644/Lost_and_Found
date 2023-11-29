@@ -24,9 +24,8 @@
 
 .styled-table thead tr{
     background: #667db6;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #ffffff;
     font-size: 12px;
 }
@@ -56,6 +55,7 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
 
 .table-container{
     width: 100%;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,9 +117,11 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
     .styled-table{
         overflow-x: scroll;
     }
-    .table-container{        
-    justify-content: start;
-    align-items: center;
+    .table-container{    
+        width: 100%;   
+        overflow-x: scroll; 
+        justify-content: start;
+        align-items: center;
     }
 
   }
